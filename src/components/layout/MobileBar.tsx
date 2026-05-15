@@ -1,3 +1,5 @@
+"use client";
+
 const BUTTONS = [
   { icon: "📞", label: "Sună acum", bg: "#1E1E1E", href: "tel:0779281047" },
   { icon: "📱", label: "WhatsApp", bg: "#25D366", href: "https://wa.me/40779281047" },
