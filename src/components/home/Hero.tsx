@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import GrainOverlay from "@/components/ui/GrainOverlay";
 
 function useTypewriter(words: string[], speed = 80, pause = 2000) {
@@ -32,6 +32,13 @@ export default function Hero() {
   const rotatingWords = ["pereților", "spațiilor", "brandurilor", "showroom-urilor", "birourilor"];
   const word = useTypewriter(rotatingWords, 75, 2200);
 
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section
       style={{
@@ -42,18 +49,37 @@ export default function Hero() {
         overflow: "hidden",
       }}
     >
-      {/* BG layers */}
+      {/* BG: hero image */}
+      <img
+        src="/assets/hero/homepage-hero.png"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "110%",
+          objectFit: "cover",
+          objectPosition: "center",
+          zIndex: 0,
+          transform: `translateY(${scrollY * 0.28}px)`,
+          willChange: "transform",
+        }}
+      />
+
+      {/* BG layers: dark overlay + accent gradients */}
       <div
         style={{
           position: "absolute",
           inset: 0,
+          zIndex: 1,
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249,115,22,0.08) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 80% 50%, rgba(234,88,12,0.05) 0%, transparent 60%), var(--bg-void)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.80) 100%), radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249,115,22,0.12) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 80% 50%, rgba(234,88,12,0.07) 0%, transparent 60%)",
         }}
       />
 
       {/* Grain overlay */}
-      <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 2 }}>
         <GrainOverlay />
       </div>
 
@@ -62,7 +88,8 @@ export default function Hero() {
         style={{
           position: "absolute",
           inset: 0,
-          opacity: 0.04,
+          zIndex: 2,
+          opacity: 0.03,
           backgroundImage:
             "linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
@@ -70,8 +97,10 @@ export default function Hero() {
       />
 
       <div
+        className="hero-content"
         style={{
           position: "relative",
+          zIndex: 3,
           maxWidth: 1200,
           margin: "0 auto",
           padding: "0 40px",
@@ -82,6 +111,7 @@ export default function Hero() {
         <div style={{ maxWidth: 820, animation: "fadeUp 0.9s ease both" }}>
           {/* Badge */}
           <div
+            className="badge-float"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -118,6 +148,7 @@ export default function Hero() {
 
           {/* H1 */}
           <h1
+            className="hero-h1"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(52px, 8vw, 88px)",
@@ -131,7 +162,8 @@ export default function Hero() {
             Transformăm
             <br />
             <span
-              style={{
+              className="hero-typewriter"
+            style={{
                 color: "var(--accent)",
                 display: "inline-block",
                 minWidth: 420,
@@ -227,6 +259,7 @@ export default function Hero() {
           bottom: 32,
           left: "50%",
           transform: "translateX(-50%)",
+          zIndex: 3,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

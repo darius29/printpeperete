@@ -35,6 +35,7 @@ export default function Services() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section"
       style={{ padding: "96px 40px", maxWidth: 1200, margin: "0 auto" }}
     >
       <div
@@ -83,16 +84,11 @@ export default function Services() {
         </p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14 }}>
+      <div className="grid-2-services" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14 }}>
         {services.map((s, i) => (
           <div
             key={i}
-            className="service-card"
-            style={{
-              opacity: inView ? 1 : 0,
-              transform: inView ? "none" : "translateY(28px)",
-              transition: `opacity 0.6s ${0.1 + i * 0.1}s, transform 0.6s ${0.1 + i * 0.1}s`,
-            }}
+            className={`service-card has-icon-pop scale-in stagger-${i + 1} ${inView ? "is-visible" : ""}`}
           >
             <div
               style={{
@@ -102,7 +98,7 @@ export default function Services() {
                 marginBottom: 16,
               }}
             >
-              <span style={{ fontSize: 36 }}>{s.icon}</span>
+              <span className="icon-pop" style={{ fontSize: 36 }}>{s.icon}</span>
               <span
                 style={{
                   fontSize: 10,

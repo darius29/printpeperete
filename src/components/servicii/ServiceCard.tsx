@@ -6,24 +6,37 @@ interface ServiceCardProps {
   chips: string[];
   inView: boolean;
   delay: number;
+  image?: string;
 }
 
-export default function ServiceCard({ icon, tag, title, desc, chips, inView, delay }: ServiceCardProps) {
+export default function ServiceCard({ icon, tag, title, desc, chips, inView, delay, image }: ServiceCardProps) {
+  const staggerIdx = Math.round(delay / 0.1) + 1;
   return (
     <div
+      className={`scale-in stagger-${staggerIdx} ${inView ? "is-visible" : ""} has-icon-pop`}
       style={{
         background: "var(--bg-surface)",
         border: "1px solid var(--bg-border)",
         borderRadius: 14,
-        padding: 28,
+        overflow: "hidden",
         cursor: "pointer",
-        transition: `all 0.28s cubic-bezier(0.25,0.46,0.45,0.94), opacity .6s ${delay}s, transform .6s ${delay}s`,
-        opacity: inView ? 1 : 0,
-        transform: inView ? "none" : "translateY(28px)",
+        transition: `opacity .6s ${delay}s var(--ease-out), transform .6s ${delay}s var(--ease-out), box-shadow 0.28s, border-color 0.28s`,
       }}
     >
+      {image && (
+        <div className="porto-card" style={{ height: 180, borderRadius: 0 }}>
+          <img
+            src={image}
+            alt={title}
+            className="porto-card-img"
+            style={{ height: 180 }}
+          />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, var(--bg-surface) 100%)", zIndex: 1 }} />
+        </div>
+      )}
+      <div style={{ padding: 28 }}>
       <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 18 }}>
-        <span style={{ fontSize: 38 }}>{icon}</span>
+        <span className="icon-pop" style={{ fontSize: 38 }}>{icon}</span>
         <span style={{ fontSize: 10, fontWeight: 600, padding: "3px 10px", borderRadius: 20, background: "rgba(249,115,22,.1)", color: "var(--accent)", border: "1px solid rgba(249,115,22,.25)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>{tag}</span>
       </div>
       <h3 style={{ fontFamily: "var(--font-bebas-neue)", fontSize: 24, letterSpacing: "0.03em", marginBottom: 10, color: "#fff" }}>{title}</h3>
@@ -33,7 +46,8 @@ export default function ServiceCard({ icon, tag, title, desc, chips, inView, del
           <span key={chip} style={{ fontSize: 11, background: "#1E1E1E", color: "var(--text-secondary)", border: "1px solid var(--bg-border)", borderRadius: 5, padding: "3px 9px" }}>{chip}</span>
         ))}
       </div>
-      <button className="btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>Cere ofert\u0103 \u2192</button>
+      <button className="btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>Cere ofertă →</button>
+      </div>
     </div>
   );
 }

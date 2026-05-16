@@ -29,6 +29,7 @@ export default function Coverage() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section"
       style={{
         background: "var(--bg-surface)",
         borderTop: "1px solid var(--bg-border)",
@@ -51,6 +52,7 @@ export default function Coverage() {
 
         {/* Coverage cards */}
         <div
+          className="grid-3-main"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3,1fr)",

@@ -1,18 +1,18 @@
 import GrainOverlay from "@/components/ui/GrainOverlay";
 
 export default function ServiciiHero() {
-  const tags = ["Wall Print UV", "Laser CO\u2082", "Obiecte personalizate", "Print textile"];
+  const tags = ["Wall Print UV", "Laser CO₂", "Obiecte personalizate", "Print textile"];
   return (
-    <section style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}>
+    <section className="hero-pad-xl" style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}>
       <div style={{
         position: "absolute", inset: 0,
         background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.07) 0%, transparent 65%), var(--bg-void)",
       }} />
       <GrainOverlay />
       <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(249,115,22,.1)", border: "1px solid rgba(249,115,22,.25)", borderRadius: 20, padding: "6px 18px", marginBottom: 28, animation: "fadeIn 0.6s .1s both" }}>
+        <div className="badge-float" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(249,115,22,.1)", border: "1px solid rgba(249,115,22,.25)", borderRadius: 20, padding: "6px 18px", marginBottom: 28, animation: "fadeIn 0.6s .1s both" }}>
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)", display: "inline-block", boxShadow: "0 0 8px var(--accent)" }} />
-          <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 600, letterSpacing: "0.04em" }}>Print UV · Laser CO\u2082 · Textile · Design</span>
+          <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 600, letterSpacing: "0.04em" }}>Print UV · Laser CO₂ · Textile · Design</span>
         </div>
         <h1 style={{ fontFamily: "var(--font-bebas-neue)", fontSize: "clamp(52px,8vw,88px)", letterSpacing: "0.02em", lineHeight: 0.95, marginBottom: 20, animation: "fadeUp .9s .15s both" }}>
           Serviciile<br /><span style={{ color: "var(--accent)" }}>noastre</span>

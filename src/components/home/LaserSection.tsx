@@ -48,6 +48,7 @@ export default function LaserSection() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section"
       style={{
         background: "#0a0a0a",
         borderTop: "1px solid #1a1a1a",
@@ -96,7 +97,7 @@ export default function LaserSection() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}>
+        <div className="grid-2-main" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}>
           {/* Left */}
           <div
             style={{
@@ -117,14 +118,9 @@ export default function LaserSection() {
               {feats.map((f, i) => (
                 <div
                   key={i}
-                  style={{
-                    background: "var(--bg-surface)",
-                    border: "1px solid var(--bg-border)",
-                    borderRadius: 10,
-                    padding: "18px 16px",
-                  }}
+                  className="feature-card has-icon-pop"
                 >
-                  <div style={{ fontSize: 24, marginBottom: 8 }}>{f.icon}</div>
+                  <div className="icon-pop" style={{ fontSize: 24, marginBottom: 8 }}>{f.icon}</div>
                   <div
                     style={{
                       fontFamily: "var(--font-display)",
@@ -167,6 +163,7 @@ export default function LaserSection() {
           </div>
 
           {/* Right */}
+
           <div
             style={{
               opacity: inView ? 1 : 0,
@@ -196,6 +193,14 @@ export default function LaserSection() {
               ))}
             </div>
 
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 20 }}>
+              <div className="porto-card" style={{ borderRadius: 10, height: 140, border: "1px solid var(--bg-border)" }}>
+                <img src="/assets/servicii/co2-laser-natural-wood.png" alt="Gravare laser CO2 pe lemn" className="porto-card-img" style={{ height: 140 }} />
+              </div>
+              <div className="porto-card" style={{ borderRadius: 10, height: 140, border: "1px solid var(--bg-border)" }}>
+                <img src="/assets/servicii/laser-engraved-finisher-products.png" alt="Produse gravate laser" className="porto-card-img" style={{ height: 140 }} />
+              </div>
+            </div>
             <div
               style={{
                 background: "var(--bg-surface)",

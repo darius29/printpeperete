@@ -26,6 +26,7 @@ export default function Process() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section"
       style={{ padding: "96px 40px" }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -88,6 +89,7 @@ export default function Process() {
         </div>
 
         <div
+          className="grid-3-process"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
@@ -97,6 +99,7 @@ export default function Process() {
         >
           {/* Connector line */}
           <div
+            className="process-connector"
             style={{
               position: "absolute",
               top: 30,
@@ -107,20 +110,23 @@ export default function Process() {
                 "linear-gradient(to right, var(--accent) 0%, var(--bg-border) 50%, var(--accent) 100%)",
               zIndex: 0,
             }}
-          />
+          >
+            <div
+              className={`line-grow ${inView ? "is-visible" : ""}`}
+              style={{ position: "absolute", inset: 0, background: "inherit" }}
+            />
+          </div>
 
           {steps.map((s, i) => (
             <div
               key={i}
+              className={`fade-up stagger-${i + 2} ${inView ? "is-visible" : ""}`}
               style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
                 padding: "0 24px",
-                opacity: inView ? 1 : 0,
-                transform: inView ? "none" : "translateY(28px)",
-                transition: `opacity 0.6s ${0.2 + i * 0.15}s, transform 0.6s ${0.2 + i * 0.15}s`,
               }}
             >
               <div className="step-num" style={{ marginBottom: 24, background: "var(--bg-void)" }}>

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useRef, useCallback } from "react";
 import type { BeforeAfterItem } from "@/lib/data/beforeAfter";
 import { useInView } from "@/hooks/useInView";
 import SliderResults from "./SliderResults";
@@ -10,16 +10,33 @@ interface MegaSliderProps {
 }
 
 export default function MegaSlider({ item, index }: MegaSliderProps) {
-  const [pos, setPos] = useState(40);
   const [ref, inView] = useInView(0.1);
   const containerRef = useRef<HTMLDivElement>(null);
-  const dragging = useRef<boolean>(false);
+  const afterRef = useRef<HTMLDivElement>(null);
+  const handleRef = useRef<HTMLDivElement>(null);
+  const dragging = useRef(false);
+  const rafId = useRef<number>(0);
 
-  const getPos = (clientX: number): number => {
-    if (!containerRef.current) return pos;
+  const applyPos = useCallback((pct: number) => {
+    const clamped = Math.max(0, Math.min(100, pct));
+    if (afterRef.current) {
+      afterRef.current.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
+    }
+    if (handleRef.current) {
+      handleRef.current.style.left = `${clamped}%`;
+    }
+  }, []);
+
+  const getPos = useCallback((clientX: number) => {
+    if (!containerRef.current) return 40;
     const rect = containerRef.current.getBoundingClientRect();
-    return Math.max(5, Math.min(95, ((clientX - rect.left) / rect.width) * 100));
-  };
+    return ((clientX - rect.left) / rect.width) * 100;
+  }, []);
+
+  const onMove = useCallback((clientX: number) => {
+    cancelAnimationFrame(rafId.current);
+    rafId.current = requestAnimationFrame(() => applyPos(getPos(clientX)));
+  }, [applyPos, getPos]);
 
   return (
     <div
@@ -58,30 +75,38 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
       {/* Slider */}
       <div
         ref={containerRef}
-        onMouseDown={() => { dragging.current = true; }}
-        onMouseMove={(e) => { if (dragging.current) setPos(getPos(e.clientX)); }}
+        onMouseDown={(e) => { dragging.current = true; e.preventDefault(); }}
+        onMouseMove={(e) => { if (dragging.current) onMove(e.clientX); }}
         onMouseUp={() => { dragging.current = false; }}
         onMouseLeave={() => { dragging.current = false; }}
-        onTouchStart={() => { dragging.current = true; }}
-        onTouchMove={(e) => setPos(getPos(e.touches[0].clientX))}
+        onTouchStart={(e) => { dragging.current = true; e.preventDefault(); }}
+        onTouchMove={(e) => { if (dragging.current) onMove(e.touches[0].clientX); }}
         onTouchEnd={() => { dragging.current = false; }}
-        style={{ position: "relative", height: 420, cursor: "ew-resize", userSelect: "none", borderRadius: 16, overflow: "hidden", border: "1px solid var(--bg-border)" }}
+        className="ba-slider"
+        style={{ position: "relative", height: 420, cursor: "ew-resize", userSelect: "none", borderRadius: 16, overflow: "hidden", border: "1px solid var(--bg-border)", touchAction: "none" }}
       >
         {/* BEFORE */}
-        <div style={{ position: "absolute", inset: 0, background: item.before }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${item.before})`, backgroundSize: "cover", backgroundPosition: "center" }} />
 
-        {/* AFTER clipped */}
+        {/* AFTER clipped — initial clipPath matches initial handle pos (40%) */}
         <div
+          ref={afterRef}
           style={{
             position: "absolute",
             inset: 0,
-            background: item.after,
-            clipPath: `inset(0 ${100 - pos}% 0 0)`,
+            backgroundImage: `url(${item.after})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            clipPath: "inset(0 60% 0 0)",
+            willChange: "clip-path",
           }}
         />
 
         {/* Vertical divider handle */}
-        <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: 2, background: "var(--accent)", transform: "translateX(-50%)", zIndex: 10 }}>
+        <div
+          ref={handleRef}
+          style={{ position: "absolute", top: 0, bottom: 0, left: "40%", width: 2, background: "var(--accent)", transform: "translateX(-50%)", zIndex: 10, willChange: "left" }}
+        >
           <div style={{
             position: "absolute",
             top: "50%",

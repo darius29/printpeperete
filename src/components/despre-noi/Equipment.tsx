@@ -47,6 +47,7 @@ export default function Equipment() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section"
       style={{
         background: "var(--bg-surface)",
         borderTop: "1px solid var(--bg-border)",
@@ -67,7 +68,7 @@ export default function Equipment() {
           subtitle="Investim în echipamente de calitate pentru că rezultatele finale depind direct de precizia și fiabilitatea utilajelor folosite."
           inView={inView}
         />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+        <div className="grid-2-main" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
           {equipment.map((eq, i) => (
             <EquipmentCard
               key={i}

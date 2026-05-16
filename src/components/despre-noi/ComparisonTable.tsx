@@ -16,7 +16,7 @@ export default function ComparisonTable() {
   const [ref, inView] = useInView(0.1);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} style={{ padding: "96px 40px" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section" style={{ padding: "96px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <SectionHeader
           label="Comparație directă"
@@ -30,6 +30,7 @@ export default function ComparisonTable() {
           inView={inView}
         />
         <div
+          className="comparison-scroll"
           style={{
             background: "var(--bg-elevated)",
             border: "1px solid var(--bg-border)",
@@ -41,6 +42,7 @@ export default function ComparisonTable() {
         >
           {/* Table header */}
           <div
+            className="comparison-row"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
@@ -87,6 +89,7 @@ export default function ComparisonTable() {
           {rows.map(([c, sdg, cls], i) => (
             <div
               key={c}
+              className="comparison-row"
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr 1fr",

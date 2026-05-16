@@ -16,10 +16,12 @@ export default function FinalCTA({ title, titleAccent, subtitle, primaryLabel, s
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="cta-section"
       style={{ padding: "0 40px 96px" }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div
+          className="glow-pulse-border cta-card"
           style={{
             background: "linear-gradient(135deg,#141414,#1a1a1a)",
             border: "1px solid var(--bg-border)",

@@ -15,6 +15,7 @@ export default function BeforeAfterHero() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="hero-pad-xl"
       style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}
     >
       {/* Background gradient */}

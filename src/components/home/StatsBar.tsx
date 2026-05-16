@@ -20,16 +20,15 @@ function StatItem({ target, suffix, label, index, inView }: {
   const val = useCounter(target, 1600, inView);
   return (
     <div
+      className={`stat-item fade-up stagger-${index + 1} ${inView ? "is-visible" : ""}`}
       style={{
         padding: "36px 24px",
         textAlign: "center",
         borderRight: index < 3 ? "1px solid var(--bg-border)" : "none",
-        opacity: inView ? 1 : 0,
-        transform: inView ? "none" : "translateY(16px)",
-        transition: `opacity 0.6s ${index * 0.1}s, transform 0.6s ${index * 0.1}s`,
       }}
     >
       <div
+        className="stat-num"
         style={{
           fontFamily: "var(--font-display)",
           fontSize: 48,
@@ -71,8 +70,8 @@ export default function StatsBar() {
         padding: "0",
       }}
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+      <div className="resp-px" style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <div className="grid-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
           {stats.map((s, i) => (
             <StatItem
               key={i}

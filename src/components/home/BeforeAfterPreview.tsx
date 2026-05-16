@@ -254,6 +254,7 @@ export default function BeforeAfterPreview() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section"
       style={{ padding: "96px 40px" }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -316,7 +317,7 @@ export default function BeforeAfterPreview() {
           </a>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+        <div className="grid-sliders" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
           {comparisons.map((c, i) => (
             <div
               key={i}

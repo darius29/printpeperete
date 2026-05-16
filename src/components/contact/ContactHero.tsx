@@ -10,6 +10,7 @@ export default function ContactHero() {
   return (
     <section
       ref={ref}
+      className="hero-pad-xl"
       style={{
         position: "relative",
         padding: "140px 40px 60px",

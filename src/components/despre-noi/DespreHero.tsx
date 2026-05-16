@@ -9,7 +9,7 @@ const badges = [
 
 export default function DespreHero() {
   return (
-    <section style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}>
+    <section className="hero-pad-xl" style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}>
       <div
         style={{
           position: "absolute",
@@ -89,6 +89,7 @@ export default function DespreHero() {
 
         {/* Floating stat badges */}
         <div
+          className="despre-badges"
           style={{
             position: "absolute",
             top: 0,

@@ -19,7 +19,7 @@ export default function MasonryGrid({ projects }: MasonryGridProps) {
 
   return (
     <div ref={ref as React.RefObject<HTMLDivElement>}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14, alignItems: "start" }}>
+      <div className="grid-masonry" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14, alignItems: "start" }}>
         {cols.map((col, ci) => (
           <div key={ci} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {col.map((p, pi) => (

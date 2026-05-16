@@ -11,7 +11,7 @@ export default function BeforeAfterPage() {
   return (
     <main>
       <BeforeAfterHero />
-      <section style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto" }}>
+      <section className="resp-px cta-section" style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto" }}>
         {BEFORE_AFTER_ITEMS.map((item, i) => (
           <MegaSlider key={i} item={item} index={i} />
         ))}

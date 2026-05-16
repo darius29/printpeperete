@@ -12,8 +12,8 @@ export default function ContactPage() {
   return (
     <main>
       <ContactHero />
-      <section style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 24 }}>
+      <section className="resp-px cta-section" style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto" }}>
+        <div className="grid-calc" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 24 }}>
           <ContactForm />
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <ContactInfo />

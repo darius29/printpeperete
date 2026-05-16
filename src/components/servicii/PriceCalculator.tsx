@@ -20,36 +20,36 @@ interface ServiceCfg {
 
 const SERVICE_CONFIG: Record<ServiceKey, ServiceCfg> = {
   wall: {
-    label: "Wall Print UV", icon: "\uD83D\uDDA8\uFE0F",
-    unit: "m\u00B2", unitLabel: "Suprafa\u021b\u0103 (m\u00B2)",
+    label: "Wall Print UV", icon: "🖨️",
+    unit: "m²", unitLabel: "Suprafață (m²)",
     min: 1, max: 30, step: 0.5,
-    materials: ["Perete tencuit", "Perete lavabil", "MDF", "Sticl\u0103", "Metal", "Gresie"],
+    materials: ["Perete tencuit", "Perete lavabil", "MDF", "Sticlă", "Metal", "Gresie"],
     basePrice: { standard: 45, premium: 68, pro: 95 },
-    desc: "Pre\u021b per m\u00B2 \u00B7 Pre\u021bul final depinde de suprafa\u021b\u0103 \u0219i complexitatea designului",
+    desc: "Preț per m² · Prețul final depinde de suprafață și complexitatea designului",
   },
   laser: {
-    label: "Gravare laser CO\u2082", icon: "\u26A1",
+    label: "Gravare laser CO₂", icon: "⚡",
     unit: "piese", unitLabel: "Cantitate (piese)",
     min: 1, max: 100, step: 1,
-    materials: ["Lemn / MDF", "Acril", "Piele", "Sticl\u0103", "Anodizat", "Plute"],
+    materials: ["Lemn / MDF", "Acril", "Piele", "Sticlă", "Anodizat", "Plute"],
     basePrice: { standard: 25, premium: 40, pro: 65 },
-    desc: "Pre\u021b per pies\u0103 \u00B7 Variaz\u0103 \u00Een func\u021bie de complexitate \u0219i material",
+    desc: "Preț per piesă · Variază în funcție de complexitate și material",
   },
   textile: {
-    label: "Print textile", icon: "\uD83D\uDC55",
-    unit: "buc", unitLabel: "Cantitate (buc\u0103\u021bi)",
+    label: "Print textile", icon: "👕",
+    unit: "buc", unitLabel: "Cantitate (bucăți)",
     min: 1, max: 200, step: 1,
-    materials: ["Tricou bumbac", "Tricou poliester", "Hanorac", "\u015Aapc\u0103", "Geant\u0103 textil\u0103", "\u015Eort"],
+    materials: ["Tricou bumbac", "Tricou poliester", "Hanorac", "Șapcă", "Geantă textilă", "Șort"],
     basePrice: { standard: 35, premium: 50, pro: 75 },
-    desc: "Pre\u021b per buc\u0103t\u0103 \u00B7 Discount progresiv la comenzi \u2265 10 buc",
+    desc: "Preț per bucată · Discount progresiv la comenzi ≥ 10 buc",
   },
   objects: {
-    label: "Obiecte personalizate", icon: "\uD83C\uDF81",
-    unit: "buc", unitLabel: "Cantitate (buc\u0103\u021bi)",
+    label: "Obiecte personalizate", icon: "🎁",
+    unit: "buc", unitLabel: "Cantitate (bucăți)",
     min: 1, max: 500, step: 1,
-    materials: ["Can\u0103 ceramic\u0103", "Hus\u0103 telefon", "Cutie cadou", "Agend\u0103", "Pix gravat", "Trofeu"],
+    materials: ["Cană ceramică", "Husă telefon", "Cutie cadou", "Agendă", "Pix gravat", "Trofeu"],
     basePrice: { standard: 20, premium: 32, pro: 48 },
-    desc: "Pre\u021b per buc\u0103t\u0103 \u00B7 Discount la cantitate \u00B7 Ambalare inclus\u0103",
+    desc: "Preț per bucată · Discount la cantitate · Ambalare inclusă",
   },
 };
 
@@ -93,29 +93,29 @@ export default function PriceCalculator() {
   );
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} id="calculator" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", borderBottom: "1px solid #1a1a1a", padding: "96px 40px" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} id="calculator" className="resp-section" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", borderBottom: "1px solid #1a1a1a", padding: "96px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         {/* Header */}
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(24px)", transition: "opacity .7s, transform .7s", marginBottom: 56, display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 32, height: 2, background: "var(--accent)" }} />
-              <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Estimare instant\u0103</span>
+              <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Estimare instantă</span>
             </div>
             <h2 style={{ fontFamily: "var(--font-bebas-neue)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "0.02em", lineHeight: 0.95, marginBottom: 12 }}>
-              Calculator<br />pre\u021b estimativ
+              Calculator<br />preț estimativ
             </h2>
             <p style={{ fontSize: 16, color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: 480 }}>
-              Ob\u021bine o estimare rapid\u0103 pentru proiectul t\u0103u. Pre\u021bul final se stabile\u0219te dup\u0103 consultan\u021b\u0103 gratuit\u0103.
+              Obține o estimare rapidă pentru proiectul tău. Prețul final se stabilește după consultanță gratuită.
             </p>
           </div>
           <div style={{ background: "rgba(249,115,22,.08)", border: "1px solid rgba(249,115,22,.2)", borderRadius: 12, padding: "14px 20px", textAlign: "center" }}>
-            <div style={{ fontSize: 11, color: "var(--accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Consultan\u021b\u0103 gratuit\u0103</div>
-            <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>R\u0103spuns \u00Een max 24h dup\u0103 trimitere</div>
+            <div style={{ fontSize: 11, color: "var(--accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Consultanță gratuită</div>
+            <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>Răspuns în max 24h după trimitere</div>
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 24, opacity: inView ? 1 : 0, transition: "opacity .7s .2s" }}>
+        <div className="grid-calc" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 24, opacity: inView ? 1 : 0, transition: "opacity .7s .2s" }}>
           {/* Left: controls */}
           <div style={{ background: "var(--bg-surface)", border: "1px solid var(--bg-border)", borderRadius: 16, padding: 32 }}>
             {/* Step 1: Service */}
@@ -124,7 +124,7 @@ export default function PriceCalculator() {
                 {stepNum("1")}
                 <span style={{ fontSize: 13, fontWeight: 600, color: "#fff", textTransform: "uppercase", letterSpacing: "0.05em" }}>Alege serviciul</span>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10 }}>
+              <div className="grid-4-btns" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10 }}>
                 {(Object.entries(SERVICE_CONFIG) as [ServiceKey, ServiceCfg][]).map(([k, v]) => (
                   <button
                     key={k}
@@ -191,7 +191,7 @@ export default function PriceCalculator() {
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 11, color: "#6B7280" }}>Min: {cfg.min} {cfg.unit}</span>
                 {((service === "textile" && qty >= 10) || (service === "objects" && qty >= 20)) && (
-                  <span style={{ fontSize: 11, color: "#22C55E" }}>\u2713 Discount cantitate activ</span>
+                  <span style={{ fontSize: 11, color: "#22C55E" }}>✓ Discount cantitate activ</span>
                 )}
                 <span style={{ fontSize: 11, color: "#6B7280" }}>Max: {cfg.max} {cfg.unit}</span>
               </div>
@@ -246,9 +246,9 @@ export default function PriceCalculator() {
               {loading ? (
                 <>
                   <span style={{ width: 18, height: 18, border: "2px solid rgba(255,255,255,.3)", borderTop: "2px solid #fff", borderRadius: "50%", display: "inline-block", animation: "spin .7s linear infinite" }} />
-                  Se calculeaz\u0103...
+                  Se calculează...
                 </>
-              ) : "Calculeaz\u0103 estimare \u2192"}
+              ) : "Calculează estimare →"}
             </button>
             <p style={{ fontSize: 11, color: "#6B7280", textAlign: "center", marginTop: 10 }}>{cfg.desc}</p>
           </div>
@@ -263,20 +263,20 @@ export default function PriceCalculator() {
             }}>
               {!calculated ? (
                 <div style={{ height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 16, padding: "40px 0", textAlign: "center" }}>
-                  <div style={{ fontSize: 48, opacity: 0.3 }}>\uD83E\uDDF2</div>
+                  <div style={{ fontSize: 48, opacity: 0.3 }}>🧲</div>
                   <div style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6, maxWidth: 240 }}>
-                    Configureaz\u0103 op\u021biunile din st\u00E2nga \u0219i apas\u0103 &quot;Calculeaz\u0103&quot; pentru estimare.
+                    Configurează opțiunile din stânga și apasă &quot;Calculează&quot; pentru estimare.
                   </div>
                 </div>
               ) : (
                 <div style={{ animation: "fadeUp .4s ease" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
                     <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 8px #22C55E" }} />
-                    <span style={{ fontSize: 11, color: "#22C55E", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>Estimare calculat\u0103</span>
+                    <span style={{ fontSize: 11, color: "#22C55E", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>Estimare calculată</span>
                   </div>
                   {/* Summary */}
                   <div style={{ background: "var(--bg-void)", borderRadius: 10, padding: 16, marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, color: "#6B7280", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.05em" }}>Sumar comand\u0103</div>
+                    <div style={{ fontSize: 11, color: "#6B7280", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.05em" }}>Sumar comandă</div>
                     {[
                       ["Serviciu", cfg.label],
                       ["Material", material],
@@ -292,12 +292,12 @@ export default function PriceCalculator() {
                   {/* Price breakdown */}
                   <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontSize: 13, color: "var(--text-secondary)" }}>Produc\u021bie ({qty} {cfg.unit})</span>
+                      <span style={{ fontSize: 13, color: "var(--text-secondary)" }}>Producție ({qty} {cfg.unit})</span>
                       <span style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>{prices.subtotal.toLocaleString("ro")} lei</span>
                     </div>
                     {prices.design > 0 && (
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <span style={{ fontSize: 13, color: "var(--text-secondary)" }}>Design / Preg\u0103tire fi\u0219iere</span>
+                        <span style={{ fontSize: 13, color: "var(--text-secondary)" }}>Design / Pregătire fișiere</span>
                         <span style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>{prices.design} lei</span>
                       </div>
                     )}
@@ -314,20 +314,20 @@ export default function PriceCalculator() {
                         <div style={{ fontFamily: "var(--font-bebas-neue)", fontSize: 32, letterSpacing: "0.02em", color: "var(--accent)", lineHeight: 1 }}>
                           {prices.total.toLocaleString("ro")} <span style={{ fontSize: 18 }}>lei</span>
                         </div>
-                        <div style={{ fontSize: 10, color: "#6B7280" }}>f\u0103r\u0103 TVA</div>
+                        <div style={{ fontSize: 10, color: "#6B7280" }}>fără TVA</div>
                       </div>
                     </div>
                   </div>
                   <div style={{ background: "rgba(249,115,22,.06)", border: "1px solid rgba(249,115,22,.15)", borderRadius: 8, padding: "10px 14px", marginBottom: 16 }}>
-                    <div style={{ fontSize: 11, color: "var(--accent)", fontWeight: 600, marginBottom: 3 }}>\u26A0 Estimare orientativ\u0103</div>
-                    <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>Pre\u021bul final se stabile\u0219te dup\u0103 analiza proiectului. Consultan\u021ba este gratuit\u0103.</div>
+                    <div style={{ fontSize: 11, color: "var(--accent)", fontWeight: 600, marginBottom: 3 }}>⚠ Estimare orientativă</div>
+                    <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>Prețul final se stabilește după analiza proiectului. Consultanța este gratuită.</div>
                   </div>
                   <button className="btn-primary" style={{ width: "100%", justifyContent: "center", fontSize: 14, padding: 13 }}>
-                    Cere ofert\u0103 exact\u0103 \u2192
+                    Cere ofertă exactă →
                   </button>
                   <button className="btn-outline" style={{ width: "100%", justifyContent: "center", fontSize: 13, padding: 11, marginTop: 8 }}
                     onClick={() => setCalculated(false)}>
-                    Recalculeaz\u0103
+                    Recalculează
                   </button>
                 </div>
               )}
@@ -335,10 +335,10 @@ export default function PriceCalculator() {
             {/* Info cards */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               {[
-                { icon: "\u26A1", label: "R\u0103spuns rapid", desc: "Max 24h" },
-                { icon: "\uD83C\uDFA8", label: "Design inclus", desc: "La Premium/Pro" },
-                { icon: "\uD83D\uDCE6", label: "Livrare", desc: "48h standard" },
-                { icon: "\u2713", label: "F\u0103r\u0103 surprize", desc: "Pre\u021b fix" },
+                { icon: "⚡", label: "Răspuns rapid", desc: "Max 24h" },
+                { icon: "🎨", label: "Design inclus", desc: "La Premium/Pro" },
+                { icon: "📦", label: "Livrare", desc: "48h standard" },
+                { icon: "✓", label: "Fără surprize", desc: "Preț fix" },
               ].map(c => (
                 <div key={c.label} style={{ background: "var(--bg-surface)", border: "1px solid var(--bg-border)", borderRadius: 10, padding: "12px 14px", display: "flex", gap: 10, alignItems: "flex-start" }}>
                   <span style={{ fontSize: 18 }}>{c.icon}</span>

@@ -9,9 +9,9 @@ const COLS = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", padding: "48px 40px 32px" }}>
+    <footer className="footer-wrap" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", padding: "48px 40px 32px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
+        <div className="grid-footer" style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
           <div>
             <div style={{ fontFamily: "var(--font-display)", fontSize: 22, letterSpacing: "0.06em", marginBottom: 10 }}>SDG <span style={{ color: "var(--accent)" }}>PRINT</span> & Design</div>
             <p style={{ fontSize: 13, color: "var(--text-tertiary)", lineHeight: 1.7, maxWidth: 240 }}>Print UV direct pe perete și gravare laser CO₂ în Timișoara și toată România.</p>

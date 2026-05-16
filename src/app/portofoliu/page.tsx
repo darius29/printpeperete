@@ -26,7 +26,7 @@ export default function PortofoliuPage() {
   return (
     <main>
       <PortofoliuHero />
-      <section style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto" }}>
+      <section className="resp-px cta-section" style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto" }}>
         <FilterBar
           active={activeFilter}
           sortBy={sortBy}

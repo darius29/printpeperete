@@ -22,9 +22,9 @@ export default function ServiciiPage() {
       <FinalCTA
         title="Ai nevoie de un"
         titleAccent="pachet personalizat?"
-        subtitle="Combin\u0103m serviciile \u00Een func\u021bie de obiectivele tale de branding sau amenajare. Consultan\u021b\u0103 gratuit\u0103, f\u0103r\u0103 angajament."
-        primaryLabel="Cere ofert\u0103 personalizat\u0103 \u2192"
-        secondaryLabel="\u21B3 Vezi portofoliul"
+        subtitle="Combinăm serviciile în funcție de obiectivele tale de branding sau amenajare. Consultanță gratuită, fără angajament."
+        primaryLabel="Cere ofertă personalizată →"
+        secondaryLabel="↳ Vezi portofoliul"
       />
     </main>
   );

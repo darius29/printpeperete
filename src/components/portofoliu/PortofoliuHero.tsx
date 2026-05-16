@@ -17,6 +17,7 @@ export default function PortofoliuHero() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="hero-pad-xl"
       style={{ position: "relative", padding: "140px 40px 72px", overflow: "hidden" }}
     >
       {/* Background */}
@@ -33,12 +34,12 @@ export default function PortofoliuHero() {
       }} />
 
       <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "flex-end" }}>
+        <div className="grid-porto-hero" style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "flex-end" }}>
 
           {/* Left — headline */}
           <div style={{ animation: "fadeUp .9s .1s both" }}>
             {/* Badge */}
-            <div style={{
+            <div className="badge-float" style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(249,115,22,.1)", border: "1px solid rgba(249,115,22,.25)",
               borderRadius: 20, padding: "6px 18px", marginBottom: 28,
@@ -68,7 +69,7 @@ export default function PortofoliuHero() {
           {/* Right — stat cards */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, animation: "fadeIn .9s .4s both" }}>
             {stats.map((s) => (
-              <div key={s.label} style={{
+              <div key={s.label} className="porto-stat-card" style={{
                 background: "#141414",
                 border: `1px solid ${s.color}22`,
                 borderRadius: 12,

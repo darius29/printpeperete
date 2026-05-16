@@ -44,6 +44,7 @@ export default function WallPrintSpotlight() {
 
   return (
     <section
+      className="resp-section"
       style={{
         background: "#0a0a0a",
         borderTop: "1px solid #1a1a1a",
@@ -104,6 +105,7 @@ export default function WallPrintSpotlight() {
 
         {/* Main grid */}
         <div
+          className="grid-2-main"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -131,13 +133,7 @@ export default function WallPrintSpotlight() {
               {specs.map((sp) => (
                 <div
                   key={sp.val}
-                  style={{
-                    background: "var(--bg-surface)",
-                    border: "1px solid var(--bg-border)",
-                    borderRadius: 10,
-                    padding: "14px 12px",
-                    textAlign: "center",
-                  }}
+                  className="spec-card"
                 >
                   <div
                     style={{
@@ -224,7 +220,14 @@ export default function WallPrintSpotlight() {
               transition: "opacity 0.7s 0.3s, transform 0.7s 0.3s",
             }}
           >
-            <h4
+            <div style={{ borderRadius: 12, overflow: "hidden", marginBottom: 28, border: "1px solid var(--bg-border)" }}>
+              <img
+                src="/assets/servicii/uv-wall-printer.png"
+                alt="Printer UV direct pe perete"
+                style={{ width: "100%", height: 220, objectFit: "cover", display: "block" }}
+              />
+            </div>
+          <h4
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: 18,
@@ -244,8 +247,8 @@ export default function WallPrintSpotlight() {
               }}
             >
               {domains.map((d, i) => (
-                <div key={i} className="domain-card">
-                  <div style={{ fontSize: 28, marginBottom: 8 }}>{d.icon}</div>
+                <div key={i} className={`domain-card has-icon-pop`}>
+                  <div className="icon-pop" style={{ fontSize: 28, marginBottom: 8 }}>{d.icon}</div>
                   <div
                     style={{
                       fontFamily: "var(--font-display)",

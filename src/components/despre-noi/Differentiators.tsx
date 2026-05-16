@@ -47,7 +47,7 @@ export default function Differentiators() {
   const [ref, inView] = useInView(0.08);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} style={{ padding: "96px 40px" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section" style={{ padding: "96px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <SectionHeader
           label="De ce suntem diferiți"
@@ -61,7 +61,7 @@ export default function Differentiators() {
           subtitle="Nu toate printurile sunt la fel. Iată ce înseamnă concret tehnologia UV directă pe care o folosim."
           inView={inView}
         />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14 }}>
+        <div className="grid-3-main" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14 }}>
           {diffs.map((d, i) => (
             <DifferentiatorCard
               key={i}

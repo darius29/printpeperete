@@ -192,7 +192,7 @@ export default function ContactForm() {
 
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         {/* Name + Phone */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+        <div className="grid-2-form" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
           {(
             [
               ["name", "Nume *", "Ion Popescu"],

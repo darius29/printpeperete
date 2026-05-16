@@ -22,6 +22,7 @@ export default function Story() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section"
       style={{
         background: "var(--bg-surface)",
         borderTop: "1px solid var(--bg-border)",
@@ -30,6 +31,7 @@ export default function Story() {
       }}
     >
       <div
+        className="grid-2-main"
         style={{
           maxWidth: 1200,
           margin: "0 auto",
