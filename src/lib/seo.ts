@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 const BASE_URL = "https://printpeperete.com"; // Schimbă cu domeniul final
 
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-default.jpg`; // 1200×630px
+const DEFAULT_OG_IMAGE = `${BASE_URL}/opengraph-image`;
 
 export const defaultSEO: Metadata = {
   metadataBase: new URL(BASE_URL),
