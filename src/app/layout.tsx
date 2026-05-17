@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
 import { defaultSEO } from "@/lib/seo";
 import { LocalBusinessSchema } from "@/components/StructuredData";
@@ -23,6 +24,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = defaultSEO;
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ro" className={`${bebasNeue.variable} ${dmSans.variable}`}>
@@ -36,6 +39,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WAWidget />
         <MobileBar />
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+              id="ga-script"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', {
+                  anonymize_ip: true,
+                  cookie_flags: 'SameSite=None;Secure'
+                });
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
