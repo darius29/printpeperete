@@ -11,5 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/despre-noi`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/before-after`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/termeni-si-conditii`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/politica-de-confidentialitate`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/politica-de-cookies`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/anpc`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 }

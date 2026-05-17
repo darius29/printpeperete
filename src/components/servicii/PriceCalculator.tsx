@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
 type ServiceKey = "wall" | "laser" | "textile" | "objects";
@@ -190,7 +191,7 @@ export default function PriceCalculator() {
               </div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 11, color: "#6B7280" }}>Min: {cfg.min} {cfg.unit}</span>
-                {((service === "textile" && qty >= 10) || (service === "objects" && qty >= 20)) && (
+                {((service === "wall" && qty >= 10) || (service === "textile" && qty >= 10) || (service === "objects" && qty >= 20)) && (
                   <span style={{ fontSize: 11, color: "#22C55E" }}>✓ Discount cantitate activ</span>
                 )}
                 <span style={{ fontSize: 11, color: "#6B7280" }}>Max: {cfg.max} {cfg.unit}</span>
@@ -301,7 +302,7 @@ export default function PriceCalculator() {
                         <span style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>{prices.design} lei</span>
                       </div>
                     )}
-                    {((service === "textile" && qty >= 10) || (service === "objects" && qty >= 20) || (service === "laser" && qty >= 20)) && (
+                    {((service === "wall" && qty >= 10) || (service === "textile" && qty >= 10) || (service === "objects" && qty >= 20) || (service === "laser" && qty >= 20)) && (
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <span style={{ fontSize: 13, color: "#22C55E" }}>Discount cantitate</span>
                         <span style={{ fontSize: 14, color: "#22C55E", fontWeight: 600 }}>-{qty >= 50 ? "18%" : qty >= 20 ? "12%" : "7%"}</span>
@@ -322,9 +323,9 @@ export default function PriceCalculator() {
                     <div style={{ fontSize: 11, color: "var(--accent)", fontWeight: 600, marginBottom: 3 }}>⚠ Estimare orientativă</div>
                     <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>Prețul final se stabilește după analiza proiectului. Consultanța este gratuită.</div>
                   </div>
-                  <button className="btn-primary" style={{ width: "100%", justifyContent: "center", fontSize: 14, padding: 13 }}>
+                  <Link href="/contact" className="btn-primary" style={{ width: "100%", justifyContent: "center", fontSize: 14, padding: 13, textDecoration: "none", display: "flex", alignItems: "center" }}>
                     Cere ofertă exactă →
-                  </button>
+                  </Link>
                   <button className="btn-outline" style={{ width: "100%", justifyContent: "center", fontSize: 13, padding: 11, marginTop: 8 }}
                     onClick={() => setCalculated(false)}>
                     Recalculează
