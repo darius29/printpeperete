@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
 interface FinalCTAProps {
@@ -61,12 +62,12 @@ export default function FinalCTA({ title, titleAccent, subtitle, primaryLabel, s
               {subtitle}
             </p>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" as const }}>
-              <button className="btn-primary" style={{ fontSize: 16, padding: "16px 36px" }}>
+              <Link href="/contact" className="btn-primary" style={{ fontSize: 16, padding: "16px 36px" }}>
                 {primaryLabel}
-              </button>
-              <button className="btn-outline" style={{ fontSize: 16, padding: "16px 36px" }}>
+              </Link>
+              <Link href="/portofoliu" className="btn-outline" style={{ fontSize: 16, padding: "16px 36px" }}>
                 {secondaryLabel}
-              </button>
+              </Link>
             </div>
           </div>
         </div>
