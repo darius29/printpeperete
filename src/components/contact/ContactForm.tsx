@@ -36,6 +36,7 @@ export default function ContactForm() {
   const [dragging, setDragging] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const set = (k: keyof FormState, v: string) => {
@@ -56,13 +57,32 @@ export default function ContactForm() {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validate()) return;
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setApiError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          service: form.service,
+          location: form.location,
+          message: form.message,
+          fileName: file?.name,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Eroare necunoscută");
       setSubmitted(true);
-    }, 1400);
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : "Eroare la trimitere. Încearcă din nou.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -461,6 +481,20 @@ export default function ContactForm() {
         </div>
 
         {/* Submit */}
+        {apiError && (
+          <div
+            style={{
+              background: "rgba(239,68,68,.08)",
+              border: "1px solid rgba(239,68,68,.3)",
+              borderRadius: 10,
+              padding: "12px 16px",
+              fontSize: 13,
+              color: "#EF4444",
+            }}
+          >
+            {apiError}
+          </div>
+        )}
         <button
           className="btn-primary"
           onClick={handleSubmit}
@@ -498,7 +532,7 @@ export default function ContactForm() {
           style={{ fontSize: 11, color: "#6B7280", textAlign: "center" }}
         >
           Prin trimitere accepți{" "}
-          <a href="#" style={{ color: "var(--accent, #F97316)", textDecoration: "none" }}>
+          <a href="/termeni-si-conditii" style={{ color: "var(--accent, #F97316)", textDecoration: "none" }}>
             Termenii și condițiile
           </a>
         </p>
