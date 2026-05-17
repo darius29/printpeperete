@@ -7,6 +7,7 @@ import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import WAWidget from "@/components/layout/WAWidget";
 import MobileBar from "@/components/layout/MobileBar";
+import CookieBanner from "@/components/layout/CookieBanner";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WAWidget />
         <MobileBar />
+        <CookieBanner />
         {GA_ID && (
           <>
             <Script
