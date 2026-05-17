@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
 interface SliderProps {
@@ -297,12 +298,12 @@ export default function BeforeAfterPreview() {
               handlerul pentru a compara.
             </p>
           </div>
-          <a
-            href="#"
+          <Link
+            href="/before-after"
             style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600, textDecoration: "none" }}
           >
             Vezi toate transformările →
-          </a>
+          </Link>
         </div>
 
         <div className="grid-sliders" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>

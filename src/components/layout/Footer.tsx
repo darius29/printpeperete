@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const COLS = [
   { title: "Servicii", links: [{ label: "Print UV pe perete", href: "/servicii" }, { label: "Gravare laser CO₂", href: "/servicii" }, { label: "Obiecte personalizate", href: "/servicii" }, { label: "Print textile", href: "/servicii" }, { label: "Design personalizat", href: "/servicii" }] },
-  { title: "Info", links: [{ label: "Portofoliu", href: "/portofoliu" }, { label: "Before / After", href: "/before-after" }, { label: "Despre Noi", href: "/despre-noi" }, { label: "Contact", href: "/contact" }, { label: "Pregătire fișiere", href: "#" }] },
-  { title: "Legal", links: [{ label: "Termeni și condiții", href: "#" }, { label: "Politică confidențialitate", href: "#" }, { label: "Politică cookies", href: "#" }, { label: "ANPC", href: "#" }] },
+  { title: "Info", links: [{ label: "Portofoliu", href: "/portofoliu" }, { label: "Before / After", href: "/before-after" }, { label: "Despre Noi", href: "/despre-noi" }, { label: "Contact", href: "/contact" }, { label: "Pregătire fișiere", href: "/pregatire-fisiere" }] },
+  { title: "Legal", links: [{ label: "Termeni și condiții", href: "/termeni-si-conditii" }, { label: "Politică confidențialitate", href: "/politica-de-confidentialitate" }, { label: "Politică cookies", href: "/politica-de-cookies" }, { label: "ANPC", href: "/anpc" }] },
 ];
 
 export default function Footer() {
