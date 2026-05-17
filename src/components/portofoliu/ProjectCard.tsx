@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Project } from "@/lib/data/projects";
 
 interface ProjectCardProps {
@@ -34,10 +35,12 @@ export default function ProjectCard({ project, index, onClick, inView }: Project
         position: "relative",
       }}>
         {project.image ? (
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+            fill
+            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{ objectFit: "cover" }}
           />
         ) : (
           <>

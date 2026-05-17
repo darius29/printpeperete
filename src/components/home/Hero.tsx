@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import GrainOverlay from "@/components/ui/GrainOverlay";
 
 function useTypewriter(words: string[], speed = 80, pause = 2000) {
@@ -56,22 +57,29 @@ export default function Hero() {
       }}
     >
       {/* BG: hero image */}
-      <img
-        src="/assets/hero/homepage-hero.png"
-        alt=""
-        aria-hidden="true"
+      <div
         style={{
           position: "absolute",
           inset: 0,
-          width: "100%",
           height: "110%",
-          objectFit: "cover",
-          objectPosition: "center",
           zIndex: 0,
           transform: `translateY(${scrollY * 0.28}px)`,
           willChange: "transform",
         }}
-      />
+      >
+        <Image
+          src="/assets/hero/homepage-hero.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+        />
+      </div>
 
       {/* BG layers: dark overlay + accent gradients */}
       <div

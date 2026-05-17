@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
 const materials = [
@@ -205,11 +206,23 @@ export default function LaserSection() {
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 20 }}>
-              <div className="porto-card" style={{ borderRadius: 10, height: 140, border: "1px solid var(--bg-border)" }}>
-                <img src="/assets/servicii/co2-laser-natural-wood.png" alt="Gravare laser CO2 pe lemn" className="porto-card-img" style={{ height: 140 }} />
+              <div className="porto-card" style={{ borderRadius: 10, height: 140, border: "1px solid var(--bg-border)", position: "relative" }}>
+                <Image
+                  src="/assets/servicii/co2-laser-natural-wood.png"
+                  alt="Gravare laser CO2 pe lemn"
+                  fill
+                  sizes="(max-width: 900px) 50vw, 300px"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
-              <div className="porto-card" style={{ borderRadius: 10, height: 140, border: "1px solid var(--bg-border)" }}>
-                <img src="/assets/servicii/laser-engraved-finisher-products.png" alt="Produse gravate laser" className="porto-card-img" style={{ height: 140 }} />
+              <div className="porto-card" style={{ borderRadius: 10, height: 140, border: "1px solid var(--bg-border)", position: "relative" }}>
+                <Image
+                  src="/assets/servicii/laser-engraved-finisher-products.png"
+                  alt="Produse gravate laser"
+                  fill
+                  sizes="(max-width: 900px) 50vw, 300px"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             </div>
             <div

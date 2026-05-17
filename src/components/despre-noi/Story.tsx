@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
 const paragraphs = [
@@ -120,10 +121,12 @@ export default function Story() {
               position: "relative",
             }}
           >
-            <img
+            <Image
               src="/assets/despre-noi/atelier-productie-print-uv-gravare-laser-co2.png"
               alt="Atelier productie SDG Print — printer UV si gravare laser CO2"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              fill
+              sizes="(max-width: 900px) 100vw, 50vw"
+              style={{ objectFit: "cover" }}
             />
             {/* Corner badge */}
             <div

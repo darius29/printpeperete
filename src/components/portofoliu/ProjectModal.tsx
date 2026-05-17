@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { Project } from "@/lib/data/projects";
 
 interface ProjectModalProps {
@@ -51,10 +52,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           overflow: "hidden",
         }}>
           {project.image ? (
-            <img
+            <Image
               src={project.image}
               alt={project.title}
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+              fill
+              sizes="(max-width: 900px) 100vw, 800px"
+              style={{ objectFit: "cover" }}
             />
           ) : (
             <>

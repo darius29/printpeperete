@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
 const advantages = [
@@ -249,14 +250,17 @@ export default function WallPrintSpotlight() {
                 border: "1px solid var(--bg-border)",
                 height: 260,
                 animation: "fadeIn 0.3s ease",
+                position: "relative",
               }}
             >
               {!imgError[activeSurface] ? (
-                <img
+                <Image
                   src={currentSurface.img}
                   alt={currentSurface.label}
+                  fill
+                  unoptimized
                   onError={() => setImgError((prev) => ({ ...prev, [activeSurface]: true }))}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  style={{ objectFit: "cover" }}
                 />
               ) : (
                 <div
@@ -309,11 +313,13 @@ export default function WallPrintSpotlight() {
               transition: "opacity 0.7s 0.3s, transform 0.7s 0.3s",
             }}
           >
-            <div style={{ borderRadius: 12, overflow: "hidden", marginBottom: 28, border: "1px solid var(--bg-border)" }}>
-              <img
+            <div style={{ borderRadius: 12, overflow: "hidden", marginBottom: 28, border: "1px solid var(--bg-border)", position: "relative", height: 220 }}>
+              <Image
                 src="/assets/servicii/uv-wall-printer.png"
                 alt="Printer UV direct pe perete"
-                style={{ width: "100%", height: 220, objectFit: "cover", display: "block" }}
+                fill
+                sizes="(max-width: 900px) 100vw, 500px"
+                style={{ objectFit: "cover" }}
               />
             </div>
           <h4

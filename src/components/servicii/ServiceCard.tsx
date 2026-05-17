@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface ServiceCardProps {
   icon: string;
   tag: string;
@@ -24,12 +26,13 @@ export default function ServiceCard({ icon, tag, title, desc, chips, inView, del
       }}
     >
       {image && (
-        <div className="porto-card" style={{ height: 180, borderRadius: 0 }}>
-          <img
+        <div className="porto-card" style={{ height: 180, borderRadius: 0, position: "relative" }}>
+          <Image
             src={image}
             alt={title}
-            className="porto-card-img"
-            style={{ height: 180 }}
+            fill
+            sizes="(max-width: 900px) 100vw, 400px"
+            style={{ objectFit: "cover" }}
           />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, var(--bg-surface) 100%)", zIndex: 1 }} />
         </div>
