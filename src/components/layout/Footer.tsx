@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 
 const COLS = [
@@ -21,9 +20,7 @@ export default function Footer() {
               <div style={{ fontFamily: "var(--font-display)", fontSize: 14, letterSpacing: "0.06em", marginBottom: 12 }}>{col.title}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
                 {col.links.map((l) => (
-                  <Link key={l.label} href={l.href} style={{ fontSize: 12, color: "var(--text-tertiary)", textDecoration: "none" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-tertiary)")}>{l.label}</Link>
+                  <Link key={l.label} href={l.href} className="footer-link">{l.label}</Link>
                 ))}
               </div>
             </div>
