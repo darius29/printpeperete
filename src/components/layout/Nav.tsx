@@ -299,9 +299,10 @@ export default function Nav() {
                 borderRadius: 8, padding: "9px 20px", fontSize: 13, fontWeight: 700,
                 fontFamily: "var(--font-ui)", transition: "background .2s",
                 display: "inline-flex", alignItems: "center",
+                animation: "pulse-ring 2.5s infinite",
               }}
-                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "var(--accent-deep)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "var(--accent)"; }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "var(--accent-deep)"; el.style.animation = "none"; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "var(--accent)"; el.style.animation = "pulse-ring 2.5s infinite"; }}
               >
                 Cere ofertă
               </Link>

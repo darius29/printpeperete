@@ -29,7 +29,13 @@ function useTypewriter(words: string[], speed = 80, pause = 2000) {
 }
 
 export default function Hero() {
-  const rotatingWords = ["pereților", "spațiilor", "brandurilor", "showroom-urilor", "birourilor"];
+  const rotatingWords = [
+    "pereților",
+    "spațiilor",
+    "brandurilor",
+    "showroom-urilor",
+    "birourilor",
+  ];
   const word = useTypewriter(rotatingWords, 75, 2200);
 
   const [scrollY, setScrollY] = useState(0);
@@ -79,7 +85,14 @@ export default function Hero() {
       />
 
       {/* Grain overlay */}
-      <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 2 }}>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+          zIndex: 2,
+        }}
+      >
         <GrainOverlay />
       </div>
 
@@ -163,7 +176,7 @@ export default function Hero() {
             <br />
             <span
               className="hero-typewriter"
-            style={{
+              style={{
                 color: "var(--accent)",
                 display: "inline-block",
                 minWidth: 420,
@@ -193,8 +206,9 @@ export default function Hero() {
               animation: "fadeUp 0.9s 0.3s both",
             }}
           >
-            Print UV direct pe perete, gravură și debitare laser CO₂, obiecte personalizate și
-            branding vizual pentru firme, HoReCa, showroom-uri și spații comerciale.
+            Print UV direct pe perete, gravură și debitare laser CO₂, obiecte
+            personalizate și branding vizual pentru firme, HoReCa, showroom-uri
+            și spații comerciale.
           </p>
 
           {/* CTAs */}
@@ -203,7 +217,7 @@ export default function Hero() {
               display: "flex",
               gap: 14,
               flexWrap: "wrap",
-              marginBottom: 64,
+              marginBottom: 32,
               animation: "fadeUp 0.9s 0.45s both",
             }}
           >
@@ -217,6 +231,7 @@ export default function Hero() {
               display: "flex",
               flexWrap: "wrap",
               gap: 24,
+              marginBottom: 24,
               animation: "fadeUp 0.9s 0.6s both",
             }}
           >
@@ -226,7 +241,10 @@ export default function Hero() {
               { label: "Tehnologie UV instant" },
               { label: "Materiale multiple" },
             ].map((s) => (
-              <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 7 }}>
+              <div
+                key={s.label}
+                style={{ display: "flex", alignItems: "center", gap: 7 }}
+              >
                 <span
                   style={{
                     width: 5,
@@ -250,41 +268,6 @@ export default function Hero() {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 32,
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 3,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 8,
-          opacity: 0.4,
-          animation: "fadeIn 1s 1.2s both",
-        }}
-      >
-        <span
-          style={{
-            fontSize: 11,
-            color: "var(--text-tertiary)",
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-          }}
-        >
-          Scroll
-        </span>
-        <div
-          style={{
-            width: 1,
-            height: 40,
-            background: "linear-gradient(to bottom, #6B7280, transparent)",
-          }}
-        />
       </div>
     </section>
   );

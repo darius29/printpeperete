@@ -554,10 +554,7 @@ input::placeholder, textarea::placeholder { color: #4B5563; }
 
 /* ─── RESPONSIVE LAYOUT ──────────────────────────────────────────────────────── */
 
-/* MobileBar: mobile-only */
-@media (min-width: 900px) {
-  .mobile-bar { display: none !important; }
-}
+/* MobileBar: visible on all screens */
 
 /* Hero content horizontal padding */
 @media (max-width: 899px) {

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useInView } from "@/hooks/useInView";
 
 const advantages = [
@@ -12,13 +12,13 @@ const advantages = [
 ];
 
 const surfaces = [
-  "Pereți tencuiți / gletuiți",
-  "Lemn și MDF",
-  "Sticlă",
-  "Metal",
-  "Plastic rigid",
-  "Beton",
-  "Gresie",
+  { id: "perete", label: "Pereți tencuiți / gletuiți", img: "/assets/surfaces/perete.jpg" },
+  { id: "lemn", label: "Lemn și MDF", img: "/assets/surfaces/lemn.jpg" },
+  { id: "sticla", label: "Sticlă", img: "/assets/surfaces/sticla.jpg" },
+  { id: "metal", label: "Metal", img: "/assets/surfaces/metal.jpg" },
+  { id: "plastic", label: "Plastic rigid", img: "/assets/surfaces/plastic.jpg" },
+  { id: "beton", label: "Beton", img: "/assets/surfaces/beton.jpg" },
+  { id: "gresie", label: "Gresie", img: "/assets/surfaces/gresie.jpg" },
 ];
 
 const specs = [
@@ -41,18 +41,33 @@ const domains = [
 
 export default function WallPrintSpotlight() {
   const [ref, inView] = useInView(0.1);
+  const [activeSurface, setActiveSurface] = useState(surfaces[0].id);
+  const [imgError, setImgError] = useState<Record<string, boolean>>({});
+
+  const currentSurface = surfaces.find((s) => s.id === activeSurface)!;
 
   return (
     <section
       className="resp-section"
       style={{
-        background: "#0a0a0a",
+        background: "radial-gradient(ellipse 55% 50% at 0% 100%, rgba(249,115,22,0.09) 0%, transparent 65%), radial-gradient(ellipse 45% 55% at 100% 0%, rgba(249,115,22,0.05) 0%, transparent 60%), #0a0a0a",
         borderTop: "1px solid #1a1a1a",
         borderBottom: "1px solid #1a1a1a",
         padding: "96px 40px",
+        position: "relative",
       }}
     >
-      <div ref={ref as React.RefObject<HTMLDivElement>} style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          backgroundImage: "repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px)",
+        }}
+      />
+      <div ref={ref as React.RefObject<HTMLDivElement>} style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
         {/* Header */}
         <div
           style={{
@@ -203,12 +218,86 @@ export default function WallPrintSpotlight() {
             >
               Pe ce suprafețe printăm
             </h4>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
-              {surfaces.map((s) => (
-                <span key={s} className="surface-chip">
-                  {s}
-                </span>
-              ))}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 16 }}>
+              {surfaces.map((s) => {
+                const isActive = activeSurface === s.id;
+                return (
+                  <button
+                    key={s.id}
+                    onClick={() => setActiveSurface(s.id)}
+                    className="surface-chip"
+                    style={{
+                      background: isActive ? "rgba(249,115,22,0.1)" : "transparent",
+                      borderColor: isActive ? "var(--accent)" : undefined,
+                      color: isActive ? "#fff" : undefined,
+                      cursor: "pointer",
+                      fontFamily: "var(--font-ui)",
+                    }}
+                  >
+                    {s.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Surface image */}
+            <div
+              key={activeSurface}
+              style={{
+                borderRadius: 12,
+                overflow: "hidden",
+                border: "1px solid var(--bg-border)",
+                height: 260,
+                animation: "fadeIn 0.3s ease",
+              }}
+            >
+              {!imgError[activeSurface] ? (
+                <img
+                  src={currentSurface.img}
+                  alt={currentSurface.label}
+                  onError={() => setImgError((prev) => ({ ...prev, [activeSurface]: true }))}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+              ) : (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    background: "linear-gradient(135deg, #1a1a1a, #2a2a2a)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 10,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: 10,
+                      background: "rgba(249,115,22,0.15)",
+                      border: "1px solid rgba(249,115,22,0.3)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 22,
+                    }}
+                  >
+                    🖼️
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: 15,
+                      letterSpacing: "0.05em",
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    {currentSurface.label}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 

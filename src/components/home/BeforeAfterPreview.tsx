@@ -64,48 +64,22 @@ function BeforeAfterSlider({ before, after, title, surface, duration, desc }: Sl
           style={{
             position: "absolute",
             inset: 0,
-            background: before,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            backgroundImage: `url(${before})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
-        >
-          <span
-            style={{
-              fontSize: 12,
-              color: "rgba(255,255,255,0.3)",
-              fontWeight: 500,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            Înainte
-          </span>
-        </div>
+        />
         {/* AFTER — clipped */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: after,
+            backgroundImage: `url(${after})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
             clipPath: `inset(0 ${100 - pos}% 0 0)`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
           }}
-        >
-          <span
-            style={{
-              fontSize: 12,
-              color: "rgba(255,255,255,0.5)",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            După
-          </span>
-        </div>
+        />
         {/* Handle */}
         <div
           style={{
@@ -227,24 +201,24 @@ const comparisons = [
     surface: "Perete lavabil",
     duration: "1 zi",
     desc: "Transformare completă a recepției într-un spațiu modern și memorabil — de la perete simplu la identitate vizuală clară.",
-    before: "linear-gradient(160deg, #1a1a1a 0%, #111 100%)",
-    after: "linear-gradient(160deg, #1a3a2a 0%, #0f2a1f 60%, #1a3a2a 100%)",
+    before: "/assets/before-after/dental-clinic-reception-before.png",
+    after: "/assets/before-after/dental-clinic-reception-after.png",
   },
   {
     title: "Showroom auto",
     surface: "MDF",
     duration: "6 ore",
     desc: "Accent vizual de brand pentru showroom — experiență mai puternică pentru clienți și imagine premium.",
-    before: "linear-gradient(160deg, #1a1a1a 0%, #111 100%)",
-    after: "linear-gradient(160deg, #2a1a0a 0%, #1f120a 60%, #2a1a0a 100%)",
+    before: "/assets/before-after/showroom-car-before.png",
+    after: "/assets/before-after/showroom-car-after.png",
   },
   {
     title: "Birou creativ",
     surface: "Perete gletuit",
     duration: "1 zi",
     desc: "Spațiu creativ personalizat pentru echipă și clienți — grafică motivațională și identitate vizuală care inspiră.",
-    before: "linear-gradient(160deg, #1a1a1a 0%, #111 100%)",
-    after: "linear-gradient(160deg, #0a1a2a 0%, #0a1220 60%, #0a1a2a 100%)",
+    before: "/assets/before-after/office-before.png",
+    after: "/assets/before-after/office-after.png",
   },
 ];
 
@@ -255,9 +229,23 @@ export default function BeforeAfterPreview() {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section"
-      style={{ padding: "96px 40px" }}
+      style={{
+        padding: "96px 40px",
+        position: "relative",
+        background: "radial-gradient(ellipse 45% 80% at 0% 50%, rgba(30,30,40,0.6) 0%, transparent 60%), radial-gradient(ellipse 45% 80% at 100% 50%, rgba(249,115,22,0.06) 0%, transparent 60%)",
+      }}
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 20%, transparent 50%, rgba(0,0,0,0.08) 75%, rgba(0,0,0,0.18) 100%)",
+        }}
+      />
+      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <div
           style={{
             opacity: inView ? 1 : 0,

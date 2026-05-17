@@ -64,7 +64,7 @@ export default function StatsBar() {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       style={{
-        background: "var(--bg-surface)",
+        background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(249,115,22,0.06) 0%, transparent 70%), linear-gradient(135deg, #141414 0%, #161210 100%)",
         borderTop: "1px solid var(--bg-border)",
         borderBottom: "1px solid var(--bg-border)",
         padding: "0",

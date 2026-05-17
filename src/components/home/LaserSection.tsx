@@ -50,12 +50,23 @@ export default function LaserSection() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section"
       style={{
-        background: "#0a0a0a",
+        background: "radial-gradient(ellipse 50% 55% at 100% 0%, rgba(59,130,246,0.07) 0%, transparent 65%), radial-gradient(ellipse 35% 40% at 0% 100%, rgba(249,115,22,0.05) 0%, transparent 55%), #0a0a0a",
         borderTop: "1px solid #1a1a1a",
         padding: "96px 40px",
+        position: "relative",
       }}
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          backgroundImage: "repeating-linear-gradient(45deg, rgba(59,130,246,0.045) 0px, rgba(59,130,246,0.045) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(-45deg, rgba(59,130,246,0.03) 0px, rgba(59,130,246,0.03) 1px, transparent 1px, transparent 12px)",
+        }}
+      />
+      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <div
           style={{
             opacity: inView ? 1 : 0,

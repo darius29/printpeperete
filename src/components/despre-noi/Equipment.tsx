@@ -49,7 +49,7 @@ export default function Equipment() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section"
       style={{
-        background: "var(--bg-surface)",
+        background: "radial-gradient(ellipse 50% 55% at 100% 0%, rgba(59,130,246,0.07) 0%, transparent 60%), radial-gradient(ellipse 35% 40% at 0% 100%, rgba(249,115,22,0.06) 0%, transparent 55%), var(--bg-surface)",
         borderTop: "1px solid var(--bg-border)",
         borderBottom: "1px solid var(--bg-border)",
         padding: "96px 40px",

@@ -26,27 +26,37 @@ export default function ProjectCard({ project, index, onClick, inView }: Project
         transition: `opacity .55s ${Math.min(index * 0.07, 0.5)}s, transform .55s ${Math.min(index * 0.07, 0.5)}s`,
       }}
     >
-      {/* Gradient placeholder */}
+      {/* Image or gradient placeholder */}
       <div style={{
         width: "100%", height: "100%",
         background: project.color,
         display: "flex", alignItems: "center", justifyContent: "center",
         position: "relative",
       }}>
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "radial-gradient(ellipse at 30% 30%, rgba(255,255,255,.04) 0%, transparent 60%)",
-        }} />
-        <div style={{ textAlign: "center", opacity: 0.2 }}>
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 40, letterSpacing: "0.05em", color: "#fff" }}>
-            {serviceIcon}
-          </div>
-        </div>
-        {/* Accent corner */}
-        <div style={{
-          position: "absolute", top: 0, right: 0, width: 80, height: 80,
-          background: `radial-gradient(circle at top right, ${project.accent}20, transparent)`,
-        }} />
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        ) : (
+          <>
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "radial-gradient(ellipse at 30% 30%, rgba(255,255,255,.04) 0%, transparent 60%)",
+            }} />
+            <div style={{ textAlign: "center", opacity: 0.2 }}>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: 40, letterSpacing: "0.05em", color: "#fff" }}>
+                {serviceIcon}
+              </div>
+            </div>
+            {/* Accent corner */}
+            <div style={{
+              position: "absolute", top: 0, right: 0, width: 80, height: 80,
+              background: `radial-gradient(circle at top right, ${project.accent}20, transparent)`,
+            }} />
+          </>
+        )}
       </div>
 
       {/* Hover overlay */}

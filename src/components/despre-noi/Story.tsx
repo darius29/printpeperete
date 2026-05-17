@@ -24,7 +24,7 @@ export default function Story() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section"
       style={{
-        background: "var(--bg-surface)",
+        background: "radial-gradient(ellipse 55% 60% at 0% 50%, rgba(249,115,22,0.08) 0%, transparent 60%), radial-gradient(ellipse 45% 50% at 100% 50%, rgba(139,92,246,0.06) 0%, transparent 55%), var(--bg-surface)",
         borderTop: "1px solid var(--bg-border)",
         borderBottom: "1px solid var(--bg-border)",
         padding: "96px 40px",
@@ -111,49 +111,28 @@ export default function Story() {
             transition: "opacity .7s .2s, transform .7s .2s",
           }}
         >
-          {/* Image placeholder */}
+          {/* Atelier image */}
           <div
             style={{
-              background: "var(--bg-elevated)",
-              border: "1px solid var(--bg-border)",
               borderRadius: 16,
               overflow: "hidden",
               aspectRatio: "4/3",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               position: "relative",
             }}
           >
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "radial-gradient(ellipse at 30% 40%, rgba(249,115,22,.08) 0%, transparent 60%)",
-              }}
+            <img
+              src="/assets/despre-noi/atelier-productie-print-uv-gravare-laser-co2.png"
+              alt="Atelier productie SDG Print — printer UV si gravare laser CO2"
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
-            <div style={{ textAlign: "center", position: "relative" }}>
-              <div style={{ fontSize: 64, marginBottom: 16 }}>🖨️</div>
-              <div
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: 20,
-                  letterSpacing: "0.04em",
-                  color: "#fff",
-                  marginBottom: 6,
-                }}
-              >
-                Atelierul nostru
-              </div>
-              <div style={{ fontSize: 13, color: "var(--text-tertiary)" }}>Timișoara, România</div>
-            </div>
             {/* Corner badge */}
             <div
               style={{
                 position: "absolute",
                 top: 16,
                 right: 16,
-                background: "rgba(249,115,22,.15)",
+                background: "rgba(0,0,0,.6)",
+                backdropFilter: "blur(8px)",
                 border: "1px solid rgba(249,115,22,.3)",
                 borderRadius: 8,
                 padding: "8px 12px",

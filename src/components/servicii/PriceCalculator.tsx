@@ -93,7 +93,7 @@ export default function PriceCalculator() {
   );
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} id="calculator" className="resp-section" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", borderBottom: "1px solid #1a1a1a", padding: "96px 40px" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} id="calculator" className="resp-section" style={{ background: "radial-gradient(ellipse 60% 60% at 100% 100%, rgba(249,115,22,0.08) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 0% 0%, rgba(59,130,246,0.05) 0%, transparent 55%), #0a0a0a", borderTop: "1px solid #1a1a1a", borderBottom: "1px solid #1a1a1a", padding: "96px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         {/* Header */}
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(24px)", transition: "opacity .7s, transform .7s", marginBottom: 56, display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>

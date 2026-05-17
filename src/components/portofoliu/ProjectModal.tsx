@@ -48,20 +48,31 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          overflow: "hidden",
         }}>
-          <div style={{
-            position: "absolute", inset: 0,
-            background: "radial-gradient(ellipse at 30% 30%, rgba(255,255,255,.05) 0%, transparent 60%)",
-          }} />
-          <div style={{
-            opacity: 0.15,
-            fontFamily: "var(--font-display)",
-            fontSize: 72,
-            letterSpacing: "0.05em",
-            color: "#fff",
-          }}>
-            {serviceIcon}
-          </div>
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          ) : (
+            <>
+              <div style={{
+                position: "absolute", inset: 0,
+                background: "radial-gradient(ellipse at 30% 30%, rgba(255,255,255,.05) 0%, transparent 60%)",
+              }} />
+              <div style={{
+                opacity: 0.15,
+                fontFamily: "var(--font-display)",
+                fontSize: 72,
+                letterSpacing: "0.05em",
+                color: "#fff",
+              }}>
+                {serviceIcon}
+              </div>
+            </>
+          )}
           <button
             onClick={onClose}
             style={{

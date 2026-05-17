@@ -91,8 +91,8 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     duration: "2 zile",
     category: "Corporate",
     desc: "Sala de conferință transformată dintr-un spațiu neutru într-un ambasador al brandului. Fiecare meeting devine o oportunitate de a întări identitatea companiei față de parteneri și clienți.",
-    before: "/assets/before-after/room-before.png",
-    after: "/assets/before-after/room-after.png",
+    before: "/assets/before-after/sala-conferinte-print-uv-pe-perete-before.png",
+    after: "/assets/before-after/sala-conferinte-print-uv-pe-perete-after.png",
     results: [
       { val: "2 zile", label: "Timp execuție" },
       { val: "40 m²",  label: "Suprafață totală" },

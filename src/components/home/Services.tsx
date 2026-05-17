@@ -36,8 +36,26 @@ export default function Services() {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section"
-      style={{ padding: "96px 40px", maxWidth: 1200, margin: "0 auto" }}
+      style={{
+        position: "relative",
+        background: "radial-gradient(ellipse 50% 60% at 0% 0%, rgba(249,115,22,0.07) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 100% 100%, rgba(249,115,22,0.04) 0%, transparent 55%)",
+      }}
     >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          left: "calc(-50vw + 50%)",
+          right: "calc(-50vw + 50%)",
+          zIndex: 0,
+          pointerEvents: "none",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"), linear-gradient(rgba(249,115,22,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.035) 1px, transparent 1px)`,
+          backgroundSize: "auto, 60px 60px, 60px 60px",
+        }}
+      />
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 40px", position: "relative", zIndex: 1 }}>
       <div
         style={{
           opacity: inView ? 1 : 0,
@@ -134,6 +152,7 @@ export default function Services() {
             </span>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
