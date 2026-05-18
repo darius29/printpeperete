@@ -8,7 +8,7 @@ const COLS = [
 
 export default function Footer() {
   return (
-    <footer className="footer-wrap" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", padding: "48px 40px 32px" }}>
+    <footer className="footer-wrap" style={{ background: "radial-gradient(ellipse 80% 30% at 50% 0%, rgba(249,115,22,0.10) 0%, transparent 55%), #0a0a0a", borderTop: "1px solid #1a1a1a", padding: "48px 40px 32px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div className="grid-footer" style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
           <div>
