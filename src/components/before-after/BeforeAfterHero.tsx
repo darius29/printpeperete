@@ -19,7 +19,7 @@ export default function BeforeAfterHero() {
       style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}
     >
       {/* Background gradient */}
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.10) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 0% 100%, rgba(249,115,22,.05) 0%, transparent 55%), radial-gradient(ellipse 40% 60% at 100% 100%, rgba(59,130,246,.04) 0%, transparent 55%)" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.20) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 0% 100%, rgba(249,115,22,.11) 0%, transparent 55%), radial-gradient(ellipse 40% 60% at 100% 100%, rgba(249,115,22,.07) 0%, transparent 55%)" }} />
       <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", backgroundImage: "repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 4px)" }} />
 
       <div
