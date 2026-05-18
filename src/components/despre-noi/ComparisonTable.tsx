@@ -16,7 +16,7 @@ export default function ComparisonTable() {
   const [ref, inView] = useInView(0.1);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section" style={{ padding: "96px 40px", background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(249,115,22,0.06) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 50% 100%, rgba(59,130,246,0.04) 0%, transparent 55%)" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section" style={{ padding: "96px 40px", background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(249,115,22,0.15) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 50% 100%, rgba(59,130,246,0.06) 0%, transparent 55%)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <SectionHeader
           label="Comparație directă"

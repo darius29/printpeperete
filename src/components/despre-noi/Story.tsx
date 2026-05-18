@@ -25,7 +25,7 @@ export default function Story() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section"
       style={{
-        background: "radial-gradient(ellipse 55% 60% at 0% 50%, rgba(249,115,22,0.08) 0%, transparent 60%), radial-gradient(ellipse 45% 50% at 100% 50%, rgba(139,92,246,0.06) 0%, transparent 55%), var(--bg-surface)",
+        background: "radial-gradient(ellipse 55% 60% at 0% 50%, rgba(249,115,22,0.17) 0%, transparent 60%), radial-gradient(ellipse 45% 50% at 100% 50%, rgba(249,115,22,0.09) 0%, transparent 55%), var(--bg-surface)",
         borderTop: "1px solid var(--bg-border)",
         borderBottom: "1px solid var(--bg-border)",
         padding: "96px 40px",

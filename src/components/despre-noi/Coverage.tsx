@@ -31,7 +31,7 @@ export default function Coverage() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section"
       style={{
-        background: "radial-gradient(ellipse 55% 60% at 0% 100%, rgba(34,197,94,0.06) 0%, transparent 60%), radial-gradient(ellipse 45% 50% at 100% 0%, rgba(59,130,246,0.05) 0%, transparent 55%), var(--bg-surface)",
+        background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(249,115,22,0.10) 0%, transparent 55%), radial-gradient(ellipse 55% 60% at 0% 100%, rgba(34,197,94,0.06) 0%, transparent 60%), radial-gradient(ellipse 45% 50% at 100% 0%, rgba(59,130,246,0.05) 0%, transparent 55%), var(--bg-surface)",
         borderTop: "1px solid var(--bg-border)",
         padding: "96px 40px",
       }}
