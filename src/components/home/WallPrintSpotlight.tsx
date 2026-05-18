@@ -258,7 +258,7 @@ export default function WallPrintSpotlight() {
                   src={currentSurface.img}
                   alt={currentSurface.label}
                   fill
-                  unoptimized
+                  sizes="(max-width: 900px) 100vw, 560px"
                   onError={() => setImgError((prev) => ({ ...prev, [activeSurface]: true }))}
                   style={{ objectFit: "cover" }}
                 />

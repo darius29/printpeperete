@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { Project } from "@/lib/data/projects";
 import { useInView } from "@/hooks/useInView";
 import ProjectCard from "./ProjectCard";
-import ProjectModal from "./ProjectModal";
+
+const ProjectModal = dynamic(() => import("./ProjectModal"), { ssr: false });
 
 interface MasonryGridProps {
   projects: Project[];

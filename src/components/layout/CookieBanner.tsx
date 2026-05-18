@@ -43,66 +43,40 @@ export default function CookieBanner() {
     <div
       role="dialog"
       aria-label="Consimțământ cookie-uri"
+      className="cookie-banner-wrap"
       style={{
         position: "fixed",
-        bottom: 80,
         left: 0,
         right: 0,
         zIndex: 9999,
-        display: "flex",
-        justifyContent: "center",
-        padding: "0 16px",
-        pointerEvents: "none",
+        background: "rgba(18,18,18,0.97)",
+        borderTop: "1px solid var(--bg-border, #2A2A2A)",
+        backdropFilter: "blur(12px)",
       }}
     >
-      <div
-        style={{
-          background: "var(--bg-elevated, #1E1E1E)",
-          border: "1px solid var(--bg-border, #2A2A2A)",
-          borderRadius: "var(--r-lg, 12px)",
-          padding: "20px 24px",
-          maxWidth: 680,
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          gap: 16,
-          boxShadow: "0 8px 32px rgba(0,0,0,0.6)",
-          pointerEvents: "auto",
-        }}
-      >
-        <div>
-          <p
-            style={{
-              margin: 0,
-              fontSize: 14,
-              color: "var(--text-secondary, #9CA3AF)",
-              lineHeight: 1.6,
-              fontFamily: "var(--font-ui, DM Sans, sans-serif)",
-            }}
-          >
-            Folosim cookie-uri pentru a îmbunătăți experiența ta pe site. Poți
-            accepta toate cookie-urile sau doar pe cele strict necesare.{" "}
-            <Link
-              href="/politica-de-cookies"
-              style={{
-                color: "var(--accent, #F97316)",
-                textDecoration: "underline",
-                textUnderlineOffset: 2,
-              }}
-            >
-              Politica de cookies
-            </Link>
-          </p>
-        </div>
-
-        <div
+      <div className="cookie-bar" style={{ maxWidth: 1200, margin: "0 auto", padding: "10px 40px" }}>
+        <p
           style={{
-            display: "flex",
-            gap: 10,
-            flexWrap: "wrap",
-            alignItems: "center",
+            margin: 0,
+            fontSize: 13,
+            color: "var(--text-secondary, #9CA3AF)",
+            lineHeight: 1.5,
+            fontFamily: "var(--font-ui, DM Sans, sans-serif)",
           }}
         >
+          Folosim cookie-uri pentru a îmbunătăți experiența ta.{" "}
+          <Link
+            href="/politica-de-cookies"
+            style={{
+              color: "var(--accent, #F97316)",
+              textDecoration: "underline",
+              textUnderlineOffset: 2,
+            }}
+          >
+            Politica de cookies
+          </Link>
+        </p>
+        <div className="cookie-bar-btns">
           <button
             onClick={handleAcceptAll}
             style={{
@@ -110,8 +84,8 @@ export default function CookieBanner() {
               color: "#fff",
               border: "none",
               borderRadius: "var(--r-md, 8px)",
-              padding: "10px 20px",
-              fontSize: 14,
+              padding: "8px 18px",
+              fontSize: 13,
               fontFamily: "var(--font-ui, DM Sans, sans-serif)",
               fontWeight: 600,
               cursor: "pointer",
@@ -127,8 +101,8 @@ export default function CookieBanner() {
               color: "var(--text-secondary, #9CA3AF)",
               border: "1px solid var(--bg-border, #2A2A2A)",
               borderRadius: "var(--r-md, 8px)",
-              padding: "10px 20px",
-              fontSize: 14,
+              padding: "8px 18px",
+              fontSize: 13,
               fontFamily: "var(--font-ui, DM Sans, sans-serif)",
               fontWeight: 600,
               cursor: "pointer",

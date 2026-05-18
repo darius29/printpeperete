@@ -26,7 +26,7 @@ export default function Process() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="resp-section"
+      className="resp-section cv-auto"
       style={{
         padding: "96px 40px",
         background: "radial-gradient(ellipse 70% 50% at 50% 100%, rgba(249,115,22,0.07) 0%, transparent 65%), radial-gradient(ellipse 40% 30% at 50% 0%, rgba(249,115,22,0.04) 0%, transparent 55%)",

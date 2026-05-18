@@ -6,7 +6,6 @@ import { LocalBusinessSchema } from "@/components/StructuredData";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import WAWidget from "@/components/layout/WAWidget";
-import MobileBar from "@/components/layout/MobileBar";
 import CookieBanner from "@/components/layout/CookieBanner";
 import "./globals.css";
 
@@ -39,7 +38,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
         <WAWidget />
-        <MobileBar />
         <CookieBanner />
         {GA_ID && (
           <>

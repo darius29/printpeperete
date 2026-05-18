@@ -229,7 +229,7 @@ export default function BeforeAfterPreview() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="resp-section"
+      className="resp-section cv-auto"
       style={{
         padding: "96px 40px",
         position: "relative",

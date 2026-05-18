@@ -10,6 +10,7 @@ function useTypewriter(words: string[], speed = 80, pause = 2000) {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
+    if (document.hidden) return;
     const current = words[wordIdx];
     let timeout: ReturnType<typeof setTimeout>;
     if (!deleting && charIdx < current.length) {
@@ -41,9 +42,16 @@ export default function Hero() {
 
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
+    let rafId: number;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => setScrollY(window.scrollY));
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
