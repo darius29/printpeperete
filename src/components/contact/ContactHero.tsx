@@ -26,7 +26,7 @@ export default function ContactHero() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.07) 0%, transparent 65%), var(--bg-surface, #0C0C0C)",
+            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.17) 0%, transparent 65%), var(--bg-void, #0C0C0C)",
           pointerEvents: "none",
         }}
       />

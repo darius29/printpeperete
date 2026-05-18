@@ -47,7 +47,7 @@ export default function ContactFAQ() {
   return (
     <section
       className="resp-px"
-      style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto" }}
+      style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(249,115,22,0.10) 0%, transparent 60%)" }}
     >
       <SectionHeader
         label="FAQ"

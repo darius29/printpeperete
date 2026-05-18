@@ -15,7 +15,7 @@ export default function ContactPage() {
       <ContactHero />
       <section
         className="resp-px cta-section"
-        style={{ padding: "40px 40px 96px", maxWidth: 1200, margin: "0 auto" }}
+        style={{ padding: "40px 40px 96px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 55% 50% at 100% 0%, rgba(249,115,22,0.08) 0%, transparent 60%), radial-gradient(ellipse 45% 50% at 0% 100%, rgba(249,115,22,0.06) 0%, transparent 55%)" }}
       >
         <div
           className="grid-calc"
