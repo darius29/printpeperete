@@ -6,6 +6,7 @@ import ContactInfo from "@/components/contact/ContactInfo";
 import Schedule from "@/components/contact/Schedule";
 import AreaCoverage from "@/components/contact/AreaCoverage";
 import ContactFAQ from "@/components/contact/ContactFAQ";
+import ContactMap from "@/components/contact/ContactMap";
 
 export const metadata: Metadata = pageSEO.contact;
 
@@ -91,6 +92,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <ContactMap />
       <ContactFAQ />
     </main>
   );
