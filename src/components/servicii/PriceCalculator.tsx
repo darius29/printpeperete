@@ -225,19 +225,7 @@ export default function PriceCalculator() {
               </div>
             </div>
 
-            {/* Calculate button */}
-            <button
-              onClick={handleCalculate}
-              style={{
-                width: "100%", background: "var(--accent)", color: "#fff", border: "none",
-                borderRadius: 10, padding: "15px 24px", fontSize: 16, fontWeight: 700,
-                cursor: "pointer", fontFamily: "var(--font-dm-sans)",
-                display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
-                transition: "background .2s, transform .15s",
-              }}
-            >
-              Calculează estimare →
-            </button>
+            {/* Estimare note */}
             <p style={{ fontSize: 11, color: "#6B7280", textAlign: "center", marginTop: 10 }}>{cfg.desc}</p>
           </div>
 
