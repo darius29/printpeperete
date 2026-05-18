@@ -62,14 +62,47 @@ export default function ContactForm() {
 
   const validate = (): boolean => {
     const e: FormErrors = {};
-    if (!form.name.trim()) e.name = "Numele este obligatoriu";
-    if (!form.phone.trim()) e.phone = "Telefonul este obligatoriu";
+    if (form.name.trim().length < 2) e.name = "Numele trebuie să aibă cel puțin 2 caractere";
+    if (!/^(\+4|0)[0-9]{9}$/.test(form.phone.trim())) e.phone = "Număr de telefon invalid (ex: 0712345678)";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Email invalid";
     if (!form.service) e.service = "Selectează un serviciu";
-    if (!form.message.trim()) e.message = "Mesajul este obligatoriu";
+    if (form.message.trim().length < 10) e.message = "Mesajul trebuie să aibă cel puțin 10 caractere";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
+
+  const validateField = (key: keyof FormErrors) => {
+    const e: FormErrors = { ...errors };
+    if (key === "name") {
+      if (form.name.trim().length < 2) e.name = "Numele trebuie să aibă cel puțin 2 caractere";
+      else delete e.name;
+    }
+    if (key === "phone") {
+      if (!/^(\+4|0)[0-9]{9}$/.test(form.phone.trim())) e.phone = "Număr de telefon invalid (ex: 0712345678)";
+      else delete e.phone;
+    }
+    if (key === "email") {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Email invalid";
+      else delete e.email;
+    }
+    if (key === "service") {
+      if (!form.service) e.service = "Selectează un serviciu";
+      else delete e.service;
+    }
+    if (key === "message") {
+      if (form.message.trim().length < 10) e.message = "Mesajul trebuie să aibă cel puțin 10 caractere";
+      else delete e.message;
+    }
+    setErrors(e);
+  };
+
+  const isFormValid =
+    form.name.trim().length >= 2 &&
+    /^(\+4|0)[0-9]{9}$/.test(form.phone.trim()) &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) &&
+    !!form.service &&
+    form.message.trim().length >= 10 &&
+    Object.keys(errors).every((k) => !errors[k as keyof FormErrors]);
 
   const handleSubmit = async () => {
     if (!validate()) return;
@@ -257,6 +290,7 @@ export default function ContactForm() {
                 placeholder={ph}
                 value={form[k]}
                 onChange={(e) => set(k, e.target.value)}
+                onBlur={() => validateField(k as keyof FormErrors)}
               />
               {errors[k as keyof FormErrors] && (
                 <span
@@ -295,6 +329,7 @@ export default function ContactForm() {
             placeholder="email@firma.ro"
             value={form.email}
             onChange={(e) => set("email", e.target.value)}
+            onBlur={() => validateField("email")}
           />
           {errors.email && (
             <span
@@ -331,6 +366,7 @@ export default function ContactForm() {
             style={{ cursor: "pointer", colorScheme: "dark" }}
             value={form.service}
             onChange={(e) => set("service", e.target.value)}
+            onBlur={() => validateField("service")}
           >
             <option value="">Selectează serviciul...</option>
             <option>Wall Print UV</option>
@@ -400,6 +436,7 @@ export default function ContactForm() {
             placeholder="Dimensiunile peretelui, suprafața, cantitate, termen dorit..."
             value={form.message}
             onChange={(e) => set("message", e.target.value)}
+            onBlur={() => validateField("message")}
           />
           {errors.message && (
             <span
@@ -543,14 +580,14 @@ export default function ContactForm() {
         <button
           type="submit"
           className="btn-primary"
-          disabled={loading}
+          disabled={loading || !isFormValid}
           style={{
             width: "100%",
             justifyContent: "center",
             fontSize: 16,
             padding: "15px 24px",
-            opacity: loading ? 0.75 : 1,
-            cursor: loading ? "wait" : "pointer",
+            opacity: loading || !isFormValid ? 0.75 : 1,
+            cursor: loading ? "wait" : !isFormValid ? "not-allowed" : "pointer",
           }}
         >
           {loading ? (
