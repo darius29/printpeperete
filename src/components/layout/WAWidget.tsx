@@ -1,10 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
+import { Mail, MessageCircle, Phone, X } from "lucide-react";
 
 const ACTIONS = [
-  { icon: "✉", label: "Cere ofertă", bg: "var(--accent)", href: "/contact" },
-  { icon: "📱", label: "WhatsApp", bg: "#25D366", href: "https://wa.me/40779281047", external: true },
-  { icon: "📞", label: "Sună acum", bg: "#1E1E1E", href: "tel:0779281047" },
+  { icon: <Mail size={20} />, label: "Cere ofertă", bg: "var(--accent)", href: "/contact" },
+  { icon: <MessageCircle size={20} />, label: "WhatsApp", bg: "#25D366", href: "https://wa.me/40779281047", external: true },
+  { icon: <Phone size={20} />, label: "Sună acum", bg: "#1E1E1E", href: "tel:0779281047" },
 ];
 
 export default function WAWidget() {
@@ -20,10 +21,13 @@ export default function WAWidget() {
   useEffect(() => {
     function updateOffset() {
       const banner = document.querySelector(".cookie-banner-wrap");
+      const mobileBar = document.querySelector(".mobile-bar");
+      const mobileBarH = mobileBar ? mobileBar.getBoundingClientRect().height : 0;
+      const base = mobileBarH > 0 ? mobileBarH + 12 : 28;
       if (banner) {
-        setBottomOffset(banner.getBoundingClientRect().height + 16);
+        setBottomOffset(banner.getBoundingClientRect().height + 16 + mobileBarH);
       } else {
-        setBottomOffset(28);
+        setBottomOffset(base);
       }
     }
     updateOffset();
@@ -96,7 +100,6 @@ export default function WAWidget() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: 22,
               textDecoration: "none",
               boxShadow: "0 4px 16px rgba(0,0,0,.35)",
               flexShrink: 0,
@@ -120,14 +123,13 @@ export default function WAWidget() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: open ? 20 : 26,
           boxShadow: "0 4px 20px rgba(249,115,22,.35)",
-          transition: "background .25s, border .25s, font-size .2s",
+          transition: "background .25s, border .25s",
           color: "#fff",
           flexShrink: 0,
         }}
       >
-        {open ? "✕" : "📞"}
+        {open ? <X size={20} /> : <Phone size={22} />}
       </button>
     </div>
   );

@@ -23,11 +23,9 @@ export default function Story() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="resp-section"
+      className="resp-section section-divider"
       style={{
-        background: "radial-gradient(ellipse 55% 60% at 0% 50%, rgba(249,115,22,0.17) 0%, transparent 60%), radial-gradient(ellipse 45% 50% at 100% 50%, rgba(249,115,22,0.09) 0%, transparent 55%), var(--bg-surface)",
-        borderTop: "1px solid var(--bg-border)",
-        borderBottom: "1px solid var(--bg-border)",
+        background: "radial-gradient(ellipse 140% 65% at 30% 50%, rgba(249,115,22,0.14) 0%, transparent 65%), var(--bg-surface)",
         padding: "96px 40px",
       }}
     >

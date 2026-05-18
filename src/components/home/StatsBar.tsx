@@ -63,9 +63,9 @@ export default function StatsBar() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
+      className="section-divider"
       style={{
-        background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(249,115,22,0.14) 0%, transparent 70%), linear-gradient(135deg, #141414 0%, #161210 100%)",
-        borderTop: "1px solid var(--bg-border)",
+        background: "radial-gradient(ellipse 140% 70% at 50% 50%, rgba(249,115,22,0.14) 0%, transparent 65%), var(--bg-surface)",
         borderBottom: "1px solid var(--bg-border)",
         padding: "0",
       }}

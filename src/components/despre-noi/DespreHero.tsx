@@ -16,7 +16,7 @@ export default function DespreHero() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.17) 0%, transparent 65%), var(--bg-void)",
+            "radial-gradient(ellipse 150% 90% at 50% 0%, rgba(249,115,22,.22) 0%, transparent 70%), var(--bg-void)",
         }}
       />
       <GrainOverlay />

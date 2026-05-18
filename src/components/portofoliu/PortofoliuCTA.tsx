@@ -9,10 +9,10 @@ export default function PortofoliuCTA() {
   const trustPoints = ["Răspuns în max 24h", "Consultanță gratuită", "Fără angajament"];
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="cta-section" style={{ padding: "0 40px 96px" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="cta-section section-divider" style={{ padding: "0 40px 96px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div className="glow-pulse-border cta-card" style={{
-          background: "linear-gradient(135deg,#141414,#1a1a1a)",
+          background: "radial-gradient(ellipse 140% 90% at 50% 50%, rgba(249,115,22,.14) 0%, transparent 65%), linear-gradient(135deg, var(--bg-surface), #1c1408)",
           border: "1px solid #2A2A2A",
           borderRadius: 20,
           padding: "64px 56px",

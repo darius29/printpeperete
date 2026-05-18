@@ -41,12 +41,16 @@ export default function Hero() {
   ];
   const word = useTypewriter(rotatingWords, 75, 2200);
 
-  const [scrollY, setScrollY] = useState(0);
+  const bgRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let rafId: number;
     const onScroll = () => {
       cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => setScrollY(window.scrollY));
+      rafId = requestAnimationFrame(() => {
+        if (bgRef.current) {
+          bgRef.current.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+        }
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
@@ -67,12 +71,12 @@ export default function Hero() {
     >
       {/* BG: hero image */}
       <div
+        ref={bgRef}
         style={{
           position: "absolute",
           inset: 0,
           height: "110%",
           zIndex: 0,
-          transform: `translateY(${scrollY * 0.28}px)`,
           willChange: "transform",
         }}
       >
@@ -97,7 +101,7 @@ export default function Hero() {
           inset: 0,
           zIndex: 1,
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.80) 100%), radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249,115,22,0.22) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 80% 50%, rgba(234,88,12,0.14) 0%, transparent 60%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.40) 50%, rgba(0,0,0,0.70) 100%), radial-gradient(ellipse 150% 90% at 50% 0%, rgba(249,115,22,0.28) 0%, transparent 70%), radial-gradient(ellipse 100% 60% at 50% 100%, rgba(234,88,12,0.12) 0%, transparent 60%)",
         }}
       />
 

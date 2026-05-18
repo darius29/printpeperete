@@ -17,14 +17,14 @@ export default function FinalCTA({ title, titleAccent, subtitle, primaryLabel, s
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="cta-section"
+      className="cta-section section-divider"
       style={{ padding: "0 40px 96px" }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div
           className="glow-pulse-border cta-card"
           style={{
-            background: "linear-gradient(135deg,#141414,#1a1a1a)",
+            background: "radial-gradient(ellipse 140% 90% at 50% 50%, rgba(249,115,22,0.14) 0%, transparent 65%), linear-gradient(135deg, var(--bg-surface), #1c1408)",
             border: "1px solid var(--bg-border)",
             borderRadius: 20,
             padding: "64px 56px",
@@ -40,7 +40,7 @@ export default function FinalCTA({ title, titleAccent, subtitle, primaryLabel, s
             style={{
               position: "absolute", top: 0, right: 0,
               width: 400, height: 400,
-              background: "radial-gradient(circle,rgba(249,115,22,.18) 0%,transparent 70%)",
+              background: "radial-gradient(circle,rgba(249,115,22,.25) 0%,transparent 70%)",
               pointerEvents: "none",
             }}
           />
@@ -48,7 +48,7 @@ export default function FinalCTA({ title, titleAccent, subtitle, primaryLabel, s
             style={{
               position: "absolute", bottom: 0, left: 0,
               width: 300, height: 300,
-              background: "radial-gradient(circle,rgba(234,88,12,.12) 0%,transparent 70%)",
+              background: "radial-gradient(circle,rgba(234,88,12,.18) 0%,transparent 70%)",
               pointerEvents: "none",
             }}
           />

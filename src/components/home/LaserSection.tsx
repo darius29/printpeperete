@@ -50,10 +50,9 @@ export default function LaserSection() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="resp-section cv-auto"
+      className="resp-section cv-auto section-divider"
       style={{
-        background: "radial-gradient(ellipse 50% 55% at 100% 0%, rgba(59,130,246,0.10) 0%, transparent 65%), radial-gradient(ellipse 35% 40% at 0% 100%, rgba(249,115,22,0.13) 0%, transparent 55%), #0a0a0a",
-        borderTop: "1px solid #1a1a1a",
+        background: "radial-gradient(ellipse 70% 60% at 90% 10%, rgba(59,130,246,0.09) 0%, transparent 55%), radial-gradient(ellipse 140% 65% at 30% 75%, rgba(249,115,22,0.13) 0%, transparent 65%), var(--bg-void)",
         padding: "96px 40px",
         position: "relative",
       }}

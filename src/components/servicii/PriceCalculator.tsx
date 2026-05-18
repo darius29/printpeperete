@@ -71,15 +71,13 @@ export default function PriceCalculator() {
   const [quality, setQuality] = useState<QualityKey>("standard");
   const [material, setMaterial] = useState("Perete tencuit");
   const [calculated, setCalculated] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const cfg = SERVICE_CONFIG[service];
   const prices = calcPrice(cfg, qty, quality);
   const sliderPct = ((qty - cfg.min) / (cfg.max - cfg.min)) * 100;
 
   function handleCalculate() {
-    setLoading(true);
-    setTimeout(() => { setLoading(false); setCalculated(true); }, 900);
+    setCalculated(true);
   }
 
   function handleServiceChange(k: ServiceKey) {
@@ -94,7 +92,7 @@ export default function PriceCalculator() {
   );
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} id="calculator" className="resp-section" style={{ background: "radial-gradient(ellipse 60% 60% at 100% 100%, rgba(249,115,22,0.17) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 0% 0%, rgba(249,115,22,0.09) 0%, transparent 55%), #0a0a0a", borderTop: "1px solid #1a1a1a", borderBottom: "1px solid #1a1a1a", padding: "96px 40px" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} id="calculator" className="resp-section section-divider" style={{ background: "radial-gradient(ellipse 140% 65% at 65% 80%, rgba(249,115,22,0.15) 0%, transparent 65%), var(--bg-void)", padding: "96px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         {/* Header */}
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(24px)", transition: "opacity .7s, transform .7s", marginBottom: 56, display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
@@ -103,7 +101,7 @@ export default function PriceCalculator() {
               <div style={{ width: 32, height: 2, background: "var(--accent)" }} />
               <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Estimare instantă</span>
             </div>
-            <h2 style={{ fontFamily: "var(--font-bebas-neue)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "0.02em", lineHeight: 0.95, marginBottom: 12 }}>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "0.02em", lineHeight: 0.95, marginBottom: 12 }}>
               Calculator<br />preț estimativ
             </h2>
             <p style={{ fontSize: 16, color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: 480 }}>
@@ -185,7 +183,7 @@ export default function PriceCalculator() {
                   onChange={e => { setQty(Number(e.target.value)); setCalculated(false); }}
                 />
                 <div style={{ background: "#1E1E1E", border: "1px solid var(--bg-border)", borderRadius: 8, padding: "8px 14px", minWidth: 80, textAlign: "center" }}>
-                  <span style={{ fontFamily: "var(--font-bebas-neue)", fontSize: 22, color: "var(--accent)", letterSpacing: "0.02em" }}>{qty}</span>
+                  <span style={{ fontFamily: "var(--font-display)", fontSize: 22, color: "var(--accent)", letterSpacing: "0.02em" }}>{qty}</span>
                   <span style={{ fontSize: 11, color: "#6B7280", marginLeft: 4 }}>{cfg.unit}</span>
                 </div>
               </div>
@@ -224,7 +222,7 @@ export default function PriceCalculator() {
                     {q.popular && (
                       <span style={{ position: "absolute", top: -8, left: "50%", transform: "translateX(-50%)", background: "var(--accent)", color: "#fff", fontSize: 9, fontWeight: 700, padding: "2px 8px", borderRadius: 10, whiteSpace: "nowrap", letterSpacing: "0.05em" }}>POPULAR</span>
                     )}
-                    <div style={{ fontFamily: "var(--font-bebas-neue)", fontSize: 17, letterSpacing: "0.04em", color: quality === q.k ? "var(--accent)" : "#fff", marginBottom: 4 }}>{q.label}</div>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: 17, letterSpacing: "0.04em", color: quality === q.k ? "var(--accent)" : "#fff", marginBottom: 4 }}>{q.label}</div>
                     <div style={{ fontSize: 11, color: "var(--accent)", fontWeight: 600, marginBottom: 3 }}>{q.price}</div>
                     <div style={{ fontSize: 11, color: "#6B7280" }}>{q.desc}</div>
                   </button>
@@ -235,21 +233,15 @@ export default function PriceCalculator() {
             {/* Calculate button */}
             <button
               onClick={handleCalculate}
-              disabled={loading}
               style={{
                 width: "100%", background: "var(--accent)", color: "#fff", border: "none",
                 borderRadius: 10, padding: "15px 24px", fontSize: 16, fontWeight: 700,
-                cursor: loading ? "wait" : "pointer", fontFamily: "var(--font-dm-sans)",
+                cursor: "pointer", fontFamily: "var(--font-dm-sans)",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
-                transition: "background .2s, transform .15s", opacity: loading ? 0.75 : 1,
+                transition: "background .2s, transform .15s",
               }}
             >
-              {loading ? (
-                <>
-                  <span style={{ width: 18, height: 18, border: "2px solid rgba(255,255,255,.3)", borderTop: "2px solid #fff", borderRadius: "50%", display: "inline-block", animation: "spin .7s linear infinite" }} />
-                  Se calculează...
-                </>
-              ) : "Calculează estimare →"}
+              Calculează estimare →
             </button>
             <p style={{ fontSize: 11, color: "#6B7280", textAlign: "center", marginTop: 10 }}>{cfg.desc}</p>
           </div>
@@ -312,7 +304,7 @@ export default function PriceCalculator() {
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                       <span style={{ fontSize: 14, fontWeight: 600, color: "#fff" }}>Total estimat</span>
                       <div style={{ textAlign: "right" }}>
-                        <div style={{ fontFamily: "var(--font-bebas-neue)", fontSize: 32, letterSpacing: "0.02em", color: "var(--accent)", lineHeight: 1 }}>
+                        <div style={{ fontFamily: "var(--font-display)", fontSize: 32, letterSpacing: "0.02em", color: "var(--accent)", lineHeight: 1 }}>
                           {prices.total.toLocaleString("ro")} <span style={{ fontSize: 18 }}>lei</span>
                         </div>
                         <div style={{ fontSize: 10, color: "#6B7280" }}>fără TVA</div>

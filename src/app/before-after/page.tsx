@@ -11,7 +11,7 @@ export default function BeforeAfterPage() {
   return (
     <main>
       <BeforeAfterHero />
-      <section className="resp-px cta-section" style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 50% 40% at 0% 50%, rgba(249,115,22,0.07) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 100% 50%, rgba(249,115,22,0.07) 0%, transparent 55%)" }}>
+      <section className="resp-px cta-section section-divider" style={{ padding: "0 40px 96px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 140% 65% at 50% 50%, rgba(249,115,22,0.10) 0%, transparent 65%)" }}>
         {BEFORE_AFTER_ITEMS.map((item, i) => (
           <MegaSlider key={i} item={item} index={i} />
         ))}

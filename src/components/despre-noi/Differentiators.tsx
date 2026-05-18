@@ -47,7 +47,7 @@ export default function Differentiators() {
   const [ref, inView] = useInView(0.08);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section" style={{ padding: "96px 40px", background: "radial-gradient(ellipse 50% 60% at 0% 0%, rgba(249,115,22,0.15) 0%, transparent 55%), radial-gradient(ellipse 45% 55% at 100% 100%, rgba(249,115,22,0.11) 0%, transparent 55%)" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section section-divider" style={{ padding: "96px 40px", background: "radial-gradient(ellipse 140% 65% at 25% 35%, rgba(249,115,22,0.13) 0%, transparent 65%), radial-gradient(ellipse 80% 50% at 85% 80%, rgba(249,115,22,0.08) 0%, transparent 55%)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <SectionHeader
           label="De ce suntem diferiți"

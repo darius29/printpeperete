@@ -6,6 +6,7 @@ import { LocalBusinessSchema } from "@/components/StructuredData";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import WAWidget from "@/components/layout/WAWidget";
+import MobileBar from "@/components/layout/MobileBar";
 import CookieBanner from "@/components/layout/CookieBanner";
 import "./globals.css";
 
@@ -26,7 +27,11 @@ export const metadata: Metadata = defaultSEO;
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ro" className={`${bebasNeue.variable} ${dmSans.variable}`}>
       <head>
@@ -34,10 +39,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#0C0C0C" />
       </head>
       <body style={{ background: "#0C0C0C" }}>
+        <a href="#main-content" className="sr-only-focusable">Sari la conținut</a>
         <Nav />
-        {children}
+        <main id="main-content">{children}</main>
         <Footer />
         <WAWidget />
+        <MobileBar />
         <CookieBanner />
         {GA_ID && (
           <>

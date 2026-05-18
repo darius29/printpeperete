@@ -35,10 +35,10 @@ export default function Services() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="resp-section"
+      className="resp-section section-divider"
       style={{
         position: "relative",
-        background: "radial-gradient(ellipse 50% 60% at 0% 0%, rgba(249,115,22,0.15) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 100% 100%, rgba(249,115,22,0.09) 0%, transparent 55%)",
+        background: "radial-gradient(ellipse 140% 65% at 40% 30%, rgba(249,115,22,0.12) 0%, transparent 65%)",
       }}
     >
       <div

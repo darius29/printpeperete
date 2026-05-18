@@ -18,7 +18,7 @@
   /* Text */
   --text-primary: #ffffff;
   --text-secondary: #9ca3af;
-  --text-tertiary: #6b7280;
+  --text-tertiary: #8b939f;
 
   /* Semantic */
   --success: #22c55e;
@@ -91,7 +91,7 @@ textarea {
 }
 input::placeholder,
 textarea::placeholder {
-  color: #4b5563;
+  color: #6b7280;
 }
 
 /* ── Animations ── */
@@ -162,18 +162,7 @@ textarea::placeholder {
     transform: translate(-3%, 3%);
   }
 }
-@keyframes waBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  30% {
-    transform: translateY(-8px);
-  }
-  60% {
-    transform: translateY(-4px);
-  }
-}
+
 @keyframes checkPop {
   0% {
     transform: scale(0);
@@ -1003,7 +992,12 @@ textarea::placeholder {
 
 /* ─── RESPONSIVE LAYOUT ──────────────────────────────────────────────────────── */
 
-/* MobileBar: visible on all screens */
+/* MobileBar: mobile only */
+@media (min-width: 900px) {
+  .mobile-bar {
+    display: none !important;
+  }
+}
 
 /* Hero content horizontal padding */
 @media (max-width: 899px) {
@@ -1304,6 +1298,13 @@ textarea::placeholder {
   }
 }
 
+/* ProjectModal stats: 3-col → 1-col on small mobile */
+@media (max-width: 479px) {
+  .grid-3-modal-stats {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* Before/After preview sliders: 3-col → 1-col on tablet/mobile */
 @media (max-width: 899px) {
   .grid-sliders {
@@ -1388,4 +1389,37 @@ textarea::placeholder {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+/* Skip to content */
+.sr-only-focusable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.sr-only-focusable:focus {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  width: auto;
+  height: auto;
+  padding: 10px 20px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--r-md);
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }

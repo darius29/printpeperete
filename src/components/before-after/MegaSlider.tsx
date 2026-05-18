@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useCallback } from "react";
+import Image from "next/image";
 import type { BeforeAfterItem } from "@/lib/data/beforeAfter";
 import { useInView } from "@/hooks/useInView";
 import SliderResults from "./SliderResults";
@@ -16,14 +17,19 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
   const handleRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const rafId = useRef<number>(0);
+  const currentPct = useRef(40);
 
   const applyPos = useCallback((pct: number) => {
     const clamped = Math.max(0, Math.min(100, pct));
+    currentPct.current = clamped;
     if (afterRef.current) {
       afterRef.current.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
     }
     if (handleRef.current) {
       handleRef.current.style.left = `${clamped}%`;
+    }
+    if (containerRef.current) {
+      containerRef.current.setAttribute("aria-valuenow", String(Math.round(clamped)));
     }
   }, []);
 
@@ -75,6 +81,12 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
       {/* Slider */}
       <div
         ref={containerRef}
+        role="slider"
+        tabIndex={0}
+        aria-label={`Comparație înainte/după: ${item.title}`}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={40}
         onMouseDown={(e) => { dragging.current = true; e.preventDefault(); }}
         onMouseMove={(e) => { if (dragging.current) onMove(e.clientX); }}
         onMouseUp={() => { dragging.current = false; }}
@@ -82,11 +94,28 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
         onTouchStart={(e) => { dragging.current = true; e.preventDefault(); }}
         onTouchMove={(e) => { if (dragging.current) onMove(e.touches[0].clientX); }}
         onTouchEnd={() => { dragging.current = false; }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+            e.preventDefault();
+            applyPos(currentPct.current - 5);
+          } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+            e.preventDefault();
+            applyPos(currentPct.current + 5);
+          } else if (e.key === "Home") {
+            e.preventDefault();
+            applyPos(0);
+          } else if (e.key === "End") {
+            e.preventDefault();
+            applyPos(100);
+          }
+        }}
         className="ba-slider"
-        style={{ position: "relative", height: 420, cursor: "ew-resize", userSelect: "none", borderRadius: 16, overflow: "hidden", border: "1px solid var(--bg-border)", touchAction: "none" }}
+        style={{ position: "relative", height: 420, cursor: "ew-resize", userSelect: "none", borderRadius: 16, overflow: "hidden", border: "1px solid var(--bg-border)", touchAction: "none", outline: "none" }}
       >
         {/* BEFORE */}
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${item.before})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+        <div style={{ position: "absolute", inset: 0 }}>
+          <Image src={item.before} alt={`Înainte — ${item.title}`} fill sizes="(max-width: 900px) 100vw, 900px" style={{ objectFit: "cover" }} />
+        </div>
 
         {/* AFTER clipped — initial clipPath matches initial handle pos (40%) */}
         <div
@@ -94,13 +123,12 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url(${item.after})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
             clipPath: "inset(0 60% 0 0)",
             willChange: "clip-path",
           }}
-        />
+        >
+          <Image src={item.after} alt={`După — ${item.title}`} fill sizes="(max-width: 900px) 100vw, 900px" style={{ objectFit: "cover" }} />
+        </div>
 
         {/* Vertical divider handle */}
         <div

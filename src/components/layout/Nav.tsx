@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Acasă",        href: "/",            desc: "Pagina principală" },
@@ -83,6 +84,28 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
     return () => window.removeEventListener("keydown", fn);
   }, [onClose]);
 
+  // Focus trap
+  useEffect(() => {
+    if (!open || !panelRef.current) return;
+    const panel = panelRef.current;
+    const focusable = panel.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex="0"]'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    first?.focus();
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      }
+    };
+    document.addEventListener("keydown", trap);
+    return () => document.removeEventListener("keydown", trap);
+  }, [open]);
+
   if (!mounted) return null;
 
   return (
@@ -100,6 +123,9 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
       {/* Panel */}
       <div
         ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Meniu navigare"
         style={{
           position: "fixed", top: 0, right: 0, bottom: 0,
           width: "min(420px, 92vw)", zIndex: 151,
@@ -189,7 +215,7 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
             onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(37,211,102,.08)"; }}
             onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
           >
-            <span style={{ fontSize: 18 }}>📱</span> Chat WhatsApp rapid
+            <MessageCircle size={18} /> Chat WhatsApp rapid
           </a>
         </div>
 
@@ -198,19 +224,19 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
           <div style={{ fontSize: 10, color: "#4B5563", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 14, fontWeight: 500 }}>Contact rapid</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {([
-              { icon: "📞", label: "0779 281 047", href: "tel:0779281047", color: "#22C55E" },
-              { icon: "✉️", label: "contact@printpeperete.com", href: "mailto:contact@printpeperete.com", color: "#3B82F6" },
-              { icon: "📍", label: "Timișoara, România", href: null, color: "#F97316" },
-            ] as const).map(c => (
+              { icon: <Phone size={14} />, label: "0779 281 047", href: "tel:0779281047", color: "#22C55E" },
+              { icon: <Mail size={14} />, label: "contact@printpeperete.com", href: "mailto:contact@printpeperete.com", color: "#3B82F6" },
+              { icon: <MapPin size={14} />, label: "Timișoara, România", href: null as string | null, color: "#F97316" },
+            ]).map(c => (
               <div key={c.label}>
                 {c.href ? (
                   <a href={c.href} style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-                    <span style={{ width: 32, height: 32, borderRadius: 8, background: `${c.color}15`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0 }}>{c.icon}</span>
+                    <span style={{ width: 32, height: 32, borderRadius: 8, background: `${c.color}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: c.color }}>{c.icon}</span>
                     <span style={{ fontSize: 13, color: "#9CA3AF", fontFamily: "var(--font-ui)" }}>{c.label}</span>
                   </a>
                 ) : (
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ width: 32, height: 32, borderRadius: 8, background: `${c.color}15`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0 }}>{c.icon}</span>
+                    <span style={{ width: 32, height: 32, borderRadius: 8, background: `${c.color}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: c.color }}>{c.icon}</span>
                     <span style={{ fontSize: 13, color: "#9CA3AF" }}>{c.label}</span>
                   </div>
                 )}
@@ -313,12 +339,12 @@ export default function Nav() {
               <a href="tel:0779281047" aria-label="Sună acum" style={{
                 width: 40, height: 40, borderRadius: 9, background: "#141414",
                 border: "1px solid #2A2A2A", display: "flex", alignItems: "center",
-                justifyContent: "center", fontSize: 16, textDecoration: "none",
-                transition: "border-color .2s",
+                justifyContent: "center", textDecoration: "none",
+                transition: "border-color .2s", color: "#22C55E",
               }}
                 onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "#22C55E"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "#2A2A2A"; }}
-              >📞</a>
+              ><Phone size={16} /></a>
             )}
 
             {/* Burger */}

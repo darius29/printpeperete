@@ -33,11 +33,25 @@ export default function ContactForm() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [file, setFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+  const setValidatedFile = (f: File | null) => {
+    if (!f) { setFile(null); setFileError(null); return; }
+    if (f.size > MAX_FILE_SIZE) {
+      setFileError("Fișierul depășește limita de 5MB");
+      setFile(null);
+    } else {
+      setFileError(null);
+      setFile(f);
+    }
+  };
 
   const set = (k: keyof FormState, v: string) => {
     setForm((p) => ({ ...p, [k]: v }));
@@ -50,7 +64,7 @@ export default function ContactForm() {
     const e: FormErrors = {};
     if (!form.name.trim()) e.name = "Numele este obligatoriu";
     if (!form.phone.trim()) e.phone = "Telefonul este obligatoriu";
-    if (!form.email.includes("@")) e.email = "Email invalid";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Email invalid";
     if (!form.service) e.service = "Selectează un serviciu";
     if (!form.message.trim()) e.message = "Mesajul este obligatoriu";
     setErrors(e);
@@ -62,18 +76,18 @@ export default function ContactForm() {
     setLoading(true);
     setApiError(null);
     try {
+      const fd = new FormData();
+      fd.append("name", form.name);
+      fd.append("phone", form.phone);
+      fd.append("email", form.email);
+      fd.append("service", form.service);
+      fd.append("location", form.location);
+      fd.append("message", form.message);
+      if (file) fd.append("file", file);
+
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          phone: form.phone,
-          email: form.email,
-          service: form.service,
-          location: form.location,
-          message: form.message,
-          fileName: file?.name,
-        }),
+        body: fd,
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Eroare necunoscută");
@@ -89,7 +103,7 @@ export default function ContactForm() {
     e.preventDefault();
     setDragging(false);
     const f = e.dataTransfer.files[0];
-    if (f) setFile(f);
+    if (f) setValidatedFile(f);
   };
 
   const getInputClass = (k: keyof FormErrors) => {
@@ -210,7 +224,11 @@ export default function ContactForm() {
         tău.
       </p>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+      <form
+        noValidate
+        onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}
+        style={{ display: "flex", flexDirection: "column", gap: 20 }}
+      >
         {/* Name + Phone */}
         <div className="grid-2-form" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
           {(
@@ -221,6 +239,7 @@ export default function ContactForm() {
           ).map(([k, l, ph]) => (
             <div key={k}>
               <label
+                htmlFor={`cf-${k}`}
                 style={{
                   fontSize: 11,
                   color: "var(--text-tertiary, #6B7280)",
@@ -233,6 +252,7 @@ export default function ContactForm() {
                 {l}
               </label>
               <input
+                id={`cf-${k}`}
                 className={getInputClass(k as keyof FormErrors)}
                 placeholder={ph}
                 value={form[k]}
@@ -257,6 +277,7 @@ export default function ContactForm() {
         {/* Email */}
         <div>
           <label
+            htmlFor="cf-email"
             style={{
               fontSize: 11,
               color: "var(--text-tertiary, #6B7280)",
@@ -269,6 +290,7 @@ export default function ContactForm() {
             Email *
           </label>
           <input
+            id="cf-email"
             className={getInputClass("email")}
             placeholder="email@firma.ro"
             value={form.email}
@@ -291,6 +313,7 @@ export default function ContactForm() {
         {/* Service */}
         <div>
           <label
+            htmlFor="cf-service"
             style={{
               fontSize: 11,
               color: "var(--text-tertiary, #6B7280)",
@@ -303,6 +326,7 @@ export default function ContactForm() {
             Tip serviciu *
           </label>
           <select
+            id="cf-service"
             className={getInputClass("service")}
             style={{ cursor: "pointer", colorScheme: "dark" }}
             value={form.service}
@@ -333,6 +357,7 @@ export default function ContactForm() {
         {/* Location */}
         <div>
           <label
+            htmlFor="cf-location"
             style={{
               fontSize: 11,
               color: "var(--text-tertiary, #6B7280)",
@@ -345,6 +370,7 @@ export default function ContactForm() {
             Locație proiect
           </label>
           <input
+            id="cf-location"
             className="field-input"
             placeholder="Timișoara, Arad, Cluj..."
             value={form.location}
@@ -355,6 +381,7 @@ export default function ContactForm() {
         {/* Message */}
         <div>
           <label
+            htmlFor="cf-message"
             style={{
               fontSize: 11,
               color: "var(--text-tertiary, #6B7280)",
@@ -367,6 +394,7 @@ export default function ContactForm() {
             Mesaj / Detalii *
           </label>
           <textarea
+            id="cf-message"
             className={getInputClass("message")}
             style={{ resize: "vertical", minHeight: 100, lineHeight: 1.6 }}
             placeholder="Dimensiunile peretelui, suprafața, cantitate, termen dorit..."
@@ -390,6 +418,7 @@ export default function ContactForm() {
         {/* File upload */}
         <div>
           <label
+            htmlFor="cf-file"
             style={{
               fontSize: 11,
               color: "var(--text-tertiary, #6B7280)",
@@ -402,6 +431,9 @@ export default function ContactForm() {
             Fișier design (opțional)
           </label>
           <div
+            role="button"
+            tabIndex={0}
+            aria-label="Încarcă fișier design"
             onDragOver={(e) => {
               e.preventDefault();
               setDragging(true);
@@ -409,6 +441,12 @@ export default function ContactForm() {
             onDragLeave={() => setDragging(false)}
             onDrop={handleDrop}
             onClick={() => fileRef.current?.click()}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                fileRef.current?.click();
+              }
+            }}
             style={{
               border: `1px dashed ${
                 dragging ? "#F97316" : file ? "#22C55E" : "#2A2A2A"
@@ -423,14 +461,16 @@ export default function ContactForm() {
                 ? "rgba(34,197,94,.04)"
                 : "#0C0C0C",
               transition: "all .2s",
+              outline: "none",
             }}
           >
             <input
               ref={fileRef}
+              id="cf-file"
               type="file"
               accept=".pdf,.ai,.png,.jpg,.jpeg,.svg"
               style={{ display: "none" }}
-              onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+              onChange={(e) => setValidatedFile(e.target.files?.[0] ?? null)}
             />
             {file ? (
               <div>
@@ -444,7 +484,7 @@ export default function ContactForm() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    setFile(null);
+                    setValidatedFile(null);
                   }}
                   style={{
                     marginTop: 8,
@@ -473,11 +513,16 @@ export default function ContactForm() {
                 <div
                   style={{ fontSize: 11, color: "#4B5563", marginTop: 4 }}
                 >
-                  PDF, AI, PNG, JPG, SVG — max 20MB
+                  PDF, AI, PNG, JPG, SVG — max 5MB
                 </div>
               </div>
             )}
           </div>
+          {fileError && (
+            <span style={{ fontSize: 11, color: "#EF4444", marginTop: 4, display: "block" }}>
+              {fileError}
+            </span>
+          )}
         </div>
 
         {/* Submit */}
@@ -496,8 +541,8 @@ export default function ContactForm() {
           </div>
         )}
         <button
+          type="submit"
           className="btn-primary"
-          onClick={handleSubmit}
           disabled={loading}
           style={{
             width: "100%",
@@ -536,7 +581,7 @@ export default function ContactForm() {
             Termenii și condițiile
           </a>
         </p>
-      </div>
+      </form>
     </div>
   );
 }

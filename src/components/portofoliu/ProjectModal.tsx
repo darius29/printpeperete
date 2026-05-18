@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Project } from "@/lib/data/projects";
@@ -12,6 +12,8 @@ interface ProjectModalProps {
 const FEATURES = ["Rezoluție 2880 DPI", "Culori UV durabile", "Fără autocolant", "Execuție curată", "Garanție inclus"];
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const fn = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", fn);
@@ -22,6 +24,27 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     };
   }, [onClose]);
 
+  useEffect(() => {
+    if (!modalRef.current) return;
+    const modal = modalRef.current;
+    const focusable = modal.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex="0"]'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    first?.focus();
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      }
+    };
+    document.addEventListener("keydown", trap);
+    return () => document.removeEventListener("keydown", trap);
+  }, []);
+
   const serviceIcon =
     project.service === "Wall Print UV" ? "🖨️"
     : project.service === "Print Textile" ? "👕"
@@ -31,7 +54,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const catLabel = project.cat.charAt(0).toUpperCase() + project.cat.slice(1);
 
   const detailStats = [
-    { label: "Locație", val: project.location, icon: "📍" },
     { label: "Durată execuție", val: project.duration, icon: "⏱" },
     { label: "Categorie", val: catLabel, icon: "🏷" },
   ];
@@ -41,7 +63,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       className="modal-backdrop"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="modal-card">
+      <div ref={modalRef} className="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         {/* Visual header */}
         <div style={{
           height: 320,
@@ -79,6 +101,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           )}
           <button
             onClick={onClose}
+            aria-label="Închide"
             style={{
               position: "absolute", top: 16, right: 16,
               width: 36, height: 36, borderRadius: "50%",
@@ -119,7 +142,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               }}>
                 {project.service}
               </div>
-              <h2 style={{
+              <h2 id="modal-title" style={{
                 fontFamily: "var(--font-display)",
                 fontSize: 28, letterSpacing: "0.03em", color: "#fff", lineHeight: 1,
               }}>
@@ -140,7 +163,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
 
           {/* Stats row */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, marginBottom: 24 }} className="grid-3-modal-stats">
             {detailStats.map((s) => (
               <div key={s.label} style={{ background: "#1E1E1E", borderRadius: 10, padding: "14px 16px" }}>
                 <div style={{ fontSize: 18, marginBottom: 4 }}>{s.icon}</div>
@@ -156,8 +179,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             marginBottom: 24, border: "1px solid #2A2A2A",
           }}>
             <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.75 }}>
-              Proiect realizat în{" "}
-              <strong style={{ color: "#fff" }}>{project.location}</strong> —{" "}
+              Proiect realizat —{" "}
               {project.service.toLowerCase()} pe o suprafață de{" "}
               <strong style={{ color: "var(--accent)" }}>{project.area}</strong>, finalizat în{" "}
               <strong style={{ color: "#fff" }}>{project.duration}</strong>. Executat cu echipament UV de

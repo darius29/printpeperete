@@ -13,7 +13,7 @@ const SERVICES = [
 export default function ServiciiMainServices() {
   const [ref, inView] = useInView(0.08);
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-px" style={{ padding: "0 40px 80px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 55% 60% at 0% 100%, rgba(249,115,22,0.14) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 100% 0%, rgba(249,115,22,0.09) 0%, transparent 55%)" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-px section-divider" style={{ padding: "0 40px 80px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 140% 65% at 35% 70%, rgba(249,115,22,0.12) 0%, transparent 65%)" }}>
       <div className="grid-2-services" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 14 }}>
         {SERVICES.map((s, i) => (
           <ServiceCard key={i} {...s} inView={inView} delay={i * 0.1} />

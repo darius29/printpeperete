@@ -92,7 +92,6 @@ export default function ProjectCard({ project, index, onClick, inView }: Project
             {project.title}
           </h3>
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-            <span style={{ fontSize: 11, color: "rgba(255,255,255,.5)" }}>📍 {project.location}</span>
             <span style={{ fontSize: 11, color: "rgba(255,255,255,.5)" }}>⏱ {project.duration}</span>
           </div>
         </div>

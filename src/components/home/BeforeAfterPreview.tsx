@@ -12,7 +12,14 @@ interface SliderProps {
   desc: string;
 }
 
-function BeforeAfterSlider({ before, after, title, surface, duration, desc }: SliderProps) {
+function BeforeAfterSlider({
+  before,
+  after,
+  title,
+  surface,
+  duration,
+  desc,
+}: SliderProps) {
   const [pos, setPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
@@ -33,7 +40,8 @@ function BeforeAfterSlider({ before, after, title, surface, duration, desc }: Sl
   const onMouseUp = () => {
     dragging.current = false;
   };
-  const onTouchMove = (e: React.TouchEvent) => setPos(getPos(e.touches[0].clientX));
+  const onTouchMove = (e: React.TouchEvent) =>
+    setPos(getPos(e.touches[0].clientX));
 
   return (
     <div
@@ -188,7 +196,14 @@ function BeforeAfterSlider({ before, after, title, surface, duration, desc }: Sl
         >
           {title}
         </h4>
-        <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>
+        <p
+          style={{
+            fontSize: 13,
+            color: "var(--text-secondary)",
+            lineHeight: 1.6,
+            margin: 0,
+          }}
+        >
           {desc}
         </p>
       </div>
@@ -201,7 +216,7 @@ const comparisons = [
     title: "Recepție clinică",
     surface: "Perete lavabil",
     duration: "1 zi",
-    desc: "Transformare completă a recepției într-un spațiu modern și memorabil — de la perete simplu la identitate vizuală clară.",
+    desc: "Transformare completă a recepției într-un spațiu modern, de la perete simplu la identitate vizuală clară.",
     before: "/assets/before-after/dental-clinic-reception-before.png",
     after: "/assets/before-after/dental-clinic-reception-after.png",
   },
@@ -209,7 +224,7 @@ const comparisons = [
     title: "Showroom auto",
     surface: "MDF",
     duration: "6 ore",
-    desc: "Accent vizual de brand pentru showroom — experiență mai puternică pentru clienți și imagine premium.",
+    desc: "Accent vizual de brand pentru showroom: experiență mai puternică pentru clienți și imagine premium.",
     before: "/assets/before-after/showroom-car-before.png",
     after: "/assets/before-after/showroom-car-after.png",
   },
@@ -217,7 +232,7 @@ const comparisons = [
     title: "Birou creativ",
     surface: "Perete gletuit",
     duration: "1 zi",
-    desc: "Spațiu creativ personalizat pentru echipă și clienți — grafică motivațională și identitate vizuală care inspiră.",
+    desc: "Spațiu creativ personalizat pentru echipă și clienți: grafică motivațională și identitate vizuală care inspiră.",
     before: "/assets/before-after/office-before.png",
     after: "/assets/before-after/office-after.png",
   },
@@ -229,11 +244,12 @@ export default function BeforeAfterPreview() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="resp-section cv-auto"
+      className="resp-section cv-auto section-divider"
       style={{
         padding: "96px 40px",
         position: "relative",
-        background: "radial-gradient(ellipse 45% 80% at 0% 50%, rgba(249,115,22,0.08) 0%, transparent 60%), radial-gradient(ellipse 45% 80% at 100% 50%, rgba(249,115,22,0.15) 0%, transparent 60%)",
+        background:
+          "radial-gradient(ellipse 140% 65% at 60% 50%, rgba(249,115,22,0.12) 0%, transparent 65%)",
       }}
     >
       <div
@@ -243,10 +259,18 @@ export default function BeforeAfterPreview() {
           inset: 0,
           zIndex: 0,
           pointerEvents: "none",
-          background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 20%, transparent 50%, rgba(0,0,0,0.08) 75%, rgba(0,0,0,0.18) 100%)",
+          background:
+            "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 20%, transparent 50%, rgba(0,0,0,0.08) 75%, rgba(0,0,0,0.18) 100%)",
         }}
       />
-      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         <div
           style={{
             opacity: inView ? 1 : 0,
@@ -261,8 +285,17 @@ export default function BeforeAfterPreview() {
           }}
         >
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 32, height: 2, background: "var(--accent)" }} />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                marginBottom: 16,
+              }}
+            >
+              <div
+                style={{ width: 32, height: 2, background: "var(--accent)" }}
+              />
               <span
                 style={{
                   fontSize: 12,
@@ -294,19 +327,31 @@ export default function BeforeAfterPreview() {
                 maxWidth: 480,
               }}
             >
-              Transformări reale pentru spații comerciale, birouri și locații premium. Trage
-              handlerul pentru a compara.
+              Transformări reale pentru spații comerciale, birouri și locații
+              premium. Trage handlerul pentru a compara.
             </p>
           </div>
           <Link
             href="/before-after"
-            style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600, textDecoration: "none" }}
+            style={{
+              fontSize: 14,
+              color: "var(--accent)",
+              fontWeight: 600,
+              textDecoration: "none",
+            }}
           >
             Vezi toate transformările →
           </Link>
         </div>
 
-        <div className="grid-sliders" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+        <div
+          className="grid-sliders"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 14,
+          }}
+        >
           {comparisons.map((c, i) => (
             <div
               key={i}

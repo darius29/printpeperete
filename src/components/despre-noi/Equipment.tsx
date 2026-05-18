@@ -47,11 +47,9 @@ export default function Equipment() {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="resp-section"
+      className="resp-section section-divider"
       style={{
-        background: "radial-gradient(ellipse 50% 55% at 100% 0%, rgba(59,130,246,0.10) 0%, transparent 60%), radial-gradient(ellipse 35% 40% at 0% 100%, rgba(249,115,22,0.15) 0%, transparent 55%), var(--bg-surface)",
-        borderTop: "1px solid var(--bg-border)",
-        borderBottom: "1px solid var(--bg-border)",
+        background: "radial-gradient(ellipse 70% 55% at 90% 10%, rgba(59,130,246,0.09) 0%, transparent 55%), radial-gradient(ellipse 140% 65% at 30% 80%, rgba(249,115,22,0.14) 0%, transparent 65%), var(--bg-surface)",
         padding: "96px 40px",
       }}
     >
