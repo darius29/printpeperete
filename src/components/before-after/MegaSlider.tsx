@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import type { BeforeAfterItem } from "@/lib/data/beforeAfter";
 import { useInView } from "@/hooks/useInView";
@@ -18,6 +18,7 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
   const dragging = useRef(false);
   const rafId = useRef<number>(0);
   const currentPct = useRef(40);
+  const hintPlayed = useRef(false);
 
   const applyPos = useCallback((pct: number) => {
     const clamped = Math.max(0, Math.min(100, pct));
@@ -43,6 +44,20 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
     cancelAnimationFrame(rafId.current);
     rafId.current = requestAnimationFrame(() => applyPos(getPos(clientX)));
   }, [applyPos, getPos]);
+
+  useEffect(() => {
+    if (!inView || hintPlayed.current) return;
+    hintPlayed.current = true;
+
+    // Wait a bit after becoming visible, then animate hint: 40% → 60% → 40%
+    const t1 = setTimeout(() => applyPos(60), 400);
+    const t2 = setTimeout(() => applyPos(40), 800);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [inView, applyPos]);
 
   return (
     <div
