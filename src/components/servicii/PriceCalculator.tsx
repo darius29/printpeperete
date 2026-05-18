@@ -70,19 +70,14 @@ export default function PriceCalculator() {
   const [qty, setQty] = useState(6);
   const [quality, setQuality] = useState<QualityKey>("standard");
   const [material, setMaterial] = useState("Perete tencuit");
-  const [calculated, setCalculated] = useState(false);
+  const [calculated, setCalculated] = useState(true);
 
   const cfg = SERVICE_CONFIG[service];
   const prices = calcPrice(cfg, qty, quality);
   const sliderPct = ((qty - cfg.min) / (cfg.max - cfg.min)) * 100;
 
-  function handleCalculate() {
-    setCalculated(true);
-  }
-
   function handleServiceChange(k: ServiceKey) {
     setService(k);
-    setCalculated(false);
     setQty(SERVICE_CONFIG[k].min);
     setMaterial(SERVICE_CONFIG[k].materials[0]);
   }
@@ -153,7 +148,7 @@ export default function PriceCalculator() {
                 {cfg.materials.map(m => (
                   <button
                     key={m}
-                    onClick={() => { setMaterial(m); setCalculated(false); }}
+                    onClick={() => { setMaterial(m); }}
                     style={{
                       background: material === m ? "rgba(249,115,22,.12)" : "#1E1E1E",
                       color: material === m ? "var(--accent)" : "var(--text-secondary)",
@@ -180,7 +175,7 @@ export default function PriceCalculator() {
                     height: 4, borderRadius: 2, outline: "none", border: "none",
                     background: `linear-gradient(to right, var(--accent) ${sliderPct}%, var(--bg-border) ${sliderPct}%)`,
                   }}
-                  onChange={e => { setQty(Number(e.target.value)); setCalculated(false); }}
+                  onChange={e => { setQty(Number(e.target.value)); }}
                 />
                 <div style={{ background: "#1E1E1E", border: "1px solid var(--bg-border)", borderRadius: 8, padding: "8px 14px", minWidth: 80, textAlign: "center" }}>
                   <span style={{ fontFamily: "var(--font-display)", fontSize: 22, color: "var(--accent)", letterSpacing: "0.02em" }}>{qty}</span>
@@ -210,7 +205,7 @@ export default function PriceCalculator() {
                 ] as const).map(q => (
                   <button
                     key={q.k}
-                    onClick={() => { setQuality(q.k); setCalculated(false); }}
+                    onClick={() => { setQuality(q.k); }}
                     style={{
                       background: quality === q.k ? "rgba(249,115,22,.08)" : "#1E1E1E",
                       border: `1px solid ${quality === q.k ? "var(--accent)" : "var(--bg-border)"}`,
@@ -318,10 +313,6 @@ export default function PriceCalculator() {
                   <Link href="/contact" className="btn-primary" style={{ width: "100%", justifyContent: "center", fontSize: 14, padding: 13, textDecoration: "none", display: "flex", alignItems: "center" }}>
                     Cere ofertă exactă →
                   </Link>
-                  <button className="btn-outline" style={{ width: "100%", justifyContent: "center", fontSize: 13, padding: 11, marginTop: 8 }}
-                    onClick={() => setCalculated(false)}>
-                    Recalculează
-                  </button>
                 </div>
               )}
             </div>
