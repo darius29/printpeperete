@@ -13,20 +13,35 @@ const STORAGE_KEY = "sdg_cookie_consent";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) {
+    if (stored) return;
+
+    // 1.5s delay before mounting
+    const mountTimer = setTimeout(() => {
       setVisible(true);
-    }
+      // Small delay after mounting for CSS transition to work
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setShow(true));
+      });
+    }, 1500);
+
+    return () => clearTimeout(mountTimer);
   }, []);
+
+  function dismiss() {
+    setShow(false);
+    setTimeout(() => setVisible(false), 320); // wait for slide-out transition
+  }
 
   function handleAcceptAll() {
     localStorage.setItem(STORAGE_KEY, "all");
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("consent", "update", { analytics_storage: "granted" });
     }
-    setVisible(false);
+    dismiss();
   }
 
   function handleNecessaryOnly() {
@@ -34,7 +49,7 @@ export default function CookieBanner() {
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("consent", "update", { analytics_storage: "denied" });
     }
-    setVisible(false);
+    dismiss();
   }
 
   if (!visible) return null;
@@ -48,10 +63,14 @@ export default function CookieBanner() {
         position: "fixed",
         left: 0,
         right: 0,
+        bottom: 0,
         zIndex: 9999,
         background: "rgba(18,18,18,0.97)",
         borderTop: "1px solid var(--bg-border, #2A2A2A)",
         backdropFilter: "blur(12px)",
+        transform: show ? "translateY(0)" : "translateY(100%)",
+        opacity: show ? 1 : 0,
+        transition: "transform 0.3s ease, opacity 0.3s ease",
       }}
     >
       <div className="cookie-bar" style={{ maxWidth: 1200, margin: "0 auto", padding: "10px 40px" }}>
