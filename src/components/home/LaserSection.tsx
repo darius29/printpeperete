@@ -52,7 +52,7 @@ export default function LaserSection() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section cv-auto"
       style={{
-        background: "radial-gradient(ellipse 50% 55% at 100% 0%, rgba(59,130,246,0.07) 0%, transparent 65%), radial-gradient(ellipse 35% 40% at 0% 100%, rgba(249,115,22,0.05) 0%, transparent 55%), #0a0a0a",
+        background: "radial-gradient(ellipse 50% 55% at 100% 0%, rgba(59,130,246,0.10) 0%, transparent 65%), radial-gradient(ellipse 35% 40% at 0% 100%, rgba(249,115,22,0.13) 0%, transparent 55%), #0a0a0a",
         borderTop: "1px solid #1a1a1a",
         padding: "96px 40px",
         position: "relative",

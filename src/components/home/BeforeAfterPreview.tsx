@@ -233,7 +233,7 @@ export default function BeforeAfterPreview() {
       style={{
         padding: "96px 40px",
         position: "relative",
-        background: "radial-gradient(ellipse 45% 80% at 0% 50%, rgba(30,30,40,0.6) 0%, transparent 60%), radial-gradient(ellipse 45% 80% at 100% 50%, rgba(249,115,22,0.06) 0%, transparent 60%)",
+        background: "radial-gradient(ellipse 45% 80% at 0% 50%, rgba(249,115,22,0.08) 0%, transparent 60%), radial-gradient(ellipse 45% 80% at 100% 50%, rgba(249,115,22,0.15) 0%, transparent 60%)",
       }}
     >
       <div

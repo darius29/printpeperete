@@ -40,7 +40,15 @@ export default function FinalCTA({ title, titleAccent, subtitle, primaryLabel, s
             style={{
               position: "absolute", top: 0, right: 0,
               width: 400, height: 400,
-              background: "radial-gradient(circle,rgba(249,115,22,.07) 0%,transparent 70%)",
+              background: "radial-gradient(circle,rgba(249,115,22,.18) 0%,transparent 70%)",
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute", bottom: 0, left: 0,
+              width: 300, height: 300,
+              background: "radial-gradient(circle,rgba(234,88,12,.12) 0%,transparent 70%)",
               pointerEvents: "none",
             }}
           />
