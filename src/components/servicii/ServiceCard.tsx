@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 interface ServiceCardProps {
@@ -49,7 +50,7 @@ export default function ServiceCard({ icon, tag, title, desc, chips, inView, del
           <span key={chip} style={{ fontSize: 11, background: "#1E1E1E", color: "var(--text-secondary)", border: "1px solid var(--bg-border)", borderRadius: 5, padding: "3px 9px" }}>{chip}</span>
         ))}
       </div>
-      <button className="btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>Cere ofertă →</button>
+      <Link href="/contact" className="btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>Cere ofertă →</Link>
       </div>
     </div>
   );

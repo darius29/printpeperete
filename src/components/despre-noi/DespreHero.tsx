@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import GrainOverlay from "@/components/ui/GrainOverlay";
 
 const badges = [
@@ -82,8 +83,8 @@ export default function DespreHero() {
 
           {/* CTA buttons */}
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", animation: "fadeUp .9s .4s both" }}>
-            <button className="btn-primary">Cere ofertă personalizată →</button>
-            <button className="btn-outline">↳ Vezi portofoliul</button>
+            <Link href="/contact" className="btn-primary">Cere ofertă personalizată →</Link>
+            <Link href="/portofoliu" className="btn-outline">↳ Vezi portofoliul</Link>
           </div>
         </div>
 

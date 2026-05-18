@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
 export default function PortofoliuCTA() {
@@ -53,12 +54,12 @@ export default function PortofoliuCTA() {
             </p>
 
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-              <button className="btn-primary" style={{ fontSize: 16, padding: "16px 36px" }}>
+              <Link href="/contact" className="btn-primary" style={{ fontSize: 16, padding: "16px 36px" }}>
                 Cere ofertă personalizată →
-              </button>
-              <button className="btn-outline" style={{ fontSize: 16, padding: "16px 36px" }}>
+              </Link>
+              <Link href="/before-after" className="btn-outline" style={{ fontSize: 16, padding: "16px 36px" }}>
                 ↳ Before / After
-              </button>
+              </Link>
             </div>
 
             <div style={{ marginTop: 28, display: "flex", justifyContent: "center", gap: 28, flexWrap: "wrap" }}>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
@@ -13,13 +14,16 @@ const advantages = [
 ];
 
 const surfaces = [
-  { id: "perete", label: "Pereți tencuiți / gletuiți", img: "/assets/surfaces/perete.jpg" },
+  { id: "perete", label: "Pereți tencuiți / gletuiți", img: "" },
   { id: "lemn", label: "Lemn și MDF", img: "/assets/surfaces/lemn.jpg" },
   { id: "sticla", label: "Sticlă", img: "/assets/surfaces/sticla.jpg" },
   { id: "metal", label: "Metal", img: "/assets/surfaces/metal.jpg" },
-  { id: "plastic", label: "Plastic rigid", img: "/assets/surfaces/plastic.jpg" },
+  {
+    id: "plastic",
+    label: "Plastic rigid",
+    img: "/assets/surfaces/plastic.jpg",
+  },
   { id: "beton", label: "Beton", img: "/assets/surfaces/beton.jpg" },
-  { id: "gresie", label: "Gresie", img: "/assets/surfaces/gresie.jpg" },
 ];
 
 const specs = [
@@ -51,7 +55,8 @@ export default function WallPrintSpotlight() {
     <section
       className="resp-section"
       style={{
-        background: "radial-gradient(ellipse 55% 50% at 0% 100%, rgba(249,115,22,0.09) 0%, transparent 65%), radial-gradient(ellipse 45% 55% at 100% 0%, rgba(249,115,22,0.05) 0%, transparent 60%), #0a0a0a",
+        background:
+          "radial-gradient(ellipse 55% 50% at 0% 100%, rgba(249,115,22,0.09) 0%, transparent 65%), radial-gradient(ellipse 45% 55% at 100% 0%, rgba(249,115,22,0.05) 0%, transparent 60%), #0a0a0a",
         borderTop: "1px solid #1a1a1a",
         borderBottom: "1px solid #1a1a1a",
         padding: "96px 40px",
@@ -65,10 +70,19 @@ export default function WallPrintSpotlight() {
           inset: 0,
           zIndex: 0,
           pointerEvents: "none",
-          backgroundImage: "repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px)",
+          backgroundImage:
+            "repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px)",
         }}
       />
-      <div ref={ref as React.RefObject<HTMLDivElement>} style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         {/* Header */}
         <div
           style={{
@@ -84,8 +98,17 @@ export default function WallPrintSpotlight() {
           }}
         >
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 32, height: 2, background: "var(--accent)" }} />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                marginBottom: 16,
+              }}
+            >
+              <div
+                style={{ width: 32, height: 2, background: "var(--accent)" }}
+              />
               <span
                 style={{
                   fontSize: 12,
@@ -111,12 +134,21 @@ export default function WallPrintSpotlight() {
               <br />
               pe perete
             </h2>
-            <p style={{ fontSize: 16, color: "var(--text-secondary)", lineHeight: 1.7, maxWidth: 500 }}>
-              Realizăm print direct pe perete și pe alte suprafețe rigide, fără autocolant, fără
-              lipire și fără compromisuri.
+            <p
+              style={{
+                fontSize: 16,
+                color: "var(--text-secondary)",
+                lineHeight: 1.7,
+                maxWidth: 500,
+              }}
+            >
+              Realizăm print direct pe perete și pe alte suprafețe rigide, fără
+              autocolant, fără lipire și fără compromisuri.
             </p>
           </div>
-          <button className="btn-primary">Cere ofertă wall print →</button>
+          <Link href="/contact" className="btn-primary">
+            Cere ofertă wall print →
+          </Link>
         </div>
 
         {/* Main grid */}
@@ -147,10 +179,7 @@ export default function WallPrintSpotlight() {
               }}
             >
               {specs.map((sp) => (
-                <div
-                  key={sp.val}
-                  className="spec-card"
-                >
+                <div key={sp.val} className="spec-card">
                   <div
                     style={{
                       fontFamily: "var(--font-display)",
@@ -199,8 +228,22 @@ export default function WallPrintSpotlight() {
             >
               {advantages.map((a, i) => (
                 <div key={i} className="advantage-item">
-                  <span style={{ color: "var(--accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
-                  <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                  <span
+                    style={{
+                      color: "var(--accent)",
+                      fontWeight: 700,
+                      flexShrink: 0,
+                    }}
+                  >
+                    ✓
+                  </span>
+                  <span
+                    style={{
+                      fontSize: 13,
+                      color: "var(--text-secondary)",
+                      lineHeight: 1.5,
+                    }}
+                  >
                     {a}
                   </span>
                 </div>
@@ -219,7 +262,14 @@ export default function WallPrintSpotlight() {
             >
               Pe ce suprafețe printăm
             </h4>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 16 }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 7,
+                marginBottom: 16,
+              }}
+            >
               {surfaces.map((s) => {
                 const isActive = activeSurface === s.id;
                 return (
@@ -228,7 +278,9 @@ export default function WallPrintSpotlight() {
                     onClick={() => setActiveSurface(s.id)}
                     className="surface-chip"
                     style={{
-                      background: isActive ? "rgba(249,115,22,0.1)" : "transparent",
+                      background: isActive
+                        ? "rgba(249,115,22,0.1)"
+                        : "transparent",
                       borderColor: isActive ? "var(--accent)" : undefined,
                       color: isActive ? "#fff" : undefined,
                       cursor: "pointer",
@@ -259,7 +311,9 @@ export default function WallPrintSpotlight() {
                   alt={currentSurface.label}
                   fill
                   sizes="(max-width: 900px) 100vw, 560px"
-                  onError={() => setImgError((prev) => ({ ...prev, [activeSurface]: true }))}
+                  onError={() =>
+                    setImgError((prev) => ({ ...prev, [activeSurface]: true }))
+                  }
                   style={{ objectFit: "cover" }}
                 />
               ) : (
@@ -313,7 +367,16 @@ export default function WallPrintSpotlight() {
               transition: "opacity 0.7s 0.3s, transform 0.7s 0.3s",
             }}
           >
-            <div style={{ borderRadius: 12, overflow: "hidden", marginBottom: 28, border: "1px solid var(--bg-border)", position: "relative", height: 220 }}>
+            <div
+              style={{
+                borderRadius: 12,
+                overflow: "hidden",
+                marginBottom: 28,
+                border: "1px solid var(--bg-border)",
+                position: "relative",
+                height: 220,
+              }}
+            >
               <Image
                 src="/assets/servicii/uv-wall-printer.png"
                 alt="Printer UV direct pe perete"
@@ -322,7 +385,7 @@ export default function WallPrintSpotlight() {
                 style={{ objectFit: "cover" }}
               />
             </div>
-          <h4
+            <h4
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: 18,
@@ -343,7 +406,12 @@ export default function WallPrintSpotlight() {
             >
               {domains.map((d, i) => (
                 <div key={i} className={`domain-card has-icon-pop`}>
-                  <div className="icon-pop" style={{ fontSize: 28, marginBottom: 8 }}>{d.icon}</div>
+                  <div
+                    className="icon-pop"
+                    style={{ fontSize: 28, marginBottom: 8 }}
+                  >
+                    {d.icon}
+                  </div>
                   <div
                     style={{
                       fontFamily: "var(--font-display)",
@@ -355,7 +423,13 @@ export default function WallPrintSpotlight() {
                   >
                     {d.label}
                   </div>
-                  <div style={{ fontSize: 11, color: "var(--text-tertiary)", lineHeight: 1.4 }}>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      color: "var(--text-tertiary)",
+                      lineHeight: 1.4,
+                    }}
+                  >
                     {d.sub}
                   </div>
                 </div>
@@ -365,7 +439,8 @@ export default function WallPrintSpotlight() {
             {/* CTA callout */}
             <div
               style={{
-                background: "linear-gradient(135deg, rgba(249,115,22,0.1), rgba(234,88,12,0.06))",
+                background:
+                  "linear-gradient(135deg, rgba(249,115,22,0.1), rgba(234,88,12,0.06))",
                 border: "1px solid rgba(249,115,22,0.2)",
                 borderRadius: 12,
                 padding: 24,
@@ -390,12 +465,16 @@ export default function WallPrintSpotlight() {
                   marginBottom: 16,
                 }}
               >
-                Orice perete devine o operă vizuală în câteva ore — fără autocolante, fără
-                compromisuri.
+                Orice perete devine o operă vizuală în câteva ore — fără
+                autocolante, fără compromisuri.
               </p>
-              <button className="btn-outline" style={{ fontSize: 13, padding: "10px 20px" }}>
+              <Link
+                href="/contact"
+                className="btn-outline"
+                style={{ fontSize: 13, padding: "10px 20px" }}
+              >
                 Consultanță gratuită →
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
 const CARDS = [
@@ -62,7 +63,7 @@ export default function ServiciiGrid() {
                   <span key={ch} style={{ fontSize: 11, background: "#1E1E1E", color: "var(--text-secondary)", border: "1px solid var(--bg-border)", borderRadius: 5, padding: "3px 9px" }}>{ch}</span>
                 ))}
               </div>
-              <button className="btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>Cere ofertă →</button>
+              <Link href="/contact" className="btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>Cere ofertă →</Link>
             </div>
           ))}
         </div>

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
 const steps = [
@@ -161,7 +162,7 @@ export default function Process() {
             transition: "opacity 0.7s 0.7s",
           }}
         >
-          <button className="btn-primary">Începe proiectul →</button>
+          <Link href="/contact" className="btn-primary">Începe proiectul →</Link>
         </div>
       </div>
     </section>

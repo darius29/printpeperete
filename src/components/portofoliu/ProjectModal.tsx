@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Project } from "@/lib/data/projects";
 
@@ -180,9 +181,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* CTAs */}
           <div style={{ display: "flex", gap: 12 }}>
-            <button className="btn-primary" style={{ flex: 1, justifyContent: "center" }}>
+            <Link href="/contact" className="btn-primary" style={{ flex: 1, justifyContent: "center" }}>
               Cere ofertă similară →
-            </button>
+            </Link>
             <button className="btn-outline" style={{ justifyContent: "center" }} onClick={onClose}>
               Închide
             </button>

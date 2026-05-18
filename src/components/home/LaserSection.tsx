@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
@@ -171,7 +172,7 @@ export default function LaserSection() {
               ))}
             </div>
 
-            <button className="btn-primary">Cere ofertă gravare laser →</button>
+            <Link href="/contact" className="btn-primary">Cere ofertă gravare laser →</Link>
           </div>
 
           {/* Right */}

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import GrainOverlay from "@/components/ui/GrainOverlay";
 
@@ -237,8 +238,8 @@ export default function Hero() {
               animation: "fadeUp 0.9s 0.45s both",
             }}
           >
-            <button className="btn-primary">Cere ofertă personalizată →</button>
-            <button className="btn-outline">↳ Vezi portofoliul</button>
+            <Link href="/contact" className="btn-primary">Cere ofertă personalizată →</Link>
+            <Link href="/portofoliu" className="btn-outline">↳ Vezi portofoliul</Link>
           </div>
 
           {/* Inline specs */}

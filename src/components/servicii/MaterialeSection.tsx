@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 
 const TABS = [
@@ -90,7 +91,7 @@ export default function MaterialeSection() {
         </div>
       </div>
       <div style={{ textAlign: "center", opacity: inView ? 1 : 0, transition: "opacity .7s .35s" }}>
-        <button className="btn-primary">Cere ofertă gravare laser →</button>
+        <Link href="/contact" className="btn-primary">Cere ofertă gravare laser →</Link>
       </div>
     </section>
   );
