@@ -23,7 +23,7 @@ export default function PortofoliuHero() {
       {/* Background */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.07) 0%, transparent 65%), var(--bg-base, #0C0C0C)",
+        background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.17) 0%, transparent 65%), var(--bg-void, #0C0C0C)",
       }} />
 
       {/* Grain overlay */}
