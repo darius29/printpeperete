@@ -6,7 +6,7 @@ export default function ServiciiHero() {
     <section className="hero-pad-xl" style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}>
       <div style={{
         position: "absolute", inset: 0,
-        background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.07) 0%, transparent 65%), var(--bg-void)",
+        background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(249,115,22,.17) 0%, transparent 65%), var(--bg-void)",
       }} />
       <GrainOverlay />
       <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>

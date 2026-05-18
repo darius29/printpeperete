@@ -26,7 +26,7 @@ export default function MaterialeSection() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section-80" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 50% 60% at 100% 0%, rgba(249,115,22,0.07) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 0% 100%, rgba(139,92,246,0.04) 0%, transparent 55%)" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section-80" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 50% 60% at 100% 0%, rgba(249,115,22,0.15) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 0% 100%, rgba(249,115,22,0.08) 0%, transparent 55%)" }}>
       <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(24px)", transition: "opacity .7s, transform .7s", marginBottom: 48 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
           <div style={{ width: 32, height: 2, background: "var(--accent)" }} />
