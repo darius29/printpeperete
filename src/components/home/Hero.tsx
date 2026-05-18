@@ -33,11 +33,11 @@ function useTypewriter(words: string[], speed = 80, pause = 2000) {
 
 export default function Hero() {
   const rotatingWords = [
-    "pereților",
-    "spațiilor",
-    "brandurilor",
-    "showroom-urilor",
-    "birourilor",
+    "pereți",
+    "spații",
+    "branduri",
+    "showroom-uri",
+    "birouri",
   ];
   const word = useTypewriter(rotatingWords, 75, 2200);
 
@@ -97,7 +97,7 @@ export default function Hero() {
           inset: 0,
           zIndex: 1,
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.80) 100%), radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249,115,22,0.12) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 80% 50%, rgba(234,88,12,0.07) 0%, transparent 60%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.80) 100%), radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249,115,22,0.22) 0%, transparent 65%), radial-gradient(ellipse 60% 80% at 80% 50%, rgba(234,88,12,0.14) 0%, transparent 60%)",
         }}
       />
 
@@ -238,8 +238,12 @@ export default function Hero() {
               animation: "fadeUp 0.9s 0.45s both",
             }}
           >
-            <Link href="/contact" className="btn-primary">Cere ofertă personalizată →</Link>
-            <Link href="/portofoliu" className="btn-outline">↳ Vezi portofoliul</Link>
+            <Link href="/contact" className="btn-primary">
+              Cere ofertă personalizată →
+            </Link>
+            <Link href="/portofoliu" className="btn-outline">
+              ↳ Vezi portofoliul
+            </Link>
           </div>
 
           {/* Inline specs */}

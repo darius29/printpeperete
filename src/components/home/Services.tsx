@@ -38,7 +38,7 @@ export default function Services() {
       className="resp-section"
       style={{
         position: "relative",
-        background: "radial-gradient(ellipse 50% 60% at 0% 0%, rgba(249,115,22,0.07) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 100% 100%, rgba(249,115,22,0.04) 0%, transparent 55%)",
+        background: "radial-gradient(ellipse 50% 60% at 0% 0%, rgba(249,115,22,0.15) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 100% 100%, rgba(249,115,22,0.09) 0%, transparent 55%)",
       }}
     >
       <div

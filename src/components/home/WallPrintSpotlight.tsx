@@ -14,16 +14,20 @@ const advantages = [
 ];
 
 const surfaces = [
-  { id: "perete", label: "Pereți tencuiți / gletuiți", img: "" },
-  { id: "lemn", label: "Lemn și MDF", img: "/assets/surfaces/lemn.jpg" },
-  { id: "sticla", label: "Sticlă", img: "/assets/surfaces/sticla.jpg" },
-  { id: "metal", label: "Metal", img: "/assets/surfaces/metal.jpg" },
+  {
+    id: "perete",
+    label: "Pereți tencuiți / gletuiți",
+    img: "/assets/surfaces/perete.png",
+  },
+  { id: "lemn", label: "Lemn și MDF", img: "/assets/surfaces/lemn.png" },
+  { id: "sticla", label: "Sticlă", img: "/assets/surfaces/sticla.png" },
+  { id: "metal", label: "Metal", img: "/assets/surfaces/metal.png" },
   {
     id: "plastic",
     label: "Plastic rigid",
-    img: "/assets/surfaces/plastic.jpg",
+    img: "/assets/surfaces/plastic.png",
   },
-  { id: "beton", label: "Beton", img: "/assets/surfaces/beton.jpg" },
+  { id: "beton", label: "Beton", img: "/assets/surfaces/beton.png" },
 ];
 
 const specs = [
@@ -56,7 +60,7 @@ export default function WallPrintSpotlight() {
       className="resp-section"
       style={{
         background:
-          "radial-gradient(ellipse 55% 50% at 0% 100%, rgba(249,115,22,0.09) 0%, transparent 65%), radial-gradient(ellipse 45% 55% at 100% 0%, rgba(249,115,22,0.05) 0%, transparent 60%), #0a0a0a",
+          "radial-gradient(ellipse 55% 50% at 0% 100%, rgba(249,115,22,0.18) 0%, transparent 65%), radial-gradient(ellipse 45% 55% at 100% 0%, rgba(249,115,22,0.11) 0%, transparent 60%), #0a0a0a",
         borderTop: "1px solid #1a1a1a",
         borderBottom: "1px solid #1a1a1a",
         padding: "96px 40px",
@@ -300,7 +304,7 @@ export default function WallPrintSpotlight() {
                 borderRadius: 12,
                 overflow: "hidden",
                 border: "1px solid var(--bg-border)",
-                height: 260,
+                height: 385,
                 animation: "fadeIn 0.3s ease",
                 position: "relative",
               }}
