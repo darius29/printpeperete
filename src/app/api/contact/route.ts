@@ -48,6 +48,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Câmpuri obligatorii lipsă" }, { status: 400 });
   }
 
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ error: "Adresă de email invalidă" }, { status: 400 });
+  }
+
   const businessHtml = `
     <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#0C0C0C;color:#fff;padding:32px;border-radius:12px;">
       <div style="border-bottom:2px solid #F97316;padding-bottom:16px;margin-bottom:24px;">

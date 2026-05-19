@@ -286,14 +286,19 @@ export default function ContactForm() {
               </label>
               <input
                 id={`cf-${k}`}
+                type={k === "phone" ? "tel" : "text"}
                 className={getInputClass(k as keyof FormErrors)}
                 placeholder={ph}
                 value={form[k]}
                 onChange={(e) => set(k, e.target.value)}
                 onBlur={() => validateField(k as keyof FormErrors)}
+                aria-invalid={!!errors[k as keyof FormErrors]}
+                aria-describedby={errors[k as keyof FormErrors] ? `cf-${k}-error` : undefined}
               />
               {errors[k as keyof FormErrors] && (
                 <span
+                  id={`cf-${k}-error`}
+                  role="alert"
                   style={{
                     fontSize: 11,
                     color: "#EF4444",
@@ -325,14 +330,19 @@ export default function ContactForm() {
           </label>
           <input
             id="cf-email"
+            type="email"
             className={getInputClass("email")}
             placeholder="email@firma.ro"
             value={form.email}
             onChange={(e) => set("email", e.target.value)}
             onBlur={() => validateField("email")}
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "cf-email-error" : undefined}
           />
           {errors.email && (
             <span
+              id="cf-email-error"
+              role="alert"
               style={{
                 fontSize: 11,
                 color: "#EF4444",
@@ -367,6 +377,8 @@ export default function ContactForm() {
             value={form.service}
             onChange={(e) => set("service", e.target.value)}
             onBlur={() => validateField("service")}
+            aria-invalid={!!errors.service}
+            aria-describedby={errors.service ? "cf-service-error" : undefined}
           >
             <option value="">Selectează serviciul...</option>
             <option>Wall Print UV</option>
@@ -378,6 +390,8 @@ export default function ContactForm() {
           </select>
           {errors.service && (
             <span
+              id="cf-service-error"
+              role="alert"
               style={{
                 fontSize: 11,
                 color: "#EF4444",
@@ -437,9 +451,13 @@ export default function ContactForm() {
             value={form.message}
             onChange={(e) => set("message", e.target.value)}
             onBlur={() => validateField("message")}
+            aria-invalid={!!errors.message}
+            aria-describedby={errors.message ? "cf-message-error" : undefined}
           />
           {errors.message && (
             <span
+              id="cf-message-error"
+              role="alert"
               style={{
                 fontSize: 11,
                 color: "#EF4444",

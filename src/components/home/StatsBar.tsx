@@ -22,36 +22,43 @@ function StatItem({ target, suffix, label, index, inView }: {
     <div
       className={`stat-item fade-up stagger-${index + 1} ${inView ? "is-visible" : ""}`}
       style={{
-        padding: "36px 24px",
-        textAlign: "center",
+        padding: "40px 28px 36px",
         borderRight: index < 3 ? "1px solid var(--bg-border)" : "none",
       }}
     >
       <div
-        className="stat-num"
         style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 48,
-          lineHeight: 1,
-          letterSpacing: "0.02em",
-          background: "linear-gradient(135deg, #F97316, #EA580C)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}
-      >
-        {val}{suffix}
-      </div>
-      <div
-        style={{
-          fontSize: 12,
+          fontSize: 10,
           color: "var(--text-tertiary)",
-          marginTop: 6,
-          fontWeight: 500,
-          letterSpacing: "0.04em",
-          textTransform: "uppercase",
+          textTransform: "uppercase" as const,
+          letterSpacing: "0.1em",
+          fontFamily: "var(--font-ui)",
+          fontWeight: 600,
+          marginBottom: 10,
         }}
       >
         {label}
+      </div>
+      <div
+        style={{
+          width: 24,
+          height: 1,
+          background: "var(--accent)",
+          marginBottom: 14,
+          opacity: 0.55,
+        }}
+      />
+      <div
+        className="stat-num"
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: 72,
+          lineHeight: 0.9,
+          letterSpacing: "0.01em",
+          color: "var(--accent)",
+        }}
+      >
+        {val}{suffix}
       </div>
     </div>
   );

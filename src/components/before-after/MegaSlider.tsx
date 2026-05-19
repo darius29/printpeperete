@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useCallback, useEffect } from "react";
+import { useRef, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import type { BeforeAfterItem } from "@/lib/data/beforeAfter";
 import { useInView } from "@/hooks/useInView";
@@ -19,6 +19,7 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
   const rafId = useRef<number>(0);
   const currentPct = useRef(40);
   const hintPlayed = useRef(false);
+  const [focused, setFocused] = useState(false);
 
   const applyPos = useCallback((pct: number) => {
     const clamped = Math.max(0, Math.min(100, pct));
@@ -109,6 +110,8 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
         onTouchStart={(e) => { dragging.current = true; e.preventDefault(); }}
         onTouchMove={(e) => { if (dragging.current) onMove(e.touches[0].clientX); }}
         onTouchEnd={() => { dragging.current = false; }}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
         onKeyDown={(e) => {
           if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
             e.preventDefault();
@@ -125,7 +128,7 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
           }
         }}
         className="ba-slider"
-        style={{ position: "relative", height: 420, cursor: "ew-resize", userSelect: "none", borderRadius: 16, overflow: "hidden", border: "1px solid var(--bg-border)", touchAction: "none", outline: "none" }}
+        style={{ position: "relative", height: 420, cursor: "ew-resize", userSelect: "none", borderRadius: 16, overflow: "hidden", border: "1px solid var(--bg-border)", touchAction: "none", outline: focused ? "2px solid var(--accent)" : "none", outlineOffset: "3px" }}
       >
         {/* BEFORE */}
         <div style={{ position: "absolute", inset: 0 }}>
