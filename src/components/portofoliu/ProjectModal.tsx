@@ -163,7 +163,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
 
           {/* Stats row */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, marginBottom: 24 }} className="grid-3-modal-stats">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 10, marginBottom: 24 }} className="grid-3-modal-stats">
             {detailStats.map((s) => (
               <div key={s.label} style={{ background: "#1E1E1E", borderRadius: 10, padding: "14px 16px" }}>
                 <div style={{ fontSize: 18, marginBottom: 4 }}>{s.icon}</div>

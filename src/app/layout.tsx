@@ -38,7 +38,7 @@ export default function RootLayout({
         <LocalBusinessSchema />
         <meta name="theme-color" content="#0C0C0C" />
       </head>
-      <body style={{ background: "#0C0C0C" }}>
+      <body style={{ background: "var(--bg-void)" }}>
         <a href="#main-content" className="sr-only-focusable">Sari la conținut</a>
         <Nav />
         <main id="main-content">{children}</main>

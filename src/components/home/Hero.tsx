@@ -200,7 +200,7 @@ export default function Hero() {
               style={{
                 color: "var(--accent)",
                 display: "inline-block",
-                minWidth: 420,
+                minWidth: "min(420px, 100%)",
               }}
             >
               {word}

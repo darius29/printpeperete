@@ -129,7 +129,7 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
         style={{
           position: "fixed", top: 0, right: 0, bottom: 0,
           width: "min(420px, 92vw)", zIndex: 151,
-          background: "#0C0C0C",
+          background: "var(--bg-void)",
           borderLeft: "1px solid #2A2A2A",
           display: "flex", flexDirection: "column",
           animation: closing ? "panelOut .32s cubic-bezier(0.55,0,1,0.45) both" : "panelIn .35s cubic-bezier(0.25,0.46,0.45,0.94) both",

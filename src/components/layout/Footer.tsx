@@ -12,7 +12,7 @@ export default function Footer() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div className="grid-footer" style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
           <div>
-            <div style={{ fontFamily: "var(--font-display)", fontSize: 22, letterSpacing: "0.06em", marginBottom: 10 }}>SDG <span style={{ color: "var(--accent)" }}>PRINT</span> & Design</div>
+            <Link href="/" style={{ fontFamily: "var(--font-display)", fontSize: 22, letterSpacing: "0.06em", marginBottom: 10, textDecoration: "none", color: "inherit", display: "inline-block" }}>SDG <span style={{ color: "var(--accent)" }}>PRINT</span> & Design</Link>
             <p style={{ fontSize: 13, color: "var(--text-tertiary)", lineHeight: 1.7, maxWidth: 240 }}>Print UV direct pe perete și gravare laser CO₂ în Timișoara și toată România.</p>
           </div>
           {COLS.map((col) => (
