@@ -27,8 +27,9 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
     if (afterRef.current) {
       afterRef.current.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
     }
-    if (handleRef.current) {
-      handleRef.current.style.left = `${clamped}%`;
+    if (handleRef.current && containerRef.current) {
+      const w = containerRef.current.offsetWidth;
+      handleRef.current.style.transform = `translateX(${(w * clamped / 100) - 1}px)`;
     }
     if (containerRef.current) {
       containerRef.current.setAttribute("aria-valuenow", String(Math.round(clamped)));
@@ -45,6 +46,18 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
     cancelAnimationFrame(rafId.current);
     rafId.current = requestAnimationFrame(() => applyPos(getPos(clientX)));
   }, [applyPos, getPos]);
+
+  // Set handle position in pixels so transform (not left) drives movement
+  useEffect(() => {
+    const setHandlePos = () => {
+      if (!containerRef.current || !handleRef.current) return;
+      const w = containerRef.current.offsetWidth;
+      handleRef.current.style.transform = `translateX(${(w * currentPct.current / 100) - 1}px)`;
+    };
+    setHandlePos();
+    window.addEventListener("resize", setHandlePos, { passive: true });
+    return () => window.removeEventListener("resize", setHandlePos);
+  }, []);
 
   useEffect(() => {
     if (!inView || hintPlayed.current) return;
@@ -151,7 +164,7 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
         {/* Vertical divider handle */}
         <div
           ref={handleRef}
-          style={{ position: "absolute", top: 0, bottom: 0, left: "40%", width: 2, background: "var(--accent)", transform: "translateX(-50%)", zIndex: 10, willChange: "left" }}
+          style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: 2, background: "var(--accent)", zIndex: 10, willChange: "transform" }}
         >
           <div style={{
             position: "absolute",
