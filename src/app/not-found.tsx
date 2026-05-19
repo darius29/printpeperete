@@ -21,9 +21,7 @@ export default function NotFound() {
             fontSize: "clamp(100px, 20vw, 160px)",
             letterSpacing: "0.05em",
             lineHeight: 1,
-            background: "linear-gradient(135deg, #F97316, #EA580C)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: "var(--accent)",
             marginBottom: 8,
           }}
         >
@@ -45,7 +43,7 @@ export default function NotFound() {
         <p
           style={{
             fontSize: 15,
-            color: "#9CA3AF",
+            color: "var(--text-secondary)",
             lineHeight: 1.7,
             marginBottom: 40,
           }}
@@ -68,7 +66,7 @@ export default function NotFound() {
           style={{
             marginTop: 48,
             paddingTop: 32,
-            borderTop: "1px solid #2A2A2A",
+            borderTop: "1px solid var(--bg-border)",
             display: "flex",
             gap: 24,
             justifyContent: "center",
@@ -84,9 +82,9 @@ export default function NotFound() {
             <Link
               key={l.href}
               href={l.href}
-              style={{ fontSize: 13, color: "#6B7280", textDecoration: "none" }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#F97316")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#6B7280")}
+              style={{ fontSize: 13, color: "var(--text-tertiary)", textDecoration: "none" }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--accent)")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)")}
             >
               {l.label}
             </Link>

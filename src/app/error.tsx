@@ -34,9 +34,7 @@ export default function Error({
             fontSize: "clamp(100px, 20vw, 160px)",
             letterSpacing: "0.05em",
             lineHeight: 1,
-            background: "linear-gradient(135deg, #EF4444, #B91C1C)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: "var(--error)",
             marginBottom: 8,
           }}
         >
