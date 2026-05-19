@@ -13,7 +13,7 @@ export default function PortofoliuCTA() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div className="glow-pulse-border cta-card" style={{
           background: "radial-gradient(ellipse 140% 90% at 50% 50%, rgba(249,115,22,.14) 0%, transparent 65%), linear-gradient(135deg, var(--bg-surface), #1c1408)",
-          border: "1px solid #2A2A2A",
+          border: "1px solid var(--bg-border)",
           borderRadius: 20,
           padding: "64px 56px",
           textAlign: "center",
@@ -65,7 +65,7 @@ export default function PortofoliuCTA() {
             <div style={{ marginTop: 28, display: "flex", justifyContent: "center", gap: 28, flexWrap: "wrap" }}>
               {trustPoints.map((t) => (
                 <div key={t} style={{ fontSize: 13, color: "#6B7280", display: "flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ color: "#22C55E" }}>✓</span>{t}
+                  <span style={{ color: "var(--success)" }}>✓</span>{t}
                 </div>
               ))}
             </div>

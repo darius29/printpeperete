@@ -47,7 +47,7 @@ export default function ServiceCard({ icon, tag, title, desc, chips, inView, del
       <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.65, marginBottom: 18 }}>{desc}</p>
       <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6, marginBottom: 20 }}>
         {chips.map(chip => (
-          <span key={chip} style={{ fontSize: 11, background: "#1E1E1E", color: "var(--text-secondary)", border: "1px solid var(--bg-border)", borderRadius: 5, padding: "3px 9px" }}>{chip}</span>
+          <span key={chip} style={{ fontSize: 11, background: "var(--bg-elevated)", color: "var(--text-secondary)", border: "1px solid var(--bg-border)", borderRadius: 5, padding: "3px 9px" }}>{chip}</span>
         ))}
       </div>
       <Link href="/contact" className="btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>Cere ofertă →</Link>

@@ -70,7 +70,7 @@ export default function ProjectCard({ project, index, onClick, inView }: Project
               <span key={t} style={{
                 fontSize: 10,
                 background: "rgba(249,115,22,.2)",
-                color: "#F97316",
+                color: "var(--accent)",
                 border: "1px solid rgba(249,115,22,.3)",
                 borderRadius: 4,
                 padding: "2px 8px",
@@ -105,7 +105,7 @@ export default function ProjectCard({ project, index, onClick, inView }: Project
         borderRadius: 6,
         padding: "4px 10px",
         fontSize: 10,
-        color: "#9CA3AF",
+        color: "var(--text-secondary)",
         fontWeight: 500,
       }}>
         {project.service}

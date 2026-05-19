@@ -5,7 +5,7 @@ import { Mail, MessageCircle, Phone, X } from "lucide-react";
 const ACTIONS = [
   { icon: <Mail size={20} />, label: "Cere ofertă", bg: "var(--accent)", href: "/contact" },
   { icon: <MessageCircle size={20} />, label: "WhatsApp", bg: "#25D366", href: "https://wa.me/40779281047", external: true },
-  { icon: <Phone size={20} />, label: "Sună acum", bg: "#1E1E1E", href: "tel:0779281047" },
+  { icon: <Phone size={20} />, label: "Sună acum", bg: "var(--bg-elevated)", href: "tel:0779281047" },
 ];
 
 export default function WAWidget() {

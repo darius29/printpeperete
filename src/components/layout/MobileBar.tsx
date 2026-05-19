@@ -2,7 +2,7 @@
 import { Phone, MessageCircle, Mail } from "lucide-react";
 
 const BUTTONS = [
-  { icon: <Phone size={18} />, label: "Sună acum", bg: "#1E1E1E", href: "tel:0779281047" },
+  { icon: <Phone size={18} />, label: "Sună acum", bg: "var(--bg-elevated)", href: "tel:0779281047" },
   { icon: <MessageCircle size={18} />, label: "WhatsApp", bg: "#25D366", href: "https://wa.me/40779281047" },
   { icon: <Mail size={18} />, label: "Cere ofertă", bg: "var(--accent)", href: "/contact" },
 ];

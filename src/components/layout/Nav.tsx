@@ -25,7 +25,7 @@ function BurgerButton({ open, onClick }: { open: boolean; onClick: () => void })
         display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
         background: open ? "rgba(249,115,22,.08)" : "transparent",
-        border: `1px solid ${open ? "#F97316" : "#2A2A2A"}`,
+        border: `1px solid ${open ? "var(--accent)" : "var(--bg-border)"}`,
         borderRadius: 10, cursor: "pointer", padding: 10,
         transition: "border-color .2s, background .2s",
         flexShrink: 0,
@@ -40,7 +40,7 @@ function BurgerButton({ open, onClick }: { open: boolean; onClick: () => void })
         marginBottom: 5,
       }} />
       <span style={{
-        display: "block", height: 2, background: "#F97316",
+        display: "block", height: 2, background: "var(--accent)",
         borderRadius: 2, transformOrigin: "center",
         animation: open
           ? "line2Open .2s ease both"
@@ -130,7 +130,7 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
           position: "fixed", top: 0, right: 0, bottom: 0,
           width: "min(420px, 92vw)", zIndex: 151,
           background: "var(--bg-void)",
-          borderLeft: "1px solid #2A2A2A",
+          borderLeft: "1px solid var(--bg-border)",
           display: "flex", flexDirection: "column",
           animation: closing ? "panelOut .32s cubic-bezier(0.55,0,1,0.45) both" : "panelIn .35s cubic-bezier(0.25,0.46,0.45,0.94) both",
           overflowY: "auto",
@@ -149,14 +149,14 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
         {/* Panel Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "20px 24px", borderBottom: "1px solid #1a1a1a", position: "relative", flexShrink: 0 }}>
           <Link href="/" onClick={onClose} style={{ fontFamily: "var(--font-display)", fontSize: 20, letterSpacing: "0.06em", textDecoration: "none", color: "#fff" }}>
-            SDG <span style={{ color: "#F97316" }}>PRINT</span> & Design
+            SDG <span style={{ color: "var(--accent)" }}>PRINT</span> & Design
           </Link>
           <button
             onClick={onClose}
             aria-label="Închide meniu"
-            style={{ width: 36, height: 36, borderRadius: 9, background: "#1E1E1E", border: "1px solid #2A2A2A", color: "#9CA3AF", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1, transition: "all .2s" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "#2A2A2A"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "#1E1E1E"; (e.currentTarget as HTMLButtonElement).style.color = "#9CA3AF"; }}
+            style={{ width: 36, height: 36, borderRadius: 9, background: "var(--bg-elevated)", border: "1px solid var(--bg-border)", color: "var(--text-secondary)", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1, transition: "all .2s" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "var(--bg-border)"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "var(--bg-elevated)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"; }}
           >×</button>
         </div>
 
@@ -175,15 +175,15 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 24px", borderBottom: "1px solid #111" }}>
                   <div className="mob-link-inner" style={{ flex: 1 }}>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontFamily: "var(--font-display)", fontSize: 26, letterSpacing: "0.03em", color: isActive ? "#F97316" : "#fff", lineHeight: 1.1, transition: "color .2s" }}>
+                      <div style={{ fontFamily: "var(--font-display)", fontSize: 26, letterSpacing: "0.03em", color: isActive ? "var(--accent)" : "#fff", lineHeight: 1.1, transition: "color .2s" }}>
                         {l.label}
                       </div>
                       <div style={{ fontSize: 11, color: "#4B5563", marginTop: 3, lineHeight: 1.4 }}>{l.desc}</div>
                     </div>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    {isActive && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#F97316", boxShadow: "0 0 8px #F97316", flexShrink: 0 }} />}
-                    <span style={{ fontSize: 16, color: isActive ? "#F97316" : "#2A2A2A", transition: "color .2s" }}>→</span>
+                    {isActive && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent)", boxShadow: "0 0 8px var(--accent)", flexShrink: 0 }} />}
+                    <span style={{ fontSize: 16, color: isActive ? "var(--accent)" : "var(--bg-border)", transition: "color .2s" }}>→</span>
                   </div>
                 </div>
               </Link>
@@ -195,13 +195,13 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
         <div style={{ padding: "20px 24px", borderTop: "1px solid #1a1a1a", flexShrink: 0, animation: "linkIn .4s .45s both" }}>
           <Link href="/contact" onClick={onClose} style={{
             display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-            background: "#F97316", color: "#fff", textDecoration: "none",
+            background: "var(--accent)", color: "#fff", textDecoration: "none",
             borderRadius: 10, padding: "15px 20px", fontSize: 15, fontWeight: 700,
             fontFamily: "var(--font-ui)", marginBottom: 10,
             animation: "pulse-ring 2.5s infinite", transition: "background .2s",
           }}
-            onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#EA580C"; el.style.animation = "none"; }}
-            onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "#F97316"; el.style.animation = "pulse-ring 2.5s infinite"; }}
+            onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "var(--accent-deep)"; el.style.animation = "none"; }}
+            onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "var(--accent)"; el.style.animation = "pulse-ring 2.5s infinite"; }}
           >
             Cere ofertă personalizată →
           </Link>
@@ -224,20 +224,20 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
           <div style={{ fontSize: 10, color: "#4B5563", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 14, fontWeight: 500 }}>Contact rapid</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {([
-              { icon: <Phone size={14} />, label: "0779 281 047", href: "tel:0779281047", color: "#22C55E" },
-              { icon: <Mail size={14} />, label: "contact@printpeperete.com", href: "mailto:contact@printpeperete.com", color: "#3B82F6" },
-              { icon: <MapPin size={14} />, label: "Timișoara, România", href: null as string | null, color: "#F97316" },
+              { icon: <Phone size={14} />, label: "0779 281 047", href: "tel:0779281047", color: "var(--success)" },
+              { icon: <Mail size={14} />, label: "contact@printpeperete.com", href: "mailto:contact@printpeperete.com", color: "var(--info)" },
+              { icon: <MapPin size={14} />, label: "Timișoara, România", href: null as string | null, color: "var(--accent)" },
             ]).map(c => (
               <div key={c.label}>
                 {c.href ? (
                   <a href={c.href} style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
                     <span style={{ width: 32, height: 32, borderRadius: 8, background: `${c.color}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: c.color }}>{c.icon}</span>
-                    <span style={{ fontSize: 13, color: "#9CA3AF", fontFamily: "var(--font-ui)" }}>{c.label}</span>
+                    <span style={{ fontSize: 13, color: "var(--text-secondary)", fontFamily: "var(--font-ui)" }}>{c.label}</span>
                   </a>
                 ) : (
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <span style={{ width: 32, height: 32, borderRadius: 8, background: `${c.color}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: c.color }}>{c.icon}</span>
-                    <span style={{ fontSize: 13, color: "#9CA3AF" }}>{c.label}</span>
+                    <span style={{ fontSize: 13, color: "var(--text-secondary)" }}>{c.label}</span>
                   </div>
                 )}
               </div>
@@ -251,11 +251,11 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
             <div>
               <div style={{ fontSize: 10, color: "#4B5563", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6, fontWeight: 500 }}>Program</div>
               <div style={{ fontSize: 12, color: "#6B7280" }}>
-                L–V: <span style={{ color: "#22C55E" }}>09:00–18:00</span> · Sâm: <span style={{ color: "#22C55E" }}>10:00–14:00</span>
+                L–V: <span style={{ color: "var(--success)" }}>09:00–18:00</span> · Sâm: <span style={{ color: "var(--success)" }}>10:00–14:00</span>
               </div>
             </div>
             <div style={{ background: "rgba(34,197,94,.1)", border: "1px solid rgba(34,197,94,.3)", borderRadius: 20, padding: "4px 12px" }}>
-              <span style={{ fontSize: 11, color: "#22C55E", fontWeight: 600 }}>Răspuns 24h</span>
+              <span style={{ fontSize: 11, color: "var(--success)", fontWeight: 600 }}>Răspuns 24h</span>
             </div>
           </div>
         </div>
@@ -337,13 +337,13 @@ export default function Nav() {
             {/* Mobile: phone shortcut */}
             {isMobile && (
               <a href="tel:0779281047" aria-label="Sună acum" style={{
-                width: 40, height: 40, borderRadius: 9, background: "#141414",
-                border: "1px solid #2A2A2A", display: "flex", alignItems: "center",
+                width: 40, height: 40, borderRadius: 9, background: "var(--bg-surface)",
+                border: "1px solid var(--bg-border)", display: "flex", alignItems: "center",
                 justifyContent: "center", textDecoration: "none",
-                transition: "border-color .2s", color: "#22C55E",
+                transition: "border-color .2s", color: "var(--success)",
               }}
-                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "#22C55E"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "#2A2A2A"; }}
+                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--success)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--bg-border)"; }}
               ><Phone size={16} /></a>
             )}
 

@@ -42,7 +42,7 @@ export default function Schedule() {
           <span
             style={{
               fontSize: 13,
-              color: r.active ? "#22C55E" : "#EF4444",
+              color: r.active ? "var(--success)" : "var(--error)",
               fontWeight: 600,
             }}
           >

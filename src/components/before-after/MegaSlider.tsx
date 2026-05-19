@@ -190,7 +190,7 @@ export default function MegaSlider({ item, index }: MegaSliderProps) {
         </div>
 
         {/* Labels */}
-        <div style={{ position: "absolute", top: 16, left: 16, background: "rgba(0,0,0,.7)", backdropFilter: "blur(8px)", borderRadius: 7, padding: "5px 12px", fontSize: 12, color: "#9CA3AF", fontWeight: 600, letterSpacing: "0.06em", zIndex: 5 }}>
+        <div style={{ position: "absolute", top: 16, left: 16, background: "rgba(0,0,0,.7)", backdropFilter: "blur(8px)", borderRadius: 7, padding: "5px 12px", fontSize: 12, color: "var(--text-secondary)", fontWeight: 600, letterSpacing: "0.06em", zIndex: 5 }}>
           ÎNAINTE
         </div>
         <div style={{ position: "absolute", top: 16, right: 16, background: "rgba(249,115,22,.25)", backdropFilter: "blur(8px)", border: "1px solid rgba(249,115,22,.5)", borderRadius: 7, padding: "5px 12px", fontSize: 12, color: "var(--accent)", fontWeight: 700, letterSpacing: "0.06em", zIndex: 5 }}>

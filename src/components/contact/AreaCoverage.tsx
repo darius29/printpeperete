@@ -38,7 +38,7 @@ export default function AreaCoverage() {
             key={county}
             style={{
               fontSize: 11,
-              background: "#1E1E1E",
+              background: "var(--bg-elevated)",
               color: "var(--text-secondary, #9CA3AF)",
               border: "1px solid var(--bg-border, #2A2A2A)",
               borderRadius: 5,

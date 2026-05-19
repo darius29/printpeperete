@@ -150,7 +150,7 @@ export default function PriceCalculator() {
                     key={m}
                     onClick={() => { setMaterial(m); }}
                     style={{
-                      background: material === m ? "rgba(249,115,22,.12)" : "#1E1E1E",
+                      background: material === m ? "rgba(249,115,22,.12)" : "var(--bg-elevated)",
                       color: material === m ? "var(--accent)" : "var(--text-secondary)",
                       border: `1px solid ${material === m ? "var(--accent)" : "var(--bg-border)"}`,
                       borderRadius: 8, padding: "8px 14px", fontSize: 12, fontWeight: 500,
@@ -177,7 +177,7 @@ export default function PriceCalculator() {
                   }}
                   onChange={e => { setQty(Number(e.target.value)); }}
                 />
-                <div style={{ background: "#1E1E1E", border: "1px solid var(--bg-border)", borderRadius: 8, padding: "8px 14px", minWidth: 80, textAlign: "center" }}>
+                <div style={{ background: "var(--bg-elevated)", border: "1px solid var(--bg-border)", borderRadius: 8, padding: "8px 14px", minWidth: 80, textAlign: "center" }}>
                   <span style={{ fontFamily: "var(--font-display)", fontSize: 22, color: "var(--accent)", letterSpacing: "0.02em" }}>{qty}</span>
                   <span style={{ fontSize: 11, color: "#6B7280", marginLeft: 4 }}>{cfg.unit}</span>
                 </div>
@@ -185,7 +185,7 @@ export default function PriceCalculator() {
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 11, color: "#6B7280" }}>Min: {cfg.min} {cfg.unit}</span>
                 {((service === "wall" && qty >= 10) || (service === "textile" && qty >= 10) || (service === "objects" && qty >= 20)) && (
-                  <span style={{ fontSize: 11, color: "#22C55E" }}>✓ Discount cantitate activ</span>
+                  <span style={{ fontSize: 11, color: "var(--success)" }}>✓ Discount cantitate activ</span>
                 )}
                 <span style={{ fontSize: 11, color: "#6B7280" }}>Max: {cfg.max} {cfg.unit}</span>
               </div>
@@ -207,7 +207,7 @@ export default function PriceCalculator() {
                     key={q.k}
                     onClick={() => { setQuality(q.k); }}
                     style={{
-                      background: quality === q.k ? "rgba(249,115,22,.08)" : "#1E1E1E",
+                      background: quality === q.k ? "rgba(249,115,22,.08)" : "var(--bg-elevated)",
                       border: `1px solid ${quality === q.k ? "var(--accent)" : "var(--bg-border)"}`,
                       borderRadius: 10, padding: "14px 12px", cursor: "pointer",
                       fontFamily: "var(--font-dm-sans)", textAlign: "left", transition: "all .2s",
@@ -247,8 +247,8 @@ export default function PriceCalculator() {
               ) : (
                 <div style={{ animation: "fadeUp .4s ease" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
-                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 8px #22C55E" }} />
-                    <span style={{ fontSize: 11, color: "#22C55E", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>Estimare calculată</span>
+                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--success)", boxShadow: "0 0 8px #22C55E" }} />
+                    <span style={{ fontSize: 11, color: "var(--success)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>Estimare calculată</span>
                   </div>
                   {/* Summary */}
                   <div style={{ background: "var(--bg-void)", borderRadius: 10, padding: 16, marginBottom: 20 }}>
@@ -279,8 +279,8 @@ export default function PriceCalculator() {
                     )}
                     {((service === "wall" && qty >= 10) || (service === "textile" && qty >= 10) || (service === "objects" && qty >= 20) || (service === "laser" && qty >= 20)) && (
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <span style={{ fontSize: 13, color: "#22C55E" }}>Discount cantitate</span>
-                        <span style={{ fontSize: 14, color: "#22C55E", fontWeight: 600 }}>-{qty >= 50 ? "18%" : qty >= 20 ? "12%" : "7%"}</span>
+                        <span style={{ fontSize: 13, color: "var(--success)" }}>Discount cantitate</span>
+                        <span style={{ fontSize: 14, color: "var(--success)", fontWeight: 600 }}>-{qty >= 50 ? "18%" : qty >= 20 ? "12%" : "7%"}</span>
                       </div>
                     )}
                     <div style={{ height: 1, background: "var(--bg-border)", margin: "4px 0" }} />

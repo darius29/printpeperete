@@ -44,8 +44,8 @@ export default function PortofoliuHero() {
               background: "rgba(249,115,22,.1)", border: "1px solid rgba(249,115,22,.25)",
               borderRadius: 20, padding: "6px 18px", marginBottom: 28,
             }}>
-              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#F97316", boxShadow: "0 0 8px #F97316", display: "inline-block" }} />
-              <span style={{ fontSize: 12, color: "#F97316", fontWeight: 600, letterSpacing: "0.04em" }}>
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)", boxShadow: "0 0 8px var(--accent)", display: "inline-block" }} />
+              <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 600, letterSpacing: "0.04em" }}>
                 Proiecte reale · Clienți mulțumiți
               </span>
             </div>
@@ -70,7 +70,7 @@ export default function PortofoliuHero() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, animation: "fadeIn .9s .4s both" }}>
             {stats.map((s) => (
               <div key={s.label} className="porto-stat-card" style={{
-                background: "#141414",
+                background: "var(--bg-surface)",
                 border: `1px solid ${s.color}22`,
                 borderRadius: 12,
                 padding: "16px 18px",

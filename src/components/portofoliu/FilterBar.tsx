@@ -64,8 +64,8 @@ export default function FilterBar({
             placeholder="Caută proiect, locație, tag..."
             style={{
               width: "100%",
-              background: "#141414",
-              border: "1px solid #2A2A2A",
+              background: "var(--bg-surface)",
+              border: "1px solid var(--bg-border)",
               borderRadius: 8,
               padding: "9px 14px 9px 34px",
               color: "#fff",

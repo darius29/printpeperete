@@ -60,7 +60,7 @@ export default function ServiciiGrid() {
               <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.65, marginBottom: 16 }}>{c.desc}</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 20 }}>
                 {c.chips.map(ch => (
-                  <span key={ch} style={{ fontSize: 11, background: "#1E1E1E", color: "var(--text-secondary)", border: "1px solid var(--bg-border)", borderRadius: 5, padding: "3px 9px" }}>{ch}</span>
+                  <span key={ch} style={{ fontSize: 11, background: "var(--bg-elevated)", color: "var(--text-secondary)", border: "1px solid var(--bg-border)", borderRadius: 5, padding: "3px 9px" }}>{ch}</span>
                 ))}
               </div>
               <Link href="/contact" className="btn-outline" style={{ fontSize: 13, padding: "9px 18px" }}>Cere ofertă →</Link>

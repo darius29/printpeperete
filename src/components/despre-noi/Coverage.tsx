@@ -129,7 +129,7 @@ export default function Coverage() {
                   key={j}
                   style={{
                     fontSize: 12,
-                    background: "#1E1E1E",
+                    background: "var(--bg-elevated)",
                     color: isHighlight ? "var(--accent)" : "var(--text-secondary)",
                     border: isHighlight ? "1px solid rgba(249,115,22,.3)" : "1px solid var(--bg-border)",
                     borderRadius: 6,

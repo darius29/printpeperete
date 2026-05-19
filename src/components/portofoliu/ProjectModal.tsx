@@ -165,7 +165,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Stats row */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 10, marginBottom: 24 }} className="grid-3-modal-stats">
             {detailStats.map((s) => (
-              <div key={s.label} style={{ background: "#1E1E1E", borderRadius: 10, padding: "14px 16px" }}>
+              <div key={s.label} style={{ background: "var(--bg-elevated)", borderRadius: 10, padding: "14px 16px" }}>
                 <div style={{ fontSize: 18, marginBottom: 4 }}>{s.icon}</div>
                 <div style={{ fontSize: 11, color: "var(--text-tertiary)", marginBottom: 2 }}>{s.label}</div>
                 <div style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>{s.val}</div>
@@ -176,7 +176,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Description */}
           <div style={{
             background: "#1a1a1a", borderRadius: 10, padding: "16px 18px",
-            marginBottom: 24, border: "1px solid #2A2A2A",
+            marginBottom: 24, border: "1px solid var(--bg-border)",
           }}>
             <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.75 }}>
               Proiect realizat —{" "}
@@ -192,8 +192,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
             {FEATURES.map((f) => (
               <span key={f} style={{
-                fontSize: 12, background: "#141414", color: "var(--text-secondary)",
-                border: "1px solid #2A2A2A", borderRadius: 6, padding: "5px 12px",
+                fontSize: 12, background: "var(--bg-surface)", color: "var(--text-secondary)",
+                border: "1px solid var(--bg-border)", borderRadius: 6, padding: "5px 12px",
                 display: "flex", alignItems: "center", gap: 5,
               }}>
                 <span style={{ color: "var(--accent)" }}>✓</span>{f}

@@ -46,7 +46,7 @@ export default function ComparisonTable() {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
-              background: "#1E1E1E",
+              background: "var(--bg-elevated)",
               padding: "14px 24px",
             }}
           >

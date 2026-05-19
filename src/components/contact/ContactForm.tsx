@@ -150,7 +150,7 @@ export default function ContactForm() {
       <div
         style={{
           background: "var(--bg-elevated, #141414)",
-          border: "1px solid #22C55E",
+          border: "1px solid var(--success)",
           borderRadius: 20,
           padding: "64px 48px",
           textAlign: "center",
@@ -164,7 +164,7 @@ export default function ContactForm() {
             height: 72,
             borderRadius: "50%",
             background: "rgba(34,197,94,.12)",
-            border: "2px solid #22C55E",
+            border: "2px solid var(--success)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -205,7 +205,7 @@ export default function ContactForm() {
               borderRadius: 10,
               padding: "12px 20px",
               fontSize: 13,
-              color: "#22C55E",
+              color: "var(--success)",
             }}
           >
             Confirmare trimisă pe {form.email}
@@ -301,7 +301,7 @@ export default function ContactForm() {
                   role="alert"
                   style={{
                     fontSize: 11,
-                    color: "#EF4444",
+                    color: "var(--error)",
                     marginTop: 4,
                     display: "block",
                   }}
@@ -345,7 +345,7 @@ export default function ContactForm() {
               role="alert"
               style={{
                 fontSize: 11,
-                color: "#EF4444",
+                color: "var(--error)",
                 marginTop: 4,
                 display: "block",
               }}
@@ -394,7 +394,7 @@ export default function ContactForm() {
               role="alert"
               style={{
                 fontSize: 11,
-                color: "#EF4444",
+                color: "var(--error)",
                 marginTop: 4,
                 display: "block",
               }}
@@ -460,7 +460,7 @@ export default function ContactForm() {
               role="alert"
               style={{
                 fontSize: 11,
-                color: "#EF4444",
+                color: "var(--error)",
                 marginTop: 4,
                 display: "block",
               }}
@@ -504,7 +504,7 @@ export default function ContactForm() {
             }}
             style={{
               border: `1px dashed ${
-                dragging ? "#F97316" : file ? "#22C55E" : "#2A2A2A"
+                dragging ? "var(--accent)" : file ? "var(--success)" : "var(--bg-border)"
               }`,
               borderRadius: 10,
               padding: "20px 16px",
@@ -514,7 +514,7 @@ export default function ContactForm() {
                 ? "rgba(249,115,22,.04)"
                 : file
                 ? "rgba(34,197,94,.04)"
-                : "#0C0C0C",
+                : "var(--bg-void)",
               transition: "all .2s",
               outline: "none",
             }}
@@ -530,7 +530,7 @@ export default function ContactForm() {
             {file ? (
               <div>
                 <div style={{ fontSize: 24, marginBottom: 6 }}>✓</div>
-                <div style={{ fontSize: 13, color: "#22C55E", fontWeight: 600 }}>
+                <div style={{ fontSize: 13, color: "var(--success)", fontWeight: 600 }}>
                   {file.name}
                 </div>
                 <div style={{ fontSize: 11, color: "#6B7280", marginTop: 3 }}>
@@ -544,8 +544,8 @@ export default function ContactForm() {
                   style={{
                     marginTop: 8,
                     background: "none",
-                    border: "1px solid #2A2A2A",
-                    color: "#9CA3AF",
+                    border: "1px solid var(--bg-border)",
+                    color: "var(--text-secondary)",
                     fontSize: 11,
                     padding: "3px 10px",
                     borderRadius: 5,
@@ -574,7 +574,7 @@ export default function ContactForm() {
             )}
           </div>
           {fileError && (
-            <span style={{ fontSize: 11, color: "#EF4444", marginTop: 4, display: "block" }}>
+            <span style={{ fontSize: 11, color: "var(--error)", marginTop: 4, display: "block" }}>
               {fileError}
             </span>
           )}
@@ -589,7 +589,7 @@ export default function ContactForm() {
               borderRadius: 10,
               padding: "12px 16px",
               fontSize: 13,
-              color: "#EF4444",
+              color: "var(--error)",
             }}
           >
             {apiError}
