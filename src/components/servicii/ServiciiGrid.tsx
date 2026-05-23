@@ -17,7 +17,7 @@ export default function ServiciiGrid() {
   const visible = filter === "all" ? CARDS : CARDS.filter(c => c.cat === filter);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section-80" style={{ background: "#0a0a0a", borderTop: "1px solid #1a1a1a", padding: "80px 40px" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section-80 section-divider" style={{ background: "transparent", padding: "80px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(24px)", transition: "opacity .7s, transform .7s", marginBottom: 32, display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
           <div>
@@ -39,7 +39,7 @@ export default function ServiciiGrid() {
                   color: filter === k ? "#fff" : "var(--text-secondary)",
                   border: `1px solid ${filter === k ? "var(--accent)" : "var(--bg-border)"}`,
                   borderRadius: 8, padding: "9px 18px", fontSize: 13, fontWeight: 500, cursor: "pointer",
-                  fontFamily: "var(--font-dm-sans)", transition: "all 0.18s",
+                  fontFamily: "var(--font-dm-sans)", transition: "background 0.18s, color 0.18s, border-color 0.18s",
                 }}
               >{l}</button>
             ))}

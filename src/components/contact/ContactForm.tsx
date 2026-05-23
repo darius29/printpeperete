@@ -515,7 +515,7 @@ export default function ContactForm() {
                 : file
                 ? "rgba(34,197,94,.04)"
                 : "var(--bg-void)",
-              transition: "all .2s",
+              transition: "background .2s, border-color .2s",
               outline: "none",
             }}
           >

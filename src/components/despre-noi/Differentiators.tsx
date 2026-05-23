@@ -47,8 +47,58 @@ export default function Differentiators() {
   const [ref, inView] = useInView(0.08);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section section-divider" style={{ padding: "96px 40px", background: "radial-gradient(ellipse 140% 65% at 25% 35%, rgba(249,115,22,0.13) 0%, transparent 65%), radial-gradient(ellipse 80% 50% at 85% 80%, rgba(249,115,22,0.08) 0%, transparent 55%)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section section-divider"
+      style={{
+        padding: "96px 40px",
+        background: "var(--bg-void)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mov"
+          type="video/quicktime"
+        />
+      </video>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(12,12,12,0.80)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
         <SectionHeader
           label="De ce suntem diferiți"
           title={
@@ -61,7 +111,14 @@ export default function Differentiators() {
           subtitle="Nu toate printurile sunt la fel. Iată ce înseamnă concret tehnologia UV directă pe care o folosim."
           inView={inView}
         />
-        <div className="grid-3-main" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14 }}>
+        <div
+          className="grid-3-main"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3,1fr)",
+            gap: 14,
+          }}
+        >
           {diffs.map((d, i) => (
             <DifferentiatorCard
               key={i}

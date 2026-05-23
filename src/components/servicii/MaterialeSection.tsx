@@ -26,7 +26,8 @@ export default function MaterialeSection() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section-80 section-divider" style={{ padding: "80px 40px", maxWidth: 1200, margin: "0 auto", background: "radial-gradient(ellipse 140% 65% at 65% 25%, rgba(249,115,22,0.13) 0%, transparent 65%)" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section-80 section-divider" style={{ padding: "80px 40px", background: "transparent" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
       <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(24px)", transition: "opacity .7s, transform .7s", marginBottom: 48 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
           <div style={{ width: 32, height: 2, background: "var(--accent)" }} />
@@ -48,7 +49,7 @@ export default function MaterialeSection() {
               color: activeTab === i ? "var(--accent)" : "var(--text-secondary)",
               border: `1px solid ${activeTab === i ? "rgba(249,115,22,.3)" : "transparent"}`,
               borderRadius: 7, padding: "8px 16px", fontSize: 12, fontWeight: 500,
-              cursor: "pointer", fontFamily: "var(--font-dm-sans)", transition: "all 0.18s",
+              cursor: "pointer", fontFamily: "var(--font-dm-sans)", transition: "background 0.18s, color 0.18s, border-color 0.18s",
               whiteSpace: "nowrap",
             }}
           >
@@ -92,6 +93,7 @@ export default function MaterialeSection() {
       </div>
       <div style={{ textAlign: "center", opacity: inView ? 1 : 0, transition: "opacity .7s .35s" }}>
         <Link href="/contact" className="btn-primary">Cere ofertă gravare laser →</Link>
+      </div>
       </div>
     </section>
   );

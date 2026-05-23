@@ -30,10 +30,52 @@ export default function Process() {
       className="resp-section cv-auto section-divider"
       style={{
         padding: "96px 40px",
-        background: "radial-gradient(ellipse 150% 55% at 50% 100%, rgba(249,115,22,0.20) 0%, transparent 65%), radial-gradient(ellipse 80% 30% at 50% 0%, rgba(249,115,22,0.07) 0%, transparent 55%)",
+        background: "var(--bg-void)",
+        position: "relative",
       }}
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mov"
+          type="video/quicktime"
+        />
+      </video>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(12,12,12,0.80)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
         <div
           style={{
             opacity: inView ? 1 : 0,
@@ -52,7 +94,9 @@ export default function Process() {
               marginBottom: 16,
             }}
           >
-            <div style={{ width: 32, height: 2, background: "var(--accent)" }} />
+            <div
+              style={{ width: 32, height: 2, background: "var(--accent)" }}
+            />
             <span
               style={{
                 fontSize: 12,
@@ -64,7 +108,9 @@ export default function Process() {
             >
               Cum funcționează
             </span>
-            <div style={{ width: 32, height: 2, background: "var(--accent)" }} />
+            <div
+              style={{ width: 32, height: 2, background: "var(--accent)" }}
+            />
           </div>
           <h2
             style={{
@@ -88,7 +134,8 @@ export default function Process() {
               margin: "0 auto",
             }}
           >
-            Fiecare etapă este documentată, ca să ai control complet de la brief la livrare.
+            Fiecare etapă este documentată, ca să ai control complet de la brief
+            la livrare.
           </p>
         </div>
 
@@ -133,7 +180,10 @@ export default function Process() {
                 padding: "0 24px",
               }}
             >
-              <div className="step-num" style={{ marginBottom: 24, background: "var(--bg-void)" }}>
+              <div
+                className="step-num"
+                style={{ marginBottom: 24, background: "var(--bg-void)" }}
+              >
                 {s.num}
               </div>
               <h3
@@ -147,7 +197,13 @@ export default function Process() {
               >
                 {s.title}
               </h3>
-              <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.65 }}>
+              <p
+                style={{
+                  fontSize: 14,
+                  color: "var(--text-secondary)",
+                  lineHeight: 1.65,
+                }}
+              >
                 {s.desc}
               </p>
             </div>
@@ -162,7 +218,9 @@ export default function Process() {
             transition: "opacity 0.7s 0.7s",
           }}
         >
-          <Link href="/contact" className="btn-primary">Începe proiectul →</Link>
+          <Link href="/contact" className="btn-primary">
+            Începe proiectul →
+          </Link>
         </div>
       </div>
     </section>

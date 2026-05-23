@@ -8,8 +8,13 @@ const COLS = [
 
 export default function Footer() {
   return (
-    <footer className="footer-wrap" style={{ background: "radial-gradient(ellipse 140% 60% at 50% 0%, rgba(249,115,22,0.16) 0%, transparent 65%), var(--bg-void)", borderTop: "1px solid rgba(249,115,22,0.15)", padding: "48px 40px 32px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+    <footer className="footer-wrap" style={{ background: "var(--bg-void)", borderTop: "1px solid rgba(249,115,22,0.15)", padding: "48px 40px 32px", position: "relative", overflow: "hidden" }}>
+      <video autoPlay muted loop playsInline style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mp4" type="video/mp4" />
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mov" type="video/quicktime" />
+      </video>
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "rgba(12,12,12,0.80)", zIndex: 1, pointerEvents: "none" }} />
+      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 2 }}>
         <div className="grid-footer" style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
           <div>
             <Link href="/" style={{ fontFamily: "var(--font-display)", fontSize: 22, letterSpacing: "0.06em", marginBottom: 10, textDecoration: "none", color: "inherit", display: "inline-block" }}>SDG <span style={{ color: "var(--accent)" }}>PRINT</span> & Design</Link>

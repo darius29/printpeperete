@@ -248,27 +248,21 @@ export default function BeforeAfterPreview() {
       style={{
         padding: "96px 40px",
         position: "relative",
-        background:
-          "radial-gradient(ellipse 140% 65% at 60% 50%, rgba(249,115,22,0.12) 0%, transparent 65%)",
+        overflow: "hidden",
+        background: "var(--bg-void)",
       }}
     >
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 0,
-          pointerEvents: "none",
-          background:
-            "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 20%, transparent 50%, rgba(0,0,0,0.08) 75%, rgba(0,0,0,0.18) 100%)",
-        }}
-      />
+      <video autoPlay muted loop playsInline style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mp4" type="video/mp4" />
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mov" type="video/quicktime" />
+      </video>
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "rgba(12,12,12,0.80)", zIndex: 1, pointerEvents: "none" }} />
       <div
         style={{
           maxWidth: 1200,
           margin: "0 auto",
           position: "relative",
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         <div

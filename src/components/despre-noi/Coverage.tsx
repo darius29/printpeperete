@@ -4,9 +4,27 @@ import { useInView } from "@/hooks/useInView";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const coverageCards = [
-  { icon: "📍", title: "Sediu principal", val: "Timișoara", sub: "județul Timiș", color: "#F97316" },
-  { icon: "🚗", title: "Deplasare wall print", val: "Vest & Centru", sub: "România + național la cerere", color: "#22C55E" },
-  { icon: "📦", title: "Expediere națională", val: "Toată România", sub: "Gravură, obiecte, textile", color: "#3B82F6" },
+  {
+    icon: "📍",
+    title: "Sediu principal",
+    val: "Timișoara",
+    sub: "județul Timiș",
+    color: "#F97316",
+  },
+  {
+    icon: "🚗",
+    title: "Deplasare wall print",
+    val: "Vest & Centru",
+    sub: "România + național la cerere",
+    color: "#22C55E",
+  },
+  {
+    icon: "📦",
+    title: "Expediere națională",
+    val: "Toată România",
+    sub: "Gravură, obiecte, textile",
+    color: "#3B82F6",
+  },
 ];
 
 const judete = [
@@ -31,11 +49,54 @@ export default function Coverage() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section section-divider"
       style={{
-        background: "radial-gradient(ellipse 140% 65% at 50% 50%, rgba(249,115,22,0.11) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 90%, rgba(34,197,94,0.05) 0%, transparent 50%), var(--bg-surface)",
+        background: "var(--bg-surface)",
         padding: "96px 40px",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mov"
+          type="video/quicktime"
+        />
+      </video>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(12,12,12,0.80)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
         <SectionHeader
           label="Zonă de acoperire"
           title={
@@ -94,7 +155,9 @@ export default function Coverage() {
               >
                 {c.val}
               </div>
-              <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>{c.sub}</div>
+              <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
+                {c.sub}
+              </div>
             </div>
           ))}
         </div>
@@ -130,8 +193,12 @@ export default function Coverage() {
                   style={{
                     fontSize: 12,
                     background: "var(--bg-elevated)",
-                    color: isHighlight ? "var(--accent)" : "var(--text-secondary)",
-                    border: isHighlight ? "1px solid rgba(249,115,22,.3)" : "1px solid var(--bg-border)",
+                    color: isHighlight
+                      ? "var(--accent)"
+                      : "var(--text-secondary)",
+                    border: isHighlight
+                      ? "1px solid rgba(249,115,22,.3)"
+                      : "1px solid var(--bg-border)",
                     borderRadius: 6,
                     padding: "5px 12px",
                     fontWeight: isHighlight ? 600 : 400,
@@ -142,9 +209,18 @@ export default function Coverage() {
               );
             })}
           </div>
-          <p style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 16 }}>
-            <strong style={{ color: "#fff" }}>Ai un proiect în altă zonă?</strong> Contactează-ne — evaluăm fiecare
-            proiect individual și găsim cea mai bună soluție logistică.
+          <p
+            style={{
+              fontSize: 13,
+              color: "var(--text-secondary)",
+              marginTop: 16,
+            }}
+          >
+            <strong style={{ color: "#fff" }}>
+              Ai un proiect în altă zonă?
+            </strong>{" "}
+            Contactează-ne — evaluăm fiecare proiect individual și găsim cea mai
+            bună soluție logistică.
           </p>
         </div>
       </div>

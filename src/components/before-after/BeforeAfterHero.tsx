@@ -16,15 +16,51 @@ export default function BeforeAfterHero() {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       className="hero-pad-xl"
-      style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}
+      style={{
+        position: "relative",
+        padding: "140px 40px 80px",
+        overflow: "hidden",
+      }}
     >
-      {/* Background gradient */}
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 150% 90% at 50% 0%, rgba(249,115,22,.22) 0%, transparent 70%), var(--bg-void)" }} />
-      <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", backgroundImage: "repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 4px)" }} />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mov"
+          type="video/quicktime"
+        />
+      </video>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(12,12,12,0.80)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
 
       <div
         style={{
           position: "relative",
+          zIndex: 2,
           maxWidth: 1200,
           margin: "0 auto",
           textAlign: "center",
@@ -34,9 +70,38 @@ export default function BeforeAfterHero() {
         }}
       >
         {/* Badge */}
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(249,115,22,.1)", border: "1px solid rgba(249,115,22,.25)", borderRadius: 20, padding: "6px 18px", marginBottom: 28 }}>
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)", display: "inline-block", boxShadow: "0 0 8px var(--accent)" }} />
-          <span style={{ fontSize: 12, color: "var(--accent)", fontWeight: 600, letterSpacing: "0.04em" }}>6 transformări reale · Trage pentru comparație</span>
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            background: "rgba(249,115,22,.1)",
+            border: "1px solid rgba(249,115,22,.25)",
+            borderRadius: 20,
+            padding: "6px 18px",
+            marginBottom: 28,
+          }}
+        >
+          <span
+            style={{
+              width: 7,
+              height: 7,
+              borderRadius: "50%",
+              background: "var(--accent)",
+              display: "inline-block",
+              boxShadow: "0 0 8px var(--accent)",
+            }}
+          />
+          <span
+            style={{
+              fontSize: 12,
+              color: "var(--accent)",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+            }}
+          >
+            6 transformări reale · Trage pentru comparație
+          </span>
         </div>
 
         {/* Heading */}
@@ -55,16 +120,50 @@ export default function BeforeAfterHero() {
         </h1>
 
         {/* Subtitle */}
-        <p style={{ fontSize: "clamp(15px,1.8vw,17px)", color: "var(--text-secondary)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
-          Transformări reale pentru spații comerciale, birouri, HoReCa și rezidențial. Fiecare proiect — o poveste de impact vizual.
+        <p
+          style={{
+            fontSize: "clamp(15px,1.8vw,17px)",
+            color: "var(--text-secondary)",
+            lineHeight: 1.75,
+            maxWidth: 560,
+            margin: "0 auto 40px",
+          }}
+        >
+          Transformări reale pentru spații comerciale, birouri, HoReCa și
+          rezidențial. Fiecare proiect — o poveste de impact vizual.
         </p>
 
         {/* Stats */}
-        <div style={{ display: "flex", gap: 32, justifyContent: "center", flexWrap: "wrap" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 32,
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
           {STATS.map(({ val, label }) => (
             <div key={label} style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: 32, color: "var(--accent)", letterSpacing: "0.02em", lineHeight: 1 }}>{val}</div>
-              <div style={{ fontSize: 11, color: "var(--text-secondary)", marginTop: 3 }}>{label}</div>
+              <div
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 32,
+                  color: "var(--accent)",
+                  letterSpacing: "0.02em",
+                  lineHeight: 1,
+                }}
+              >
+                {val}
+              </div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "var(--text-secondary)",
+                  marginTop: 3,
+                }}
+              >
+                {label}
+              </div>
             </div>
           ))}
         </div>

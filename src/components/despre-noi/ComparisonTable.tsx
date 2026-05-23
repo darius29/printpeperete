@@ -4,20 +4,94 @@ import { useInView } from "@/hooks/useInView";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const rows: [string, string, string][] = [
-  ["Aplicare", "Direct pe suprafață, fără intermediar", "Tapet sau folie aplicată separat"],
-  ["Durabilitate", "UV-rezistent, ani de zile fără degradare", "Se dezlipește, pălește în timp"],
-  ["Personalizare", "Orice design, orice dimensiune", "Limitată la modele disponibile"],
-  ["Timp execuție", "Livrare în 48h pentru standard", "Zile sau săptămâni pentru custom"],
-  ["Suprafețe compatibile", "Beton, metal, lemn, sticlă, textile", "Doar suprafețe plane netede"],
-  ["Risc deteriorare", "Zero — proces complet neinvaziv", "Risc la dezlipire sau umiditate"],
+  [
+    "Aplicare",
+    "Direct pe suprafață, fără intermediar",
+    "Tapet sau folie aplicată separat",
+  ],
+  [
+    "Durabilitate",
+    "UV-rezistent, ani de zile fără degradare",
+    "Se dezlipește, pălește în timp",
+  ],
+  [
+    "Personalizare",
+    "Orice design, orice dimensiune",
+    "Limitată la modele disponibile",
+  ],
+  [
+    "Timp execuție",
+    "Livrare în 48h pentru standard",
+    "Zile sau săptămâni pentru custom",
+  ],
+  [
+    "Suprafețe compatibile",
+    "Beton, metal, lemn, sticlă, textile",
+    "Doar suprafețe plane netede",
+  ],
+  [
+    "Risc deteriorare",
+    "Zero — proces complet neinvaziv",
+    "Risc la dezlipire sau umiditate",
+  ],
 ];
 
 export default function ComparisonTable() {
   const [ref, inView] = useInView(0.1);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section section-divider" style={{ padding: "96px 40px", background: "radial-gradient(ellipse 140% 65% at 50% 25%, rgba(249,115,22,0.13) 0%, transparent 65%)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="resp-section section-divider"
+      style={{
+        padding: "96px 40px",
+        background: "var(--bg-void)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mov"
+          type="video/quicktime"
+        />
+      </video>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(12,12,12,0.80)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
         <SectionHeader
           label="Comparație directă"
           title={
@@ -100,7 +174,15 @@ export default function ComparisonTable() {
                 transition: `opacity .5s ${0.25 + i * 0.06}s, transform .5s ${0.25 + i * 0.06}s`,
               }}
             >
-              <span style={{ fontSize: 13, color: "var(--text-secondary)", fontWeight: 500 }}>{c}</span>
+              <span
+                style={{
+                  fontSize: 13,
+                  color: "var(--text-secondary)",
+                  fontWeight: 500,
+                }}
+              >
+                {c}
+              </span>
               <span
                 style={{
                   fontSize: 13,

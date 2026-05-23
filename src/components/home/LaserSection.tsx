@@ -52,22 +52,40 @@ export default function LaserSection() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section cv-auto section-divider"
       style={{
-        background: "radial-gradient(ellipse 70% 60% at 90% 10%, rgba(59,130,246,0.09) 0%, transparent 55%), radial-gradient(ellipse 140% 65% at 30% 75%, rgba(249,115,22,0.13) 0%, transparent 65%), var(--bg-void)",
+        background: "var(--bg-void)",
         padding: "96px 40px",
         position: "relative",
       }}
     >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mp4" type="video/mp4" />
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mov" type="video/quicktime" />
+      </video>
       <div
         aria-hidden="true"
         style={{
           position: "absolute",
           inset: 0,
-          zIndex: 0,
+          background: "rgba(12,12,12,0.80)",
+          zIndex: 1,
           pointerEvents: "none",
-          backgroundImage: "repeating-linear-gradient(45deg, rgba(59,130,246,0.045) 0px, rgba(59,130,246,0.045) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(-45deg, rgba(59,130,246,0.03) 0px, rgba(59,130,246,0.03) 1px, transparent 1px, transparent 12px)",
         }}
       />
-      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 2 }}>
         <div
           style={{
             opacity: inView ? 1 : 0,

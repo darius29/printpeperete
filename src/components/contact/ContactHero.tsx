@@ -1,6 +1,7 @@
 "use client";
 
 import { type RefObject } from "react";
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
 export default function ContactHero() {
@@ -20,35 +21,23 @@ export default function ContactHero() {
         transition: "opacity .7s, transform .7s",
       }}
     >
-      {/* Radial gradient background */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 150% 90% at 50% 0%, rgba(249,115,22,.22) 0%, transparent 70%), var(--bg-void)",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Grain overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: "-50%",
-          width: "200%",
-          height: "200%",
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")",
-          opacity: 0.5,
-          animation: "grain 8s steps(2) infinite",
-          pointerEvents: "none",
-        }}
-      />
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <Image
+          src="/assets/hero/pinboard-studio-sdg-print-mostre-culori-brief-proiect.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+      </div>
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(12,12,12,0.35) 0%, rgba(12,12,12,0.80) 65%, rgba(12,12,12,0.92) 100%)", zIndex: 1, pointerEvents: "none" }} />
 
       <div
         style={{
           position: "relative",
+          zIndex: 2,
           maxWidth: 1200,
           margin: "0 auto",
           textAlign: "center",
@@ -110,7 +99,7 @@ export default function ContactHero() {
         <p
           style={{
             fontSize: "clamp(15px,1.8vw,17px)",
-            color: "var(--text-secondary, #9CA3AF)",
+            color: "var(--text-hero)",
             lineHeight: 1.75,
             maxWidth: 520,
             margin: "0 auto",

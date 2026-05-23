@@ -10,7 +10,13 @@ const stats = [
   { target: 10, suffix: "+", label: "Materiale compatibile" },
 ];
 
-function StatItem({ target, suffix, label, index, inView }: {
+function StatItem({
+  target,
+  suffix,
+  label,
+  index,
+  inView,
+}: {
   target: number;
   suffix: string;
   label: string;
@@ -58,7 +64,8 @@ function StatItem({ target, suffix, label, index, inView }: {
           color: "var(--accent)",
         }}
       >
-        {val}{suffix}
+        {val}
+        {suffix}
       </div>
     </div>
   );
@@ -72,13 +79,61 @@ export default function StatsBar() {
       ref={ref as React.RefObject<HTMLElement>}
       className="section-divider"
       style={{
-        background: "radial-gradient(ellipse 140% 70% at 50% 50%, rgba(249,115,22,0.14) 0%, transparent 65%), var(--bg-surface)",
+        background: "var(--bg-surface)",
         borderBottom: "1px solid var(--bg-border)",
         padding: "0",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div className="resp-px" style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div className="grid-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="/assets/videos/LoopSmallDustFlameParticle.mov"
+          type="video/quicktime"
+        />
+      </video>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(12,12,12,0.80)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        className="resp-px"
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "0 40px",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        <div
+          className="grid-stats"
+          style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}
+        >
           {stats.map((s, i) => (
             <StatItem
               key={i}

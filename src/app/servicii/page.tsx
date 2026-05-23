@@ -14,11 +14,49 @@ export default function ServiciiPage() {
   return (
     <main>
       <ServiciiHero />
-      <ServiciiMainServices />
-      <PriceCalculator />
-      <MaterialeSection />
-      <ServiciiGrid />
-      <ProcessSteps />
+      <div style={{ position: "relative", overflow: "hidden" }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 0,
+          }}
+        >
+          <source
+            src="/assets/videos/LoopSmallDustFlameParticle.mp4"
+            type="video/mp4"
+          />
+          <source
+            src="/assets/videos/LoopSmallDustFlameParticle.mov"
+            type="video/quicktime"
+          />
+        </video>
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(12,12,12,0.80)",
+            zIndex: 1,
+            pointerEvents: "none",
+          }}
+        />
+        <div style={{ position: "relative", zIndex: 2 }}>
+          <ServiciiMainServices />
+          <PriceCalculator />
+          <MaterialeSection />
+          <ServiciiGrid />
+          <ProcessSteps />
+        </div>
+      </div>
       <FinalCTA
         title="Ai nevoie de un"
         titleAccent="pachet personalizat?"

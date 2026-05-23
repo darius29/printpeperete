@@ -19,6 +19,7 @@
   --text-primary: #ffffff;
   --text-secondary: #9ca3af;
   --text-tertiary: #8b939f;
+  --text-hero: #c4cdd8;
 
   /* Semantic */
   --success: #22c55e;
@@ -33,7 +34,7 @@
   --r-2xl: 24px;
 
   /* Transitions */
-  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --t-fast: 150ms;
   --t-normal: 250ms;
   --t-slow: 400ms;
@@ -165,11 +166,13 @@ textarea::placeholder {
 
 @keyframes checkPop {
   0% {
-    transform: scale(0);
-    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(0.85);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   }
   100% {
     transform: scale(1);
+    opacity: 1;
   }
 }
 @keyframes overlayIn {
@@ -281,7 +284,12 @@ textarea::placeholder {
 }
 
 .transition-default {
-  transition: all var(--t-normal) var(--ease-out);
+  transition:
+    background var(--t-normal) var(--ease-out),
+    border-color var(--t-normal) var(--ease-out),
+    color var(--t-normal) var(--ease-out),
+    opacity var(--t-normal) var(--ease-out),
+    transform var(--t-normal) var(--ease-out);
 }
 
 /* Pulse CTA */
@@ -294,9 +302,9 @@ textarea::placeholder {
 
 /* Nav links */
 .nav-link {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-hero);
   text-decoration: none;
   transition: color var(--t-fast);
   padding-bottom: 2px;
@@ -348,9 +356,12 @@ textarea::placeholder {
 }
 .btn-primary:hover {
   background: var(--accent-deep);
-  transform: translateY(-2px);
   animation: none;
   box-shadow: 0 8px 24px rgba(249, 115, 22, 0.35);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+  box-shadow: none;
 }
 .btn-outline {
   background: transparent;
@@ -362,7 +373,10 @@ textarea::placeholder {
   font-weight: 600;
   cursor: pointer;
   font-family: var(--font-ui);
-  transition: all var(--t-normal);
+  transition:
+    border-color var(--t-normal) var(--ease-out),
+    color var(--t-normal) var(--ease-out),
+    transform var(--t-fast);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -371,6 +385,9 @@ textarea::placeholder {
 .btn-outline:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+.btn-outline:active {
+  transform: scale(0.97);
 }
 
 /* Portfolio cards */
@@ -422,7 +439,10 @@ textarea::placeholder {
   font-weight: 500;
   cursor: pointer;
   font-family: var(--font-ui);
-  transition: all var(--t-normal);
+  transition:
+    background var(--t-normal) var(--ease-out),
+    border-color var(--t-normal) var(--ease-out),
+    color var(--t-normal) var(--ease-out);
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -449,7 +469,10 @@ textarea::placeholder {
   font-weight: 500;
   cursor: pointer;
   font-family: var(--font-ui);
-  transition: all var(--t-fast);
+  transition:
+    color var(--t-fast),
+    border-color var(--t-fast),
+    background var(--t-fast);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -470,7 +493,10 @@ textarea::placeholder {
   border: 1px solid var(--bg-border);
   border-radius: 12px;
   padding: 22px;
-  transition: all 0.28s var(--ease-out);
+  transition:
+    border-color 0.28s var(--ease-out),
+    transform 0.28s var(--ease-out),
+    box-shadow 0.28s var(--ease-out);
 }
 .diff-card:hover {
   border-color: var(--accent);
@@ -990,13 +1016,6 @@ textarea::placeholder {
 
 /* ─── RESPONSIVE LAYOUT ──────────────────────────────────────────────────────── */
 
-/* MobileBar: mobile only */
-@media (min-width: 900px) {
-  .mobile-bar {
-    display: none !important;
-  }
-}
-
 /* Hero content horizontal padding */
 @media (max-width: 899px) {
   .hero-content {
@@ -1337,6 +1356,26 @@ textarea::placeholder {
 @media (max-width: 374px) {
   .hero-h1 {
     font-size: 28px !important;
+  }
+}
+
+/* ── Touch device guard: disable transform hovers on non-hover devices ── */
+@media (hover: none) {
+  .service-card:hover,
+  .feature-card:hover,
+  .spec-card:hover,
+  .domain-card:hover,
+  .surface-chip:hover,
+  .material-chip:hover,
+  .diff-card:hover,
+  .porto-stat-card:hover {
+    transform: none;
+  }
+  .porto-card:hover .porto-card-img {
+    transform: none;
+  }
+  .has-icon-pop:hover .icon-pop {
+    transform: none;
   }
 }
 

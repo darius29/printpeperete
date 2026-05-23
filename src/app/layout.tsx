@@ -6,7 +6,6 @@ import { LocalBusinessSchema } from "@/components/StructuredData";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import WAWidget from "@/components/layout/WAWidget";
-import MobileBar from "@/components/layout/MobileBar";
 import CookieBanner from "@/components/layout/CookieBanner";
 import "./globals.css";
 
@@ -39,12 +38,13 @@ export default function RootLayout({
         <meta name="theme-color" content="#0C0C0C" />
       </head>
       <body style={{ background: "var(--bg-void)" }}>
-        <a href="#main-content" className="sr-only-focusable">Sari la conținut</a>
+        <a href="#main-content" className="sr-only-focusable">
+          Sari la conținut
+        </a>
         <Nav />
         <main id="main-content">{children}</main>
         <Footer />
         <WAWidget />
-        <MobileBar />
         <CookieBanner />
         {GA_ID && (
           <>

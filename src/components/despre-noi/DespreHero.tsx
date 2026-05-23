@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import GrainOverlay from "@/components/ui/GrainOverlay";
 
 const badges = [
@@ -11,16 +12,20 @@ const badges = [
 export default function DespreHero() {
   return (
     <section className="hero-pad-xl" style={{ position: "relative", padding: "140px 40px 80px", overflow: "hidden" }}>
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 150% 90% at 50% 0%, rgba(249,115,22,.22) 0%, transparent 70%), var(--bg-void)",
-        }}
-      />
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <Image
+          src="/assets/hero/unelte-atelier-print-uv-laser-mostre-sdg-print-timisoara.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+      </div>
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(12,12,12,0.35) 0%, rgba(12,12,12,0.80) 65%, rgba(12,12,12,0.92) 100%)", zIndex: 1, pointerEvents: "none" }} />
       <GrainOverlay />
-      <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto" }}>
+      <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ maxWidth: 720, animation: "fadeUp .9s .1s both" }}>
           {/* Label badge */}
           <div
@@ -70,7 +75,7 @@ export default function DespreHero() {
           <p
             style={{
               fontSize: "clamp(15px,1.8vw,17px)",
-              color: "var(--text-secondary)",
+              color: "var(--text-hero)",
               lineHeight: 1.8,
               maxWidth: 580,
               marginBottom: 36,

@@ -12,7 +12,7 @@ const STEPS = [
 export default function ProcessSteps() {
   const [ref, inView] = useInView(0.15);
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section-80 section-divider" style={{ padding: "80px 40px", background: "radial-gradient(ellipse 140% 65% at 50% 50%, rgba(249,115,22,0.13) 0%, transparent 65%)" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} className="resp-section-80 section-divider" style={{ padding: "80px 40px", background: "transparent" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(24px)", transition: "opacity .7s, transform .7s", marginBottom: 56, textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>

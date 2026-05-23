@@ -87,7 +87,7 @@ export default function PriceCalculator() {
   );
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} id="calculator" className="resp-section section-divider" style={{ background: "radial-gradient(ellipse 140% 65% at 65% 80%, rgba(249,115,22,0.15) 0%, transparent 65%), var(--bg-void)", padding: "96px 40px" }}>
+    <section ref={ref as React.RefObject<HTMLElement>} id="calculator" className="resp-section section-divider" style={{ background: "transparent", padding: "96px 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         {/* Header */}
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(24px)", transition: "opacity .7s, transform .7s", marginBottom: 56, display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
@@ -127,7 +127,7 @@ export default function PriceCalculator() {
                       background: service === k ? "rgba(249,115,22,.1)" : "var(--bg-surface)",
                       border: `1px solid ${service === k ? "var(--accent)" : "var(--bg-border)"}`,
                       borderRadius: 10, padding: "14px 16px", cursor: "pointer",
-                      fontFamily: "var(--font-dm-sans)", transition: "all 0.2s",
+                      fontFamily: "var(--font-dm-sans)", transition: "background 0.2s, border-color 0.2s",
                       textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
                     }}
                   >
@@ -154,7 +154,7 @@ export default function PriceCalculator() {
                       color: material === m ? "var(--accent)" : "var(--text-secondary)",
                       border: `1px solid ${material === m ? "var(--accent)" : "var(--bg-border)"}`,
                       borderRadius: 8, padding: "8px 14px", fontSize: 12, fontWeight: 500,
-                      cursor: "pointer", fontFamily: "var(--font-dm-sans)", transition: "all .15s",
+                      cursor: "pointer", fontFamily: "var(--font-dm-sans)", transition: "background .15s, color .15s, border-color .15s",
                     }}
                   >{m}</button>
                 ))}
@@ -210,7 +210,7 @@ export default function PriceCalculator() {
                       background: quality === q.k ? "rgba(249,115,22,.08)" : "var(--bg-elevated)",
                       border: `1px solid ${quality === q.k ? "var(--accent)" : "var(--bg-border)"}`,
                       borderRadius: 10, padding: "14px 12px", cursor: "pointer",
-                      fontFamily: "var(--font-dm-sans)", textAlign: "left", transition: "all .2s",
+                      fontFamily: "var(--font-dm-sans)", textAlign: "left", transition: "background .2s, border-color .2s",
                       position: "relative",
                     }}
                   >
@@ -234,7 +234,7 @@ export default function PriceCalculator() {
             <div style={{
               background: calculated ? "linear-gradient(135deg,var(--bg-surface),#1a1a1a)" : "var(--bg-surface)",
               border: `1px solid ${calculated ? "var(--accent)" : "var(--bg-border)"}`,
-              borderRadius: 16, padding: 28, transition: "all .4s", flex: 1,
+              borderRadius: 16, padding: 28, transition: "background .4s, border-color .4s, box-shadow .4s", flex: 1,
               boxShadow: calculated ? "0 0 40px rgba(249,115,22,.12)" : "none",
             }}>
               {!calculated ? (

@@ -59,22 +59,38 @@ export default function WallPrintSpotlight() {
     <section
       className="resp-section section-divider"
       style={{
-        background:
-          "radial-gradient(ellipse 140% 65% at 50% 75%, rgba(249,115,22,0.14) 0%, transparent 65%), var(--bg-void)",
+        background: "var(--bg-void)",
         borderBottom: "1px solid #1a1a1a",
         padding: "96px 40px",
         position: "relative",
       }}
     >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mp4" type="video/mp4" />
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mov" type="video/quicktime" />
+      </video>
       <div
         aria-hidden="true"
         style={{
           position: "absolute",
           inset: 0,
-          zIndex: 0,
+          background: "rgba(12,12,12,0.80)",
+          zIndex: 1,
           pointerEvents: "none",
-          backgroundImage:
-            "repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px)",
         }}
       />
       <div
@@ -83,7 +99,7 @@ export default function WallPrintSpotlight() {
           maxWidth: 1200,
           margin: "0 auto",
           position: "relative",
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         {/* Header */}

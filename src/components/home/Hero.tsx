@@ -220,7 +220,7 @@ export default function Hero() {
           <p
             style={{
               fontSize: "clamp(15px, 2vw, 18px)",
-              color: "var(--text-secondary)",
+              color: "var(--text-hero)",
               lineHeight: 1.7,
               maxWidth: 580,
               marginBottom: 40,
@@ -281,8 +281,8 @@ export default function Hero() {
                 />
                 <span
                   style={{
-                    fontSize: 12,
-                    color: "var(--text-tertiary)",
+                    fontSize: 16,
+                    color: "var(--text-hero)",
                     fontWeight: 500,
                     letterSpacing: "0.02em",
                   }}

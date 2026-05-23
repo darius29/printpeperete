@@ -25,15 +25,24 @@ export default function Story() {
       ref={ref as React.RefObject<HTMLElement>}
       className="resp-section section-divider"
       style={{
-        background: "radial-gradient(ellipse 140% 65% at 30% 50%, rgba(249,115,22,0.14) 0%, transparent 65%), var(--bg-surface)",
+        background: "var(--bg-surface)",
         padding: "96px 40px",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      <video autoPlay muted loop playsInline style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mp4" type="video/mp4" />
+        <source src="/assets/videos/LoopSmallDustFlameParticle.mov" type="video/quicktime" />
+      </video>
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "rgba(12,12,12,0.80)", zIndex: 1, pointerEvents: "none" }} />
       <div
         className="grid-2-main"
         style={{
           maxWidth: 1200,
           margin: "0 auto",
+          position: "relative",
+          zIndex: 2,
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: 64,

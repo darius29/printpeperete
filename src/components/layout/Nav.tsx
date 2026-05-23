@@ -154,7 +154,7 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
           <button
             onClick={onClose}
             aria-label="Închide meniu"
-            style={{ width: 36, height: 36, borderRadius: 9, background: "var(--bg-elevated)", border: "1px solid var(--bg-border)", color: "var(--text-secondary)", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1, transition: "all .2s" }}
+            style={{ width: 36, height: 36, borderRadius: 9, background: "var(--bg-elevated)", border: "1px solid var(--bg-border)", color: "var(--text-secondary)", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1, transition: "background .2s, color .2s" }}
             onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "var(--bg-border)"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
             onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "var(--bg-elevated)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"; }}
           >×</button>
@@ -210,7 +210,7 @@ function MobileMenuPanel({ open, onClose, pathname }: { open: boolean; onClose: 
             background: "transparent", color: "#25D366", textDecoration: "none",
             border: "1px solid rgba(37,211,102,.3)", borderRadius: 10,
             padding: "13px 20px", fontSize: 14, fontWeight: 600,
-            fontFamily: "var(--font-ui)", transition: "all .2s",
+            fontFamily: "var(--font-ui)", transition: "background .2s",
           }}
             onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(37,211,102,.08)"; }}
             onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}

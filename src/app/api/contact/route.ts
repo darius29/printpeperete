@@ -6,6 +6,34 @@ const FROM_EMAIL = "noreply@printpeperete.com";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
 
+// In-memory rate limiter: 5 requests per 10 minutes per IP
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_WINDOW = 10 * 60 * 1000;
+const RATE_MAX = 5;
+
+function getIP(req: NextRequest): string {
+  return (
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+    req.headers.get("x-real-ip") ??
+    "unknown"
+  );
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_WINDOW });
+    return false;
+  }
+
+  if (entry.count >= RATE_MAX) return true;
+
+  entry.count++;
+  return false;
+}
+
 function h(str: string): string {
   return str
     .replace(/&/g, "&amp;")
@@ -16,6 +44,14 @@ function h(str: string): string {
 }
 
 export async function POST(req: NextRequest) {
+  const ip = getIP(req);
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Prea multe cereri. Încearcă din nou în câteva minute." },
+      { status: 429 }
+    );
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   let name: string, phone: string, email: string, service: string, location: string, message: string;
